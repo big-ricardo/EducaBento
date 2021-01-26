@@ -21,7 +21,7 @@ export default function BlogPost({ post }: PropTypes): JSX.Element {
   return (
     <>
       <Head>
-        <title>{RichText.asText(post.data.title)} | Blog | Daniel Berg</title>
+        <title>Post | {RichText.asText(post.data.title)}</title>
         <meta
           name="og:title"
           property="og:title"
@@ -42,7 +42,7 @@ export default function BlogPost({ post }: PropTypes): JSX.Element {
           </div>
         ))}
 
-        <Link href="/blog">
+        <Link href="/">
           <a>
             <button>
               Voltar
@@ -101,5 +101,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
     props: {
       post,
     },
+    revalidate: 60
   };
 };

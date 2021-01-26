@@ -25,11 +25,9 @@ export default function Blog({ posts }: PropTypes): JSX.Element {
         />
       </Head>
       <div>
-        asdda
         {posts.results.map((post) => (
-          <Link href="/blog/[uid]" as={`/blog/${post.uid}`} key={post.uid}>
+          <Link href="/blog/[uid]" as={`/post/${post.uid}`} key={post.uid}>
             <a>
-              ala
               <div>
                 <p>
                   {RichText.render(post.data.title)}
@@ -73,6 +71,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const posts = await client.query(
     Prismic.Predicates.at('document.type', 'blog_posts'),
+     { orderings : '[my.blog-post.date desc]' }
   );
 
   posts.results.map((post) => {
@@ -87,5 +86,6 @@ export const getStaticProps: GetStaticProps = async () => {
       posts,
       // home,
     },
+    revalidate: 10
   };
 };

@@ -1,23 +1,36 @@
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
+import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
+import  Document from 'prismic-javascript/types/ApiSearchResponse';
+import {useRouter} from 'next/router'
 
-import { client } from '../utils/prismic_configuration';
-import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
-// import { Document } from 'prismic-javascript/types/documents';
+import { client } from '../../utils/prismic_configuration';
 
-interface PropTypes {
-  posts: ApiSearchResponse;
-  // home: Document;
+interface PathProps {
+  params: {
+    tag: string;
+  };
 }
 
-export default function Home({ posts }: PropTypes): JSX.Element {
+interface PropTypes {
+  posts: Document;
+}
+
+export default function BlogPost({ posts }: PropTypes): JSX.Element {
+
+  const { isFallback } = useRouter()
+
+    if (isFallback) {
+        return <h1>Carregando...</h1>
+    }
+
+
   return (
     <>
       <Head>
-        <title>Educação Bento</title>
+        <title>Tag</title>
         <meta name="og:title" property="og:title" content="Blog" />
         <meta
           name="description"
@@ -25,7 +38,7 @@ export default function Home({ posts }: PropTypes): JSX.Element {
         />
       </Head>
       <div>
-        {posts.results.map((post) => (
+        {posts?.results.map((post) => (
           <Link href="/post/[uid]" as={`/post/${post.uid}`} key={post.uid}>
             <a>
               <div>
@@ -49,7 +62,20 @@ export default function Home({ posts }: PropTypes): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+
+  const allBlogPosts = [];
+
+  return {
+    paths: allBlogPosts,
+    fallback: true,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
+
+  const {tag} = params
+
   const mapNumberToMonth = [
     'Janeiro',
     'Fevereiro',
@@ -65,12 +91,8 @@ export const getStaticProps: GetStaticProps = async () => {
     'Dezembro',
   ];
 
-  // const home = await client.getSingle('blog_post', {
-  //   orderings: '[my.post.date desc]',
-  // });
-
-  const posts = await client.query(
-    Prismic.Predicates.at('document.type', 'blog_posts'),
+ const posts = await client.query(
+    Prismic.Predicates.at('document.tags', [tag]),
      { orderings : '[my.blog-post.date desc]' }
   );
 
@@ -84,8 +106,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       posts,
-      // home,
     },
-    revalidate: 10
+    revalidate: 30
   };
 };

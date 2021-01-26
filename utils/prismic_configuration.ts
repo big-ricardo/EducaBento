@@ -10,3 +10,23 @@ export const accessToken = process.env.PRISMIC_TOKEN;
 // Client method to query Prismic
 export const client = Prismic.client(apiEndpoint, { accessToken });
 
+export const ClientPreview = (req = null) => (
+  Prismic.client(apiEndpoint, createClientOptions(req, accessToken))
+)
+
+const createClientOptions = (req = null, prismicAccessToken = null) => {
+  const reqOption = req ? { req } : {}
+  const accessTokenOption = prismicAccessToken ? { accessToken: prismicAccessToken } : {}
+  return {
+    ...reqOption,
+    ...accessTokenOption,
+  }
+}
+
+export const linkResolver = (doc) => {
+  if (doc.type === 'page') {
+    return `/${doc.uid}`
+  }
+  return '/'
+}
+
