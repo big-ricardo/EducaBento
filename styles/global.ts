@@ -8,12 +8,12 @@ export default createGlobalStyle`
   }
 
   body {
-    background-color:${props => props.theme.colors.background};
+    background:${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
   }
 
   a {
-    color: ${props => props.theme.colors.text};
     text-decoration: none;
+    font-family: 'Roboto' 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 `

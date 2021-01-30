@@ -13,11 +13,11 @@ interface PropTypes {
   // home: Document;
 }
 
-export default function Blog({ posts }: PropTypes): JSX.Element {
+export default function Home({ posts }: PropTypes): JSX.Element {
   return (
     <>
       <Head>
-        <title>Blog | Daniel Berg</title>
+        <title>Educação Bento</title>
         <meta name="og:title" property="og:title" content="Blog" />
         <meta
           name="description"
@@ -26,7 +26,7 @@ export default function Blog({ posts }: PropTypes): JSX.Element {
       </Head>
       <div>
         {posts.results.map((post) => (
-          <Link href="/blog/[uid]" as={`/post/${post.uid}`} key={post.uid}>
+          <Link href="/post/[uid]" as={`/post/${post.uid}`} key={post.uid}>
             <a>
               <div>
                 <p>
