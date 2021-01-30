@@ -1,0 +1,96 @@
+{
+  "array": [
+    {
+      "icon": "/matematica.png",
+      "title": "Matemática",
+      "slug": "matematica"
+    },
+    {
+      "icon": "/fisica.png",
+      "title": "Física",
+      "slug": "fisica"
+    },
+    {
+      "icon": "/quimica.png",
+      "title": "Química",
+      "slug": "quimica"
+    },
+    {
+      "icon": "/biologia.png",
+      "title": "Biologia",
+      "slug": "biologia"
+    },
+    {
+      "icon": "/geografia.png",
+      "title": "Geografia",
+      "slug": "geografia"
+    },
+    {
+      "icon": "/literatura.png",
+      "title": "Literatura",
+      "slug": "literatura"
+    },
+    {
+      "icon": "/sociologia.png",
+      "title": "Sociologia",
+      "slug": "sociologia"
+    },
+    {
+      "icon": "/filosofia.png",
+      "title": "Filosofia",
+      "slug": "filosofia"
+    },
+    {
+      "icon": "/historia.svg",
+      "title": "Hístoria",
+      "slug": "historia"
+    },
+    {
+      "icon": "/redacao.png",
+      "title": "Redação",
+      "slug": "redacao"
+    }
+  ],
+  "object": {
+    "matematica": {
+      "icon": "/matematica.png",
+      "title": "Matemática"
+    },
+    "fisica": {
+      "icon": "/fisica.png",
+      "title": "Física"
+    },
+    "quimica": {
+      "icon": "/quimica.png",
+      "title": "Química"
+    },
+    "biologia": {
+      "icon": "/biologia.png",
+      "title": "Biologia"
+    },
+    "geografia": {
+      "icon": "/geografia.png",
+      "title": "Geografia"
+    },
+    "literatura": {
+      "icon": "/literatura.png",
+      "title": "Literatura"
+    },
+    "sociologia": {
+      "icon": "/sociologia.png",
+      "title": "Sociologia"
+    },
+    "filosofia": {
+      "icon": "/filosofia.png",
+      "title": "Filosofia"
+    },
+    "historia": {
+      "icon": "/historia.svg",
+      "title": "Hístoria"
+    },
+    "redacao": {
+      "icon": "/redacao.png",
+      "title": "Redação"
+    }
+  }
+}

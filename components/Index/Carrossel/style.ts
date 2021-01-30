@@ -8,9 +8,10 @@ export const Carrossel = styled(motion.div)`
   justify-content: center;
   align-items: center;
   transition: 1s;
+  margin-top: 3%;
 
    @media screen and (max-width: 768px) {
-    flex-direction: column-reverse
+    flex-direction: column-reverse;
   }
 `;
 
@@ -74,7 +75,7 @@ export const H4= styled(motion.h4)`
     color: ${props => props.theme.colors.backgroundColor};
     font-family: 'Roboto', sans-serif;
     font-size: clamp(20px, 1vw, 27px);
-    transition: .5s;
+
 
     &:hover{
       background-color: ${props => props.theme.colors.secound};

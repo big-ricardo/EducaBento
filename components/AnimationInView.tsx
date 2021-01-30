@@ -1,15 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, ReactChildren } from "react";
 import ReactDOM from "react-dom";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
-export default function FadeInWhenVisible({ children,
+interface VariantProps {
+ variants?: {
+    visible: {
+    scale?: number,
+    transform?: string,
+    opacity?: number
+  },
+  hidden: {
+    scale?: number,
+    transform?: string,
+    opacity?: number
+  }
+ },
+ transition?:{
+   duration: number
+ },
+ children
+
+}
+
+const FadeInWhenVisible: React.FunctionComponent<VariantProps> =({ children,
   variants = {
     visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 0 }
+    hidden: { opacity: 0, scale: 0}
   },
   transition = { duration: 1 }
-}) {
+}: VariantProps) => {
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
@@ -33,4 +53,4 @@ export default function FadeInWhenVisible({ children,
   );
 }
 
-
+export default FadeInWhenVisible

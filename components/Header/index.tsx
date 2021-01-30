@@ -6,7 +6,7 @@ import NavToggle from './Toggle'
 import LinkNext from "next/link";
 import { BsArrowRight } from 'react-icons/bs'
 
-const Links = ['Inicio', 'Sobre', 'Blog', 'Matérias']
+const Links = [{ title: "Inicio", slug: '/' }, {title:"Sobre", slug: '/about'},  {title:"Blog", slug: '/blog'}]
 
 export default function HeaderComponent() {
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -24,13 +24,13 @@ export default function HeaderComponent() {
         </LogoContainer>
         <LinksContainer>
           {Links.map(link => (
-            <LinkNext href='#' key={link}>
-              <Link>{link}</Link>
+            <LinkNext href={link.slug} key={link.slug}>
+              <Link whileHover={{transform:"translateX(5px)" }}>{link.title}</Link>
             </LinkNext>
           ))}
         </LinksContainer>
         <LinkNext href='#'>
-          <LoginContainer whileHover={{transform:'translateY(-5px)'}}>
+          <LoginContainer whileHover={{ transform: 'translateX(5px)' }}>
             <h2>Entrar</h2>
             <BsArrowRight />
           </LoginContainer>

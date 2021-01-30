@@ -6,7 +6,7 @@ const light = {
     text: '#4B5D68',
     title: '#212353',
     primary:' #9C69E2',
-    secound: '#F063B8',
+    secound: 'rgba(255, 140, 42,1)',
     material:{
       matematica: 'rgba(0, 200, 111, 0.3)',
       fisica: 'rgba(156, 211, 60, 0.3)',

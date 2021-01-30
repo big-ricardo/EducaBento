@@ -52,7 +52,7 @@ const MenuItem = ({ i }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
-      <Link href='#'>{i}</Link>
+      <Link href={i.slug}>{i.title}</Link>
     </Li>
   );
 };

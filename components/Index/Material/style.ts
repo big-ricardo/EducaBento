@@ -9,7 +9,7 @@ export const MateriaContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-  gap: 5%;
+  gap: 8%;
   transition: 1s;
   @media screen and (max-width: 767px) {
     width:99%;
@@ -21,7 +21,7 @@ interface MateriaInterface {
   icon: string;
 }
 
-const MateriaDiv = styled.div.attrs((props: MateriaInterface) => {
+const MateriaDiv = styled(motion.div).attrs((props: MateriaInterface) => {
   materia: props.materia;
   icon: props.icon
 }) <MateriaInterface>`
@@ -29,11 +29,12 @@ const MateriaDiv = styled.div.attrs((props: MateriaInterface) => {
 `;
 
 export const Materia = styled(MateriaDiv)`
-  width:25%;
+  width:20%;
   border-radius:45px 25px 25px 20px;
-  height: clamp(70px, 10vh + 70px, 160px);
-  margin-bottom: 150px;
+  height: clamp(70px, 10vh + 50px, 160px);
+  margin-bottom: 8%;
   transition: 1s;
+  cursor: pointer;
 
    @media screen and (max-width: 1200px) {
     width:40%;
@@ -41,15 +42,15 @@ export const Materia = styled(MateriaDiv)`
      height: clamp(70px,10vh + 70px,160px)
   }
 
-   @media screen and (max-width: 767px) {
+   @media screen and (max-width: 768px) {
     width:40%;
-    margin-bottom: 20%;
-    height: clamp(100px, 1vh, 150px)
+    margin-bottom: clamp(30px, 12%, 150px);
+    height: clamp(75px, 12vh, 150px)
   }
 
   @media screen and (max-width: 280px) {
     width:80%;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     height: clamp(140px, 7vh, 150px)
   }
 
@@ -79,7 +80,7 @@ export const Materia = styled(MateriaDiv)`
       width: 60%
      }
      @media screen and (max-width: 768px){
-      width: 80%
+      width: 60%
      }
   `
 

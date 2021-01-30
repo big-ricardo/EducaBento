@@ -15,7 +15,7 @@ export default function HeaderComponent() {
           </div>
           <div>
             <p>Tudo produzido por alunos voluntarios em busca de ajudar a sua entrada ao mundo universitario</p>
-            <Link href='/blog'><H4 whileHover={{ scale: 1.1, transition:{duration: .6} }}>COMEÇAR</H4></Link>
+            <Link href='/blog'><H4 whileHover={{transform:"translateX(5px)"}}>COMEÇAR</H4></Link>
           </div>
         </SectionText>
         <SectionImg whileHover={{ scale: 1.1 }}>
