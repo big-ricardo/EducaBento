@@ -7,6 +7,7 @@ export const Carrossel = styled(motion.div)`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: 1s;
 
    @media screen and (max-width: 768px) {
     flex-direction: column-reverse
@@ -21,6 +22,10 @@ export const SectionText = styled(motion.div)`
   justify-content: space-around;
   align-items: flex-start;
 
+    @media screen and (max-width: 1024px){
+      height: 25vh;
+    }
+
   @media screen and (max-width: 768px) {
      align-items: center;
      height: max-content;
@@ -31,7 +36,7 @@ export const SectionText = styled(motion.div)`
     color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
     font-weight: 700;
-    font-size: clamp(30px, 4vw, 200px);
+    font-size: clamp(40px, 4vw, 200px);
     @media screen and (max-width: 768px) {
      text-align: center;
   }
@@ -40,7 +45,7 @@ export const SectionText = styled(motion.div)`
   div h3{
     color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
-    font-size: clamp(18px, 2vw , 200px);
+    font-size: clamp(25px, 2vw , 200px);
      @media screen and (max-width: 768px) {
      text-align: center;
   }
@@ -49,7 +54,7 @@ export const SectionText = styled(motion.div)`
   div p{
     color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
-    font-size: clamp(16px, 1vw + 5px, 25px);
+    font-size: clamp(20px, 1vw + 5px, 25px);
     width: 75%;
     margin-bottom: 5%;
     @media screen and (max-width: 768px) {
@@ -68,8 +73,8 @@ export const H4= styled(motion.h4)`
      background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.backgroundColor};
     font-family: 'Roboto', sans-serif;
-    font-size: clamp(16px, 1vw, 27px);
-    transition: 1s;
+    font-size: clamp(20px, 1vw, 27px);
+    transition: .5s;
 
     &:hover{
       background-color: ${props => props.theme.colors.secound};

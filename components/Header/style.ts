@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Header = styled(motion.header)`
   height: 100px;
+  transition: 1s;
   @media screen and (max-width: 767px) {
     height: 70px
   }

@@ -18,7 +18,7 @@ export default function HeaderComponent() {
             <Link href='/blog'><H4 whileHover={{ scale: 1.1, transition:{duration: .6} }}>COMEÇAR</H4></Link>
           </div>
         </SectionText>
-        <SectionImg whileHover={{ scale: 1.1, transition:{duration: .6} }}>
+        <SectionImg whileHover={{ scale: 1.1 }}>
           <Image src='/img/carrossel.svg' width='400px' height='400px' layout='responsive' />
         </SectionImg>
       </Carrossel>
