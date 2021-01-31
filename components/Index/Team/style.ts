@@ -10,12 +10,14 @@ export const TeamContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
+  margin-top: 100px;
   background: linear-gradient(180deg, rgba(134, 243, 237, 0.43) 0%, rgba(255, 255, 255, 0) 100%), rgba(166, 178, 232, 0.52);
   border-radius: 50px;
 
   @media screen and (max-width: 768px) {
     width:95%;
     flex-direction: column;
+    margin-top: 50px;
   }
 `
 export const ImageContainer = styled(motion.div)`
