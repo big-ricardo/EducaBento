@@ -18,8 +18,8 @@ export default function NavigationToggle({ links }) {
 
   return (
     <Ul variants={variants}>
-      {links.map(i => (
-        <MenuItem i={i} key={i} />
+      {links.map((i,index) => (
+        <MenuItem i={i} key={index} />
       ))}
     </Ul>
   );
