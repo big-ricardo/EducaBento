@@ -1,10 +1,11 @@
 import { GetStaticProps } from "next";
+import AnimationInView from '../components/AnimationInView'
 import Header from '../components/Header'
 import Carrossel from '../components/Index/Carrossel'
-import AnimationInView from '../components/AnimationInView'
-import Materias from "../components/Index/Material";
-import Team from "../components/Index/Team";
+import AllMaterias from "../components/Index/AllMaterias";
 import Materia from "../components/Materia";
+import Invitation from "../components/Index/Invitation";
+import Team from "../components/Index/Team";
 import Footer from "../components/Footer";
 
 
@@ -19,8 +20,9 @@ export default function Home({ posts }: PropTypes): JSX.Element {
       <AnimationInView>
         <Carrossel />
       </AnimationInView>
-      <Materias />
-      <Materia materia='matematica' />
+      <AllMaterias />
+      {/* <Materia post={{}}/> */}
+      <Invitation />
       <Team />
       <Footer />
     </>

@@ -11,6 +11,11 @@ export const MateriaContainer = styled.div`
   margin: auto;
   gap: 8%;
   transition: 1s;
+
+  @media screen and (max-width: 1024px) {
+    width:95%;
+  }
+
   @media screen and (max-width: 767px) {
     width:99%;
   }
@@ -29,15 +34,15 @@ const MateriaDiv = styled(motion.div).attrs((props: MateriaInterface) => {
 `;
 
 export const Materia = styled(MateriaDiv)`
-  width:20%;
+  width:19%;
   border-radius:45px 25px 25px 20px;
   height: clamp(70px, 10vh + 50px, 160px);
   margin-bottom: 8%;
   transition: 1s;
   cursor: pointer;
 
-   @media screen and (max-width: 1200px) {
-    width:40%;
+   @media screen and (max-width: 1024px) {
+    width:20%;
      margin-bottom: 80px;
      height: clamp(70px,10vh + 70px,160px)
   }

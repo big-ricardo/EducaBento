@@ -4,42 +4,43 @@ import Link from "next/link";
 import Image from "next/image";
 import materias from '../../utils/materias.json'
 import AnimationInView from '../AnimationInView'
+import { BsArrowRight } from 'react-icons/bs'
 
 interface MateriaInterface {
-  materia: string;
+  post: {
+    materia: string;
+    title: string;
+    slug: string;
+    description: string;
+  };
 }
 
-const MateriaComponent: React.FC<MateriaInterface> = ({ materia, children }) => {
+const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
+
+  if(!post){
+    return <></>;
+  }
+
   return (
     <>
-      <MateriaContainer>
-        <Link href={`/post/${materia}`}>
-          <Materia whileHover={{ scale: 1.1 }} materia={materia}>
-            <TextContainer>
-              <h2>ansodasd asoidnioasnda sodinasido</h2>
-            </TextContainer>
+      <AnimationInView>
+        <MateriaContainer>
+          <Link href={`/post/${post.slug}`}>
+            <Materia whileHover={{ scale: 1.1 }} materia={post.materia}>
+              <TextContainer>
+                <h2>{post.title}</h2>
+                <h4>{post.description}</h4>
+                <h3>Veja Aqui  <BsArrowRight /> </h3>
+              </TextContainer>
 
-            <ImageContainer>
-              <Image src={`/icons${materias.object[materia].icon}`} layout='responsive' width='100px' height='100px' />
-            </ImageContainer>
+              <ImageContainer>
+                <Image src={`/icons${materias.object[post.materia].icon}`} layout='responsive' width='100px' height='100px' />
+              </ImageContainer>
 
-          </Materia>
-        </Link>
-        <Link href={`/post/${materia}`}>
-          <Materia whileHover={{ scale: 1.1 }} materia={materia}>
-            <TextContainer>
-              <h2>Probabilidade</h2>
-              <h4>O sistema ABO classifica grupos sanguíneos em tipos A, B, AB e O. Esse sistema foi descrito em 1900 por Karl Landsteiner, que, inicialmente, descreveu os grupos A, B e O</h4>
-              <h3>Veja Aqui</h3>
-            </TextContainer>
-
-            <ImageContainer>
-              <Image src={`/icons${materias.object[materia].icon}`} layout='responsive' width='100px' height='100px' />
-            </ImageContainer>
-
-          </Materia>
-        </Link>
-      </MateriaContainer>
+            </Materia>
+          </Link>
+        </MateriaContainer>
+      </AnimationInView>
     </>
   );
 };
