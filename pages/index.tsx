@@ -5,28 +5,24 @@ import { RichText } from 'prismic-reactjs';
 import { client } from '../utils/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
+import api from '../utils/api'
+
 /*    Components*/
 import AnimationInView from '../components/AnimationInView'
 import Header from '../components/Header'
 import Carrossel from '../components/Index/Carrossel'
 import AllMaterias from "../components/Index/AllMaterias";
-import Materia from "../components/Materia";
+import Materia, {post} from "../components/Materia";
 import Invitation from "../components/Index/Invitation";
-import Team from "../components/Index/Team";
+import Team, {member} from "../components/Index/Team";
 import Footer from "../components/Footer";
 
-interface post {
-  materia: string;
-  title: string;
-  slug: string;
-  description: string;
-};
-
 interface PropTypes {
-  posts: Array<post>
+  posts: Array<post>;
+  members: Array<member>
 }
 
-export default function Home({ posts }: PropTypes): JSX.Element {
+export default function Home({ posts, members }: PropTypes): JSX.Element {
 
   return (
     <>
@@ -35,11 +31,12 @@ export default function Home({ posts }: PropTypes): JSX.Element {
       <Carrossel />
       </AnimationInView>
       <AllMaterias />
+        <h1 className='title'>Ultimas Publicações</h1>
       {posts.map(post => (
         <Materia post={post} key={post.slug} />
       ))}
       <Invitation />
-      <Team />
+      <Team members={members}/>
       <Footer />
     </>
   );
@@ -51,7 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const response = await client.query(
     Prismic.Predicates.at('document.type', 'blog_posts'),
-    { orderings: '[my.blog-post.date desc]' }
+    { orderings: '[my.blog-post.date desc]', pageSize : 4  }
   );
 
   const posts = response.results.map((post) => (
@@ -64,10 +61,13 @@ export const getStaticProps: GetStaticProps = async () => {
   )
   );
 
+  const members = await api.get('/api/members').then(response=>response.data)
+
   return {
     props: {
       posts,
+      members
     },
-    revalidate: 10
+    revalidate: 60
   };
 };

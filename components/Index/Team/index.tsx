@@ -6,13 +6,15 @@ import { UserOutlined } from '@ant-design/icons';
 
 import { TeamContainer, CarrosselContainer, CarrosselItems } from './style'
 
-interface CarrosselItemProps {
-  member: {
+export interface member{
     name: string,
     ocupation: string;
     description: string;
     avatar?: string
   };
+
+interface CarrosselItemProps {
+  member: member
 }
 
 const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
@@ -24,7 +26,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
           <Avatar  size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
           style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
            icon={<UserOutlined />}
-           src={member.avatar}>
+           src={member.avatar===""?null:member.avatar}>
             {member.name}
           </Avatar>
         </div>
@@ -38,24 +40,11 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
   )
 }
 
-export default function MateriaComponent() {
+interface TeamComponentsProps{
+  members: Array<member>
+}
 
-  const members = [{
-    name: 'Marcos Roberto',
-    description: 'Nascido no interior do Acre, filho de Odin estuda sobre minhocas na Universidade do Pau Oco. bla bla bla',
-    ocupation: 'Historia',
-    avatar: 'https://s3.amazonaws.com/ibc-portal/wp-content/uploads/2018/11/16101902/pessoa-ecletica.jpg'
-
-  },{
-    name: 'Gilberto Cu',
-    description: 'Nascido no interior do Acre, filho de Odin estuda sobre minhocas na Universidade do Pau Oco. bla bla bla',
-    ocupation: 'Historia',
-    avatar: 'https://s3.amazonaws.com/ibc-portal/wp-contsent/uploads/2018/11/16101902/pessoa-ecletica.jpg'
-  },{
-    name: 'Marvia u',
-    description: 'Nascido no interior do Acre, filho de Odin estuda sobre minhocas na Universidade do Pau Oco. bla bla bla',
-    ocupation: 'Historia',
-  }]
+const TeamComponent: React.FC<TeamComponentsProps> = ({members})=> {
 
   return (
     <>
@@ -72,3 +61,5 @@ export default function MateriaComponent() {
     </>
   );
 };
+
+export default TeamComponent
