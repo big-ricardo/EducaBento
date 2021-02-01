@@ -62,16 +62,7 @@ export default function MateriaComponent() {
       <AnimationInView>
         <TeamContainer>
           <h1>Integrantes</h1>
-          <Carousel>
-           {members.map(member =>(
-              <CarrosselItem member={member} key={member.name}/>
-           ))}
-           {members.map(member =>(
-              <CarrosselItem member={member} key={member.name}/>
-           ))}
-           {members.map(member =>(
-              <CarrosselItem member={member} key={member.name}/>
-           ))}
+          <Carousel autoplay >
            {members.map(member =>(
               <CarrosselItem member={member} key={member.name}/>
            ))}

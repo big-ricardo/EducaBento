@@ -32,9 +32,11 @@ export const FooterDiv = styled(motion.div)`
       margin-bottom: 10vh;
       color: ${props=>props.theme.colors.title};
       font-size: clamp(20px, 3vh + 7px, 40px);
+      font-weight: bold;
+      font-family: 'Philosopher', sans-serif;
       @media screen and (max-width: 768px) {
-        font-size: clamp(20px, 3vh, 40px);
-        margin-bottom: 10px;
+        font-size: clamp(26px, 3vh, 40px);
+        margin-bottom: 15px;
       }
     }
     h3{
