@@ -63,7 +63,13 @@ export default function Home({ posts, tag }: PropTypes): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+
+interface ParamsProps{
+  params:{
+    tag: string}
+}
+
+export const getStaticProps: GetStaticProps = async (context:ParamsProps) => {
 
   const { tag } = context.params
 
