@@ -19,7 +19,6 @@ interface PropTypes {
 }
 
 export default function BlogPost({ posts }: PropTypes): JSX.Element {
-
   const { isFallback } = useRouter()
 
     if (isFallback) {

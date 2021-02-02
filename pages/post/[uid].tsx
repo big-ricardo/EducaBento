@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { Document } from 'prismic-javascript/types/documents';
+import { useRouter } from 'next/router'
 
 import { client } from '../../utils/prismic_configuration';
 
@@ -18,6 +19,11 @@ interface PropTypes {
 }
 
 export default function BlogPost({ post }: PropTypes): JSX.Element {
+    const { isFallback } = useRouter()
+
+    if (isFallback) {
+        return <h1>Carregando...</h1>
+    }
   return (
     <>
       <Head>
