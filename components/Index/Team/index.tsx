@@ -1,7 +1,6 @@
 import AnimationInView from '../../AnimationInView'
 import { motion } from "framer-motion";
 import { Carousel, Avatar } from 'antd';
-import "../../../styles/ant.less";
 import { UserOutlined } from '@ant-design/icons';
 
 import { TeamContainer, CarrosselContainer, CarrosselItems } from './style'

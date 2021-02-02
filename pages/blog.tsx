@@ -10,25 +10,21 @@ import api from '../utils/api'
 /*    Components*/
 import AnimationInView from '../components/AnimationInView'
 import Header from '../components/Header'
-import Carrossel from '../components/Index/Carrossel'
-import AllMaterias from "../components/Index/AllMaterias";
+import Presentation from '../components/Presentation'
 import Materia, {post} from "../components/Materia";
-import Invitation from "../components/Index/Invitation";
-import Team, {member} from "../components/Index/Team";
 import Footer from "../components/Footer";
 
 interface PropTypes {
   posts: Array<post>;
-  members: Array<member>
 }
 
-export default function Home({ posts, members }: PropTypes): JSX.Element {
+export default function Home({ posts }: PropTypes): JSX.Element {
 
   return (
     <>
       <Header></Header>
       <AnimationInView>
-      <Carrossel />
+      <Presentation />
       </AnimationInView>
 
         <h1 className='title'>Ultimas Publicações</h1>
