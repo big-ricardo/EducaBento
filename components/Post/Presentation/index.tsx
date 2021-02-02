@@ -1,15 +1,16 @@
 import * as React from "react";
-import { Presentation , SectionText, SectionImg, Divider } from "./style";
+import { Presentation, SectionText, SectionImg, Divider } from "./style";
 import Image from 'next/image'
 import Link from 'next/link'
 
-interface PresentationProps{
+interface PresentationProps {
   image: string,
   title: string,
-  description: string
+  description: string,
+  date: string
 }
 
-export default function PresentationComponent({image,title,description}: PresentationProps) {
+export default function PresentationComponent({ image, title, description, date }: PresentationProps) {
 
   return (
     <>
@@ -17,6 +18,7 @@ export default function PresentationComponent({image,title,description}: Present
         <SectionText>
           <div>
             <h1>{title}</h1>
+            <p>{date}</p>
             <h3>{description}</h3>
           </div>
         </SectionText>
@@ -24,7 +26,7 @@ export default function PresentationComponent({image,title,description}: Present
           <Image src={image} width='400px' height='400px' layout='responsive' />
         </SectionImg>
       </Presentation >
-      <Divider/>
+      <Divider />
     </>
   );
 };

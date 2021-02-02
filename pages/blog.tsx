@@ -13,6 +13,7 @@ import Header from '../components/Header'
 import Presentation from '../components/Presentation'
 import Materia, {post} from "../components/Materia";
 import Footer from "../components/Footer";
+import Head from 'next/head';
 
 interface PropTypes {
   posts: Array<post>;
@@ -22,9 +23,22 @@ export default function Home({ posts }: PropTypes): JSX.Element {
 
   return (
     <>
+       <Head>
+        <title>Blog | Educação Bento</title>
+        <meta
+          name="og:title"
+          property="og:title"
+          content='Blog | Educação Bento'
+        />
+        <meta
+          name="description"
+          content='Sua plataforma de estudos gratuita'
+        />
+
+      </Head>
       <Header></Header>
       <AnimationInView>
-      <Presentation />
+      <Presentation title="Blog" description="Sua plataforma de estudos gratuito" image='/img/blog.svg'/>
       </AnimationInView>
 
         <h1 className='title'>Ultimas Publicações</h1>

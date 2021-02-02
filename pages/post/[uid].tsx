@@ -5,8 +5,18 @@ import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { Document } from 'prismic-javascript/types/documents';
 import { useRouter } from 'next/router'
+import materiasJson from '../../utils/materias.json'
+import { FormateData } from '../../utils/functions'
+import api from '../../utils/api'
 
 import { client } from '../../utils/prismic_configuration';
+
+import AnimationInView from '../../components/AnimationInView'
+import Header from '../../components/Header'
+import Presentation from '../../components/Post/Presentation'
+import Author,{AuthorProps} from '../../components/Post/Author'
+import Post from "../../components/Post";
+import Footer from "../../components/Footer";
 
 interface PathProps {
   params: {
@@ -15,15 +25,17 @@ interface PathProps {
 }
 
 interface PropTypes {
-  post: Document;
+  post: Document,
+  author: AuthorProps
 }
 
-export default function BlogPost({ post }: PropTypes): JSX.Element {
-    const { isFallback } = useRouter()
+export default function BlogPost({ post, author }: PropTypes): JSX.Element {
+  const { isFallback } = useRouter()
 
-    if (isFallback) {
-        return <h1>Carregando...</h1>
-    }
+  if (isFallback) {
+    return <h1>Carregando...</h1>
+  }
+
   return (
     <>
       <Head>
@@ -38,24 +50,18 @@ export default function BlogPost({ post }: PropTypes): JSX.Element {
           content={RichText.asText(post.data.description)}
         />
       </Head>
+      <Header />
+
+      <AnimationInView>
+        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} image={`/icons${materiasJson.object[RichText.asText(post.data.materia)].icon}`} />
+      </AnimationInView>
+
       <div>
-        {RichText.render(post.data.title)}
-        <span>{post.data.formattedDate}</span>
+        <Post post={post} />
 
-        {post.data.body.map((section, ind) => (
-          <div key={ind}>
-            {RichText.render(section.primary.text)}
-          </div>
-        ))}
-
-        <Link href="/">
-          <a>
-            <button>
-              Voltar
-            </button>
-          </a>
-        </Link>
+        <Author author={author}/>
       </div>
+      <Footer />
     </>
   );
 }
@@ -79,34 +85,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
-  const mapNumberToMonth = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro',
-  ];
 
-  const post = await client.getByUID('blog_posts', params.uid, {
+  const response = await client.getByUID('blog_posts', params.uid, {
     lang: 'pt-br',
   });
 
-  const dateArray = post.data.date.split('-');
-  post.data.formattedDate = `${dateArray[2]} de ${
-    mapNumberToMonth[dateArray[1] - 1]
-    } de ${dateArray[0]}`;
+  response.data.formattedDate = FormateData({ post: response })
+
+  const members = await api.get('/api/members').then(response=>response.data)
+
+  const author = members.filter(member=> member.authorID == RichText.asText(response.data.author))
 
   return {
     props: {
-      post,
-    },
-    revalidate: 60
+      post: response,
+      author: author[0]
+    }
   };
 };

@@ -7,10 +7,13 @@ export const Presentation = styled(motion.div)`
   flex-direction: row;
   justify-content:center;
   align-items: center;
-  gap: 20%;
+  width: 80%;
+   margin: auto;
+  gap: 10%;
 
    @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
+     width: 90%;
   }
 `;
 
@@ -37,7 +40,7 @@ export const SectionText = styled(motion.div)`
     font-family: 'Philosopher', sans-serif;
     font-weight: 700;
     font-size: clamp(40px, 4vw, 200px);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     @media screen and (max-width: 768px) {
      text-align: center;
   }
@@ -54,43 +57,21 @@ export const SectionText = styled(motion.div)`
   }
 
   div p{
-    color: ${props => props.theme.colors.title};
+   color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
-    font-size: clamp(20px, 1vw + 5px, 25px);
-    width: 75%;
-    margin-bottom: 5%;
-    @media screen and (max-width: 768px) {
-      text-align: center;
-      margin: auto;
-      margin-top: 15px;
-      margin-bottom: 10px
+    font-size: clamp(15px,2vw - 10px,24px);
+    opacity: 0.9;
+     margin-bottom: 10px;
+     @media screen and (max-width: 768px) {
+    text-align: center;
+      font-size: clamp(15px,2vh,28px);
     }
   }
 `
-export const H4 = styled(motion.h4)`
-    width: min-content;
-    border-radius: 50px;
-    padding: 3% 6%;
-    cursor: pointer;
-     background-color: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.backgroundColor};
-    font-family: 'Roboto', sans-serif;
-    font-size: clamp(20px, 1vw, 27px);
-
-
-    &:hover{
-      background-color: ${props => props.theme.colors.secound};
-    }
-
-    @media screen and (max-width: 768px) {
-      text-align: center;
-      margin: auto
-    }
-`
 
 export const SectionImg = styled(motion.div)`
-  width: 15%;
-  height: 15%;
+  width: 20%;
+  height: 20%;
    @media screen and (max-width: 768px) {
     width: 50%;
      height: 35%;
@@ -107,3 +88,5 @@ export const Divider = styled.div`
   border-right: 0;
   width: 80%;
 `
+
+

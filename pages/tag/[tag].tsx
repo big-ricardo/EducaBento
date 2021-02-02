@@ -1,111 +1,108 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import  Document from 'prismic-javascript/types/ApiSearchResponse';
-import {useRouter} from 'next/router'
-
 import { client } from '../../utils/prismic_configuration';
+import { useRouter } from 'next/router'
+import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
+import Head from 'next/head';
+import materiasJson from '../../utils/materias.json'
 
-interface PathProps {
-  params: {
-    tag: string;
-  };
-}
+import api from '../../utils/api'
+
+/*    Components*/
+import AnimationInView from '../../components/AnimationInView'
+import Header from '../../components/Header'
+import Presentation from '../../components/Presentation'
+import Materia, { post } from "../../components/Materia/OneMateria";
+import Footer from "../../components/Footer";
 
 interface PropTypes {
-  posts: Document;
+  posts: Array<post>,
+  tag: string
 }
 
-export default function BlogPost({ posts }: PropTypes): JSX.Element {
+export default function Home({ posts, tag }: PropTypes): JSX.Element {
+
   const { isFallback } = useRouter()
 
-    if (isFallback) {
-        return <h1>Carregando...</h1>
-    }
-
+  if (isFallback) {
+    return <h1>Carregando...</h1>
+  }
 
   return (
     <>
       <Head>
-        <title>Tag</title>
-        <meta name="og:title" property="og:title" content="Blog" />
+        <title>Matéria | {materiasJson.object[tag].title}</title>
+        <meta
+          name="og:title"
+          property="og:title"
+          content={materiasJson.object[tag].title}
+        />
         <meta
           name="description"
-          content="Blog sobre conteúdos de desenvolvimento web com JavaScript"
+          content={materiasJson.object[tag].title}
         />
+
       </Head>
-      <div>
-        {posts?.results.map((post) => (
-          <Link href="/post/[uid]" as={`/post/${post.uid}`} key={post.uid}>
-            <a>
-              <div>
-                <p>
-                  {RichText.render(post.data.title)}
-                  <br />
-                  {RichText.render(post.data.description)}
-                  <br />
-                  {RichText.render(post.data.author)}
-                  <br />
-                  {RichText.render(post.data.description)}
-                  <br />
-                  <span>{post.data.formattedDate}</span>
-                </p>
-              </div>
-            </a>
-          </Link>
-        ))}
-      </div>
+      <Header></Header>
+      <AnimationInView>
+        <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`/icons${materiasJson.object[tag].icon}`} />
+      </AnimationInView>
+
+      <h1 className='title'>Ultimas Publicações</h1>
+      {posts !== [] ? (
+        posts.map(post => (
+          <Materia post={post} key={post.slug} />
+        ))
+      ) : (
+         <h1>Sem Posts</h1>
+      )}
+
+      <Footer />
     </>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
 
-  const allBlogPosts = [];
+  const { tag } = context.params
 
-  return {
-    paths: allBlogPosts,
-    fallback: true,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
-
-  const {tag} = params
-
-  const mapNumberToMonth = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'Novembro',
-    'Dezembro',
-  ];
-
- const posts = await client.query(
+  const response = await client.query(
     Prismic.Predicates.at('document.tags', [tag]),
-     { orderings : '[my.blog-post.date desc]' }
+    { orderings: '[my.blog-post.date desc]', pageSize: 100 }
   );
 
-  posts.results.map((post) => {
-    const dateArray = post.data.date.split('-');
-    post.data.formattedDate = `${dateArray[2]} de ${
-      mapNumberToMonth[dateArray[1] - 1]
-    } de ${dateArray[0]}`;
-  });
+  const posts = response.results.map((post) => (
+    {
+      materia: post.data.materia[0].text,
+      title: post.data.title[0].text,
+      slug: post.uid,
+      description: post.data.body[0].primary.text[0].text
+    }
+  )
+  );
 
   return {
     props: {
       posts,
+      tag
     },
-    revalidate: 30
+    revalidate: 60
   };
 };
+
+
+export const getStaticPaths: GetStaticPaths = async () => {
+
+  const tags = materiasJson.array.map(tag => (
+    {
+      params: { tag: tag.slug }
+    }
+  ))
+
+  return {
+    paths: tags,
+    fallback: true,
+  };
+};
+

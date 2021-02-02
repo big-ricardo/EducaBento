@@ -7,6 +7,7 @@ export const MateriaContainer = styled.div`
   width: 80%;
   justify-content: center;
   align-items: center;
+  margin-top: 10%;
   flex-wrap: wrap;
   margin: auto;
   gap: 8%;
@@ -31,8 +32,8 @@ export const Materia = styled(MateriaDiv)`
   display: flex;
   flex-direction: row-reverse;
   padding: 20px;
-  width:40%;
-  max-width:600px;
+  width:80%;
+  padding: 50px;
   height: 100%;
   min-height: clamp(300px, 1vh + 22em, 400px);;
   border-radius:60px 40px 25px 10px;
@@ -40,92 +41,94 @@ export const Materia = styled(MateriaDiv)`
   cursor: pointer;
 
   @media screen and (max-width: 1024px) {
-    width:80%;
+      width:80%;
      flex-direction: column-reverse;
      padding: 30px;
-      margin-bottom: 10%;
-      &:first-child{
-       margin-top: 10%
-     }
   }
   @media screen and (max-width: 767px){
-     margin-bottom: 20%;
-      &:first-child{
-       margin-top: 20%
-     }
+      width:95%;
   }
 `
 
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
-    justify-content: space-around;
+    align-items:center;
+    justify-content: center;
     flex: 1;
-    margin:auto;
-    margin-left: 20px;
+    gap: 30px;
+
+    *{
+      color: ${props => props.theme.colors.title};
+      font-size: clamp(15px,2vw - 10px,24px);
+      margin-bottom: 20px;
+      text-align:center;
+      @media screen and (max-width: 768px) {
+      }
+    }
+
+    div{
+      margin: 0
+    }
+
+    h1{
+    font-family: 'Philosopher', sans-serif;
+    font-weight: bold;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(15px,2vw - 6px,33px);
+    @media screen and (max-width: 768px) {
+      margin-bottom: 10%;
+      font-size: clamp(23px,2vh + 4px,36px);
+    }
+  }
 
   h2{
     font-family: 'Philosopher', sans-serif;
     font-weight: bold;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(26px,2vw + 3px,33px);
-    margin-bottom: 5%;
+    font-size: clamp(15px,2vw - 8px,30px);
      @media screen and (max-width: 768px) {
       margin-bottom: 10%;
-      font-size: clamp(20px,2vh + 6px,28px);
-    }
-  }
-  h4{
-    font-family: 'Philosopher', sans-serif;
-    color: ${props => props.theme.colors.text};
-    font-size: clamp(15px,2vw - 10px,24px);
-    line-height:  180%;
-      margin-bottom: 5%;
-     @media screen and (max-width: 1024px) {
-      font-size: clamp(15px,2vh,28px);
+      font-size: clamp(20px,2vh + 3px,28px);
     }
   }
 
   h3{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(16px,1vw + 2px,30px);
-    margin: auto;
-
+    font-size: clamp(22px,2vw -10, 27px);
      @media screen and (max-width: 768px) {
-      font-size: clamp(15px,2vh + 2px,30px);
-      margin: auto;
+      margin-bottom: 10%;
+      font-size: clamp(15px,2vh,28px);
     }
-
-     svg{
-      color: ${props => props.theme.colors.primary};
-      font-size: clamp(14px,1vw + 18px,40px);
-      margin-left: 3vh;
-  }
   }
 
+  h4{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(15px,2vw - 10px,24px);
+     @media screen and (max-width: 768px) {
+      margin-bottom: 10%;
+      font-size: clamp(15px,2vh,28px);
+    }
+  }
+
+  p{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.text};
+    font-size: clamp(15px,2vw - 10px,24px);
+     @media screen and (max-width: 768px) {
+      margin-bottom: 10%;
+      font-size: clamp(15px,2vh,28px);
+    }
+  }
+
+  img{
+    max-width: 80%;
+    max-height: 50%;
+    @media screen and (max-width: 768px) {
+      max-width: 90%;
+      max-height: 50%;
+    }
+  }
 `
-
-export const ImageContainer = styled.div`
-    width: 50%;
-    margin: auto;
-    margin-left: -25%;
-    max-width: 300px;
-     @media screen and (max-width: 1024px) {
-      margin: auto;
-       width: 40%;
-    }
-    @media screen and (max-width: 767px) {
-      margin: auto;
-      width: 60%;
-      margin-top: -40%;
-      margin-bottom: 10px;
-    }
-  `
-
-

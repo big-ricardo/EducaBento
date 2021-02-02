@@ -6,6 +6,7 @@ import { client } from '../utils/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
 import api from '../utils/api'
+import Head from 'next/head';
 
 /*    Components*/
 import AnimationInView from '../components/AnimationInView'
@@ -26,6 +27,19 @@ export default function Home({ posts, members }: PropTypes): JSX.Element {
 
   return (
     <>
+        <Head>
+        <title>Educação Bento</title>
+        <meta
+          name="og:title"
+          property="og:title"
+          content='Educação Bento'
+        />
+        <meta
+          name="description"
+          content='Sua plataforma de estudos gratuita'
+        />
+
+      </Head>
       <Header></Header>
       <AnimationInView>
       <Carrossel />

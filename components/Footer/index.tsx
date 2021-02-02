@@ -28,7 +28,7 @@ export default function HeaderComponent() {
           <Link href='/'><h4>Suporte</h4></Link>
         </FooterDiv>
       </FooterContainer>
-      <H2>Copyright &copy; {1900 + new Date().getFullYear()} , todos os direitos reservados Educação Bento - Site Desenvolvido por <a href='https://luiss1569.github.io/luiss1569.github.io' target='_blank' rel="noreferrer">Luis Ricardo</a></H2>
+      <H2>Copyright &copy; {new Date().getFullYear()} , todos os direitos reservados Educação Bento - Site Desenvolvido por <a href='https://luiss1569.github.io/luiss1569.github.io' target='_blank' rel="noreferrer">Luis Ricardo</a></H2>
     </>
   );
 };
