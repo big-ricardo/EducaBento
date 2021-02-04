@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { MateriaContainer } from './style'
 import Materia from './materia'
 import Link from "next/link";
-import materias from '../../../utils/materias.json'
+import materias from '../../../data/materias.json'
 import AnimationInView from '../../AnimationInView'
 
 export default function MateriaComponent() {

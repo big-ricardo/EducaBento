@@ -5,7 +5,7 @@ import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { Document } from 'prismic-javascript/types/documents';
 import { useRouter } from 'next/router'
-import materiasJson from '../../utils/materias.json'
+import materiasJson from '../../data/materias.json'
 import { FormateData } from '../../utils/functions'
 import api from '../../utils/api'
 

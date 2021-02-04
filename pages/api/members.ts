@@ -8,7 +8,7 @@ let cacheDb:Db = null
 export default async (req:NowRequest, res:NowResponse) => {
 
   const db = await connectToDataBase(cacheDb)
-  const members = await db.collection('members').find({}).toArray()
+  const members = await db.collection('members').find({authorID: {$ne: 0}}).toArray()
 
   return res.status(200).json(members)
 }

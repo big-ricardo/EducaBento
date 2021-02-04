@@ -5,7 +5,7 @@ import { client } from '../../utils/prismic_configuration';
 import { useRouter } from 'next/router'
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 import Head from 'next/head';
-import materiasJson from '../../utils/materias.json'
+import materiasJson from '../../data/materias.json'
 
 import api from '../../utils/api'
 

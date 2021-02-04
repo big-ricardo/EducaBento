@@ -5,8 +5,9 @@ import { Header, Nav, LinksContainer, Link, LogoContainer, LoginContainer } from
 import NavToggle from './Toggle'
 import LinkNext from "next/link";
 import { BsArrowRight } from 'react-icons/bs'
+import links from '../../data/links.json'
 
-const Links = [{ title: "Inicio", slug: '/' }, {title:"Sobre", slug: '/about'},  {title:"Blog", slug: '/blog'}]
+const Links = [{ title: "Inicio", slug: links.home }, {title:"Sobre", slug: links.about},  {title:"Blog", slug: links.blog}]
 
 export default function HeaderComponent() {
   const [isOpen, toggleOpen] = useCycle(false, true);

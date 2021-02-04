@@ -2,6 +2,7 @@ import * as React from "react";
 import { Carrossel, SectionText, SectionImg,H4 } from "./style";
 import Image from 'next/image'
 import Link from 'next/link'
+import links from '../../../data/links.json'
 
 export default function HeaderComponent() {
 
@@ -15,7 +16,7 @@ export default function HeaderComponent() {
           </div>
           <div>
             <p>Tudo produzido por alunos voluntarios em busca de ajudar a sua entrada ao mundo universitario</p>
-            <Link href='/blog'><H4 whileHover={{transform:"translateX(5px)"}}>COMEÇAR</H4></Link>
+            <Link href={links.blog}><H4 whileHover={{transform:"translateX(5px)"}}>COMEÇAR</H4></Link>
           </div>
         </SectionText>
         <SectionImg whileHover={{ scale: 1.1 }}>

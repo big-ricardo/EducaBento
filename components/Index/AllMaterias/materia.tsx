@@ -3,7 +3,7 @@ import { Materia, ImageContainer } from './style'
 import Link from "next/link";
 import Image from "next/image";
 import AnimationInView from '../../AnimationInView'
-
+import links from '../../../data/links.json'
 
 interface MateriaInterface {
   materia: string;
@@ -13,7 +13,7 @@ interface MateriaInterface {
 const MateriaComponent: React.FC<MateriaInterface> = ({ materia, children, icon }) => {
   return (
     <>
-      <Link href={`/tag/${materia}`}>
+      <Link href={`${links.tag}/${materia}`}>
         <Materia whileHover={{ scale: 1.1 }} materia={materia}>
             <AnimationInView>
               <h2>{children}</h2>

@@ -3,7 +3,7 @@ import { MateriaContainer, Materia, TextContainer } from './style'
 import { Document } from 'prismic-javascript/types/documents';
 import Link from "next/link";
 import Image from "next/image";
-import materias from '../../utils/materias.json'
+import materias from '../../data/materias.json'
 import AnimationInView from '../AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
 

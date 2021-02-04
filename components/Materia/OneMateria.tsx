@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { MateriaContainer, TextContainer, MateriaDiv } from './style'
 import Link from "next/link";
 import Image from "next/image";
-import materias from '../../utils/materias.json'
+import materias from '../../data/materias.json'
 import AnimationInView from '../AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
 

@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 import { MateriaContainer, Materia, ImageContainer, TextContainer } from './style'
 import Link from "next/link";
 import Image from "next/image";
-import materias from '../../utils/materias.json'
+import materias from '../../data/materias.json'
+import links from '../../data/links.json'
 import AnimationInView from '../AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
 
@@ -27,7 +28,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
     <>
       <AnimationInView>
         <MateriaContainer>
-          <Link href={`/post/${post.slug}`}>
+          <Link href={`${links.post}/${post.slug}`}>
             <Materia whileHover={{ scale: 1.1 }} materia={post.materia}>
               <TextContainer>
                 <h2>{post.title}</h2>
