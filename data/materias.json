@@ -49,6 +49,16 @@
       "icon": "/redacao.png",
       "title": "Redação",
       "slug": "redacao"
+    },
+    {
+      "icon": "/english.png",
+      "title": "Inglês",
+      "slug": "ingles"
+    },
+    {
+      "icon": "/spanish.png",
+      "title": "Espanhol",
+      "slug": "espanhol"
     }
   ],
   "object": {
@@ -91,6 +101,14 @@
     "redacao": {
       "icon": "/redacao.png",
       "title": "Redação"
+    },
+    "ingles": {
+      "icon": "/english.png",
+      "title": "Inglês"
+    },
+    "espanhol": {
+      "icon": "/spanish.png",
+      "title": "Espanhol"
     }
   }
 }
