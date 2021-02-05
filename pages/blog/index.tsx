@@ -5,8 +5,6 @@ import { RichText } from 'prismic-reactjs';
 import { client } from '../../utils/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
-import api from '../../utils/api'
-
 /*    Components*/
 import AnimationInView from '../../components/AnimationInView'
 import Header from '../../components/Header'
@@ -70,12 +68,9 @@ export const getStaticProps: GetStaticProps = async () => {
   )
   );
 
-  const members = await api.get('/api/members').then(response=>response.data)
-
   return {
     props: {
-      posts,
-      members
+      posts
     },
     revalidate: 60
   };

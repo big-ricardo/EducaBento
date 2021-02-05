@@ -23,12 +23,6 @@ interface PropTypes {
 
 export default function Home({ posts, tag }: PropTypes): JSX.Element {
 
-  const { isFallback } = useRouter()
-
-  if (isFallback) {
-    return <h1>Carregando...</h1>
-  }
-
   return (
     <>
       <Head>
@@ -108,7 +102,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: tags,
-    fallback: 'blocking',
+    fallback: false,
   };
 };
 
