@@ -54,11 +54,6 @@
       "icon": "/english.png",
       "title": "Inglês",
       "slug": "ingles"
-    },
-    {
-      "icon": "/spanish.png",
-      "title": "Espanhol",
-      "slug": "espanhol"
     }
   ],
   "object": {
@@ -105,10 +100,6 @@
     "ingles": {
       "icon": "/english.png",
       "title": "Inglês"
-    },
-    "espanhol": {
-      "icon": "/spanish.png",
-      "title": "Espanhol"
     }
   }
 }
