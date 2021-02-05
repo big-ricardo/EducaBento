@@ -63,7 +63,7 @@ export const CarrosselItems = styled.div`
   }
 
    div.texts{
-
+    margin-left: 5%;
     h2{
       font-family: 'Philosopher', sans-serif ;
       color: ${props=> props.theme.colors.title};

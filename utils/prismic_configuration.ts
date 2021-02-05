@@ -25,7 +25,7 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 
 export const linkResolver = (doc) => {
   if (doc.type === 'page') {
-    return `/${doc.uid}`
+    return `${doc.uid}`
   }
   return '/'
 }

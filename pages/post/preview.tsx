@@ -7,7 +7,7 @@ import { Document } from 'prismic-javascript/types/documents';
 import { useRouter } from 'next/router'
 import materiasJson from '../../data/materias.json'
 import { FormateData } from '../../utils/functions'
-import {getMembers} from '../api/members'
+import api from '../../utils/api'
 
 import { client } from '../../utils/prismic_configuration';
 
@@ -22,6 +22,8 @@ interface PathProps {
   params: {
     uid: string;
   };
+  preview: boolean,
+  previewData:any
 }
 
 interface PropTypes {
@@ -84,22 +86,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
-  const response = await client.getByUID('blog_posts', params.uid, {
+import { Db, Collection } from 'mongodb'
+import connectToDataBase from '../../utils/connectToDataBase'
+
+export const getStaticProps: GetStaticProps = async ({ params, preview = false, previewData }: PathProps) => {
+
+  const response = await client.getByUID('blog_posts', previewData, {
     lang: 'pt-br',
   });
 
   response.data.formattedDate = FormateData({ post: response })
 
-  const authorID = parseInt(RichText.asText(response.data.author))
-
-  const author:AuthorProps = await getMembers({ authorID})
+  const db: Db = await connectToDataBase(null)
+  const author = await db.collection('members').findOne({ authorID: RichText.asText(response.data.author) })
 
   return {
     props: {
       post: response,
-      author: author[0]
+      author: author
     }
   };
 };

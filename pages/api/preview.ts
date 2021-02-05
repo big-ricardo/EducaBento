@@ -5,7 +5,7 @@ const Preview = async (req, res) => {
   const { token: ref, documentId } = req.query;
   const redirectUrl = await ClientPreview(req)
     .getPreviewResolver(ref, documentId)
-    .resolve(linkResolver, "/");
+    .resolve(linkResolver, "/post/preview");
 
   if (!redirectUrl) {
     return res.status(401).json({ message: "Invalid token" });
