@@ -59,12 +59,12 @@ export default function Home({ posts, members }: PropTypes): JSX.Element {
 export const getStaticProps: GetStaticProps = async () => {
   const response = await client.query(
     Prismic.Predicates.at('document.type', 'blog_posts'),
-    { orderings: '[my.blog-post.date desc]', pageSize: 4 }
+    { orderings: '[my.blog-posts.date desc]', pageSize: 4 }
   );
 
   const posts = response.results.map((post) => (
     {
-      materia: post.data.materia[0].text,
+      materia: post.data.materia,
       title: post.data.title[0].text,
       slug: post.uid,
       description: post.data.description[0].text

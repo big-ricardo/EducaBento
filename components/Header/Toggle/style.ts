@@ -52,6 +52,8 @@ export const Li = styled(motion.div)`
   margin: 0;
   padding: 0;
   width: 50%;
+  color: ${props=> props.theme.colors.title};
+  text-decoration: none;
   margin-bottom: 10px;
   padding-bottom: 10px;
   border-bottom: 1px dotted currentColor;

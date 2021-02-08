@@ -67,14 +67,15 @@ export const getStaticProps: GetStaticProps = async (context:ParamsProps) => {
 
   const { tag } = context.params
 
-  const response = await client.query(
-    Prismic.Predicates.at('document.tags', [tag]),
+  const response = await client.query([
+    Prismic.Predicates.at('document.type', 'blog_posts'),
+    Prismic.Predicates.at('my.blog_posts.materia', tag)],
     { orderings: '[my.blog-post.date desc]', pageSize: 100 }
   );
 
   const posts = response.results.map((post) => (
     {
-      materia: post.data.materia[0].text,
+      materia: post.data.materia,
       title: post.data.title[0].text,
       slug: post.uid,
       description: post.data.body[0].primary.text[0].text

@@ -10,7 +10,6 @@ export const MateriaContainer = styled.div`
   flex-wrap: wrap;
   margin: auto;
   gap: 8%;
-  transition: 1s;
 
   @media screen and (max-width: 1024px) {
     width:95%;
@@ -38,7 +37,6 @@ export const Materia = styled(MateriaDiv)`
   border-radius:45px 25px 25px 20px;
   height: clamp(70px, 10vh + 50px, 160px);
   margin-bottom: 8%;
-  transition: 1s;
   cursor: pointer;
 
    @media screen and (max-width: 1024px) {
@@ -79,7 +77,6 @@ export const Materia = styled(MateriaDiv)`
   export const ImageContainer = styled.div`
     width: 60%;
     margin: auto;
-    transition: 1s;
 
      @media screen and (max-width: 1200px){
       width: 60%

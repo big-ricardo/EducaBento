@@ -24,7 +24,7 @@ export default function MateriaComponent({ post }:PropTypes){
     <>
       <AnimationInView>
         <MateriaContainer>
-            <Materia whileHover={{ scale: 1.02 }} materia={RichText.asText(post.data.materia)}>
+            <Materia whileHover={{ scale: 1.02 }} materia={post.data.materia}>
               <TextContainer>
                 {post.data.body.map((section, ind) => (
                   <div key={ind}>
