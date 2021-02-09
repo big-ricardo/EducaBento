@@ -79,6 +79,6 @@ export const getStaticProps: GetStaticProps = async () => {
       posts,
       members
     },
-    revalidate: 60
+    revalidate: 5
   };
 };

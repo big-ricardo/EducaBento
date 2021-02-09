@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async (context:ParamsProps) => {
       posts,
       tag
     },
-    revalidate: 60
+    revalidate: 10
   };
 };
 

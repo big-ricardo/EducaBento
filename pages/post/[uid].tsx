@@ -100,6 +100,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
     props: {
       post: response,
       author: author[0]
-    }
+    },
+    revalidate: 10
   };
 };
