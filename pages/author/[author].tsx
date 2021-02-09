@@ -8,14 +8,15 @@ import { useRouter } from 'next/router'
 import materiasJson from '../../data/materias.json'
 import { FormateData } from '../../utils/functions'
 import {getMembers} from '../api/members'
+import { Avatar } from 'antd';
 
 import { client } from '../../utils/prismic_configuration';
 
 import AnimationInView from '../../components/AnimationInView'
 import Header from '../../components/Header'
-import Presentation from '../../components/Presentation'
-import Author,{AuthorProps} from '../../components/Post/Author'
-import Post from "../../components/Post";
+import Presentation from '../../components/Post/Presentation'
+import {AuthorProps} from '../../components/Post/Author'
+import Materia,{post} from "../../components/Materia";
 import Footer from "../../components/Footer";
 
 interface PathProps {
@@ -25,11 +26,11 @@ interface PathProps {
 }
 
 interface PropTypes {
-  post: Document,
+  posts: Array<post>,
   author: AuthorProps
 }
 
-export default function BlogPost({ post, author }: PropTypes): JSX.Element {
+export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -53,12 +54,12 @@ export default function BlogPost({ post, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={author.name} description={author.description} image={`/authors${author.avatar}`} />
+        <Presentation title={author.name} date={`${author.slug}`} description={author.description} avatar={author.avatar} />
       </AnimationInView>
 
-      <div>
-        <Author author={author}/>
-      </div>
+       {posts.map(post => (
+        <Materia post={post} key={post.slug} />
+      ))}
       <Footer />
     </>
   );
@@ -75,18 +76,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
-  const author:AuthorProps = await getMembers({ authorID: Number(params.author)})
+  const author:AuthorProps = await getMembers({ slug: params.author })
 
   const response = await client.query([
     Prismic.Predicates.at('document.type', 'blog_posts'),
-    Prismic.Predicates.at('my.blog_posts.authorid', params.author)],
+    Prismic.Predicates.at('my.blog_posts.authorid', String(author[0].authorID))],
     { orderings: '[my.blog-post.date desc]', pageSize: 100 }
+  )
+
+   const posts = response.results.map((post) => (
+    {
+      materia: post.data.materia,
+      title: post.data.title[0].text,
+      slug: post.uid,
+      description: post.data.description[0].text
+    }
+  )
   );
 
   return {
     props: {
-      post: response,
+      posts,
       author: author[0]
-    }
+    },
+    revalidate: 10
   };
 };

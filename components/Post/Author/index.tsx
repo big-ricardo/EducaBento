@@ -1,8 +1,7 @@
 import AnimationInView from '../../AnimationInView'
 import { motion } from "framer-motion";
-import { Carousel, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-
+import { Avatar } from 'antd';
 import { CarrosselItems } from './style'
 
 export interface AuthorProps{
@@ -10,7 +9,8 @@ export interface AuthorProps{
     description: string,
     ocupation: string,
     avatar: string,
-    authorID: number
+    authorID: number,
+    slug: string
   }
 
 interface CarrosselItemProps {

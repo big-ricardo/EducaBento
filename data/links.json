@@ -4,5 +4,6 @@
     "about": "/about",
     "post": "/post",
     "tag": "/blog",
-    "support": "/support"
+    "support": "/support",
+    "author": "/author"
 }

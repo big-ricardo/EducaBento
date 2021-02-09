@@ -2,18 +2,14 @@ import AnimationInView from '../../AnimationInView'
 import { motion } from "framer-motion";
 import { Carousel, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import Link from 'next/link'
+import links from '../../../data/links.json'
+import { AuthorProps} from '../../Post/Author'
 
 import { TeamContainer, CarrosselContainer, CarrosselItems } from './style'
 
-export interface member{
-    name: string,
-    ocupation: string;
-    description: string;
-    avatar?: string
-  };
-
 interface CarrosselItemProps {
-  member: member
+  member: AuthorProps
 }
 
 const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
@@ -30,7 +26,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
           </Avatar>
         </div>
         <div className='texts'>
-          <h2>{member.name}</h2>
+          <Link href={`${links.author}/${member.slug}`}><h2>{member.name}</h2></Link>
           <span>{member.ocupation}</span>
           <h4>{member.description}</h4>
         </div>
@@ -40,7 +36,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
 }
 
 interface TeamComponentsProps{
-  members: Array<member>
+  members: Array<AuthorProps>
 }
 
 const TeamComponent: React.FC<TeamComponentsProps> = ({members})=> {

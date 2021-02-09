@@ -70,6 +70,7 @@ export const CarrosselItems = styled.div`
       margin-bottom: 0;
       font-size: clamp(16px, 3vh + 5px, 34px);
       font-weight: bold;
+      cursor: pointer;
     }
     span{
       font-family: 'Roboto', sans-serif;
