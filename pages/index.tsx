@@ -15,12 +15,13 @@ import Carrossel from '../components/Index/Carrossel'
 import AllMaterias from "../components/Index/AllMaterias";
 import Materia, { post } from "../components/Materia";
 import Invitation from "../components/Index/Invitation";
-import Team, { member } from "../components/Index/Team";
+import Team from "../components/Index/Team";
+import {AuthorProps} from "../components/Post/Author";
 import Footer from "../components/Footer";
 
 interface PropTypes {
   posts: Array<post>;
-  members: Array<member>
+  members: Array<AuthorProps>
 }
 
 export default function Home({ posts, members }: PropTypes): JSX.Element {
