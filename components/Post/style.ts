@@ -131,4 +131,9 @@ export const TextContainer = styled.div`
       max-height: 50%;
     }
   }
+
+  iframe{
+    width: clamp(100px, 1vw + 300px,400px);
+    height: clamp(50px,1vw + 200px,400px);
+  }
 `
