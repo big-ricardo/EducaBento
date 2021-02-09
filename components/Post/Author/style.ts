@@ -38,6 +38,7 @@ export const CarrosselItems = styled.div`
       text-align: center;
       font-size: clamp(16px, 3vh + 5px, 34px);
       font-weight: bold;
+      cursor: pointer;
     }
     h3{
       font-family: 'Roboto', sans-serif;

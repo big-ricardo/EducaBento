@@ -13,7 +13,7 @@ import { client } from '../../utils/prismic_configuration';
 
 import AnimationInView from '../../components/AnimationInView'
 import Header from '../../components/Header'
-import Presentation from '../../components/Post/Presentation'
+import Presentation from '../../components/Presentation'
 import Author,{AuthorProps} from '../../components/Post/Author'
 import Post from "../../components/Post";
 import Footer from "../../components/Footer";

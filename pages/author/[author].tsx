@@ -14,7 +14,7 @@ import { client } from '../../utils/prismic_configuration';
 
 import AnimationInView from '../../components/AnimationInView'
 import Header from '../../components/Header'
-import Presentation from '../../components/Post/Presentation'
+import Presentation from '../../components/Presentation'
 import {AuthorProps} from '../../components/Post/Author'
 import Materia,{post} from "../../components/Materia";
 import Footer from "../../components/Footer";
@@ -56,7 +56,7 @@ export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
       <AnimationInView>
         <Presentation title={author.name} date={`${author.slug}`} description={author.description} avatar={author.avatar} />
       </AnimationInView>
-
+      <h1 className='title'>Publicações</h1>
        {posts.map(post => (
         <Materia post={post} key={post.slug} />
       ))}

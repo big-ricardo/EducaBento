@@ -12,6 +12,7 @@ export default function MateriaComponent() {
       <AnimationInView>
          <h1 className='title'>Matérias</h1>
         </AnimationInView>
+      <AnimationInView>
       <MateriaContainer>
         {materias.array.map((materia, i) => (
 
@@ -19,6 +20,7 @@ export default function MateriaComponent() {
 
         ))}
       </MateriaContainer>
+      </AnimationInView>
     </>
   );
 };
