@@ -1,5 +1,5 @@
-import {ClientPreview} from "../../utils/prismic_configuration";
-import { linkResolver } from '../../utils/prismic_configuration'
+import {ClientPreview} from "../../src/utils/prismic_configuration";
+import { linkResolver } from '../../src/utils/prismic_configuration'
 
 const Preview = async (req, res) => {
   const { token: ref, documentId } = req.query;
