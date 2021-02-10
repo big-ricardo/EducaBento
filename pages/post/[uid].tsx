@@ -5,18 +5,18 @@ import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { Document } from 'prismic-javascript/types/documents';
 import { useRouter } from 'next/router'
-import materiasJson from '../../data/materias.json'
-import { FormateData } from '../../utils/functions'
+import materiasJson from '../../src/data/materias.json'
+import { FormateData } from '../../src/utils/functions'
 import {getMembers} from '../api/members'
 
-import { client } from '../../utils/prismic_configuration';
+import { client } from '../../src/utils/prismic_configuration';
 
-import AnimationInView from '../../components/AnimationInView'
-import Header from '../../components/Header'
-import Presentation from '../../components/Presentation'
-import Author,{AuthorProps} from '../../components/Post/Author'
-import Post from "../../components/Post";
-import Footer from "../../components/Footer";
+import AnimationInView from '../../src/components/AnimationInView'
+import Header from '../../src/components/Header'
+import Presentation from '../../src/components/Presentation'
+import Author,{AuthorProps} from '../../src/views/Post/Author'
+import Post from "../../src/views/Post";
+import Footer from "../../src/components/Footer";
 
 interface PathProps {
   params: {

@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { TeamContainer } from './style'
 import Link from "next/link";
 import Image from "next/image";
-import AnimationInView from '../../AnimationInView'
+import AnimationInView from '../../../components/AnimationInView'
 import { ImageContainer, TextContainer, Button } from "./style";
 
 export default function MateriaComponent() {

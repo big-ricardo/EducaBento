@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import { Db, Collection } from 'mongodb'
-import connectToDataBase from '../../utils/connectToDataBase'
+import connectToDataBase from '../../src/utils/connectToDataBase'
 
 let cacheDb: Db = null
 

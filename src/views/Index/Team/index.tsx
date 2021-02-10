@@ -1,4 +1,4 @@
-import AnimationInView from '../../AnimationInView'
+import AnimationInView from '../../../components/AnimationInView'
 import { motion } from "framer-motion";
 import { Carousel, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';

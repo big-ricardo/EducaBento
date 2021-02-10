@@ -4,7 +4,7 @@ import { Document } from 'prismic-javascript/types/documents';
 import Link from "next/link";
 import Image from "next/image";
 import materias from '../../data/materias.json'
-import AnimationInView from '../AnimationInView'
+import AnimationInView from '../../components/AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
 
 import { RichText } from 'prismic-reactjs';
