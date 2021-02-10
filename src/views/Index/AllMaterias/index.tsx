@@ -3,7 +3,7 @@ import { MateriaContainer } from './style'
 import Materia from './materia'
 import Link from "next/link";
 import materias from '../../../data/materias.json'
-import AnimationInView from '../../AnimationInView'
+import AnimationInView from '../../../components/AnimationInView'
 
 export default function MateriaComponent() {
 

@@ -2,22 +2,22 @@ import { GetStaticProps } from "next";
 
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import { client } from '../utils/prismic_configuration';
+import { client } from '../src/utils/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
 import {getMembers} from './api/members'
 import Head from 'next/head';
 
 /*    Components*/
-import AnimationInView from '../components/AnimationInView'
-import Header from '../components/Header'
-import Carrossel from '../components/Index/Carrossel'
-import AllMaterias from "../components/Index/AllMaterias";
-import Materia, { post } from "../components/Materia";
-import Invitation from "../components/Index/Invitation";
-import Team from "../components/Index/Team";
-import {AuthorProps} from "../components/Post/Author";
-import Footer from "../components/Footer";
+import AnimationInView from '../src/components/AnimationInView'
+import Header from '../src/components/Header'
+import Carrossel from '../src/views/Index/Carrossel'
+import AllMaterias from "../src/views/Index/AllMaterias";
+import Materia, { post } from "../src/components/Materia";
+import Invitation from "../src/views/Index/Invitation";
+import Team from "../src/views/Index/Team";
+import {AuthorProps} from "../src/views/Post/Author";
+import Footer from "../src/components/Footer";
 
 interface PropTypes {
   posts: Array<post>;

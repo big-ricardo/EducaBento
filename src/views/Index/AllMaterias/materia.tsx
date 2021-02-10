@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Materia, ImageContainer } from './style'
 import Link from "next/link";
 import Image from "next/image";
-import AnimationInView from '../../AnimationInView'
+import AnimationInView from '../../../components/AnimationInView'
 import links from '../../../data/links.json'
 
 interface MateriaInterface {

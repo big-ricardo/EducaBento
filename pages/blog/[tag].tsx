@@ -1,20 +1,20 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import { client } from '../../utils/prismic_configuration';
+import { client } from '../../src/utils/prismic_configuration';
 import { useRouter } from 'next/router'
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 import Head from 'next/head';
-import materiasJson from '../../data/materias.json'
+import materiasJson from '../../src/data/materias.json'
 
-import api from '../../utils/api'
+import api from '../../src/utils/api'
 
 /*    Components*/
-import AnimationInView from '../../components/AnimationInView'
-import Header from '../../components/Header'
-import Presentation from '../../components/Presentation'
-import Materia, { post } from "../../components/Materia/OneMateria";
-import Footer from "../../components/Footer";
+import AnimationInView from '../../src/components/AnimationInView'
+import Header from '../../src/components/Header'
+import Presentation from '../../src/components/Presentation'
+import Materia, { post } from "../../src/components/Materia/OneMateria";
+import Footer from "../../src/components/Footer";
 
 interface PropTypes {
   posts: Array<post>,

@@ -2,15 +2,15 @@ import { GetStaticProps } from "next";
 
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import { client } from '../utils/prismic_configuration';
+import { client } from '../src/utils/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
 /*    Components*/
-import AnimationInView from '../components/AnimationInView'
-import Header from '../components/Header'
-import Presentation from '../components/Presentation'
-import Materia, {post} from "../components/Materia";
-import Footer from "../components/Footer";
+import AnimationInView from '../src/components/AnimationInView'
+import Header from '../src/components/Header'
+import Presentation from '../src/components/Presentation'
+import Materia, {post} from "../src/components/Materia";
+import Footer from "../src/components/Footer";
 import Head from 'next/head';
 
 interface PropTypes {
