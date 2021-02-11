@@ -2,6 +2,7 @@ import * as React from "react";
 import { Presentation, SectionText, SectionImg, Divider } from "./style";
 import Image from 'next/image'
 import Link from 'next/link'
+import links from '../../data/links.json'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -33,7 +34,7 @@ export default function PresentationComponent({ image, title, description, date,
             <Avatar size={{ xs: 80, sm: 90, md: 100, lg: 110, xl: 130, xxl: 150 }}
               style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle' }}
               icon={<UserOutlined />}
-              src={avatar === "" ? null : `/authors/${avatar}`}>
+              src={avatar === "" ? null : `${avatar}`}>
               {title}
             </Avatar>
           )}

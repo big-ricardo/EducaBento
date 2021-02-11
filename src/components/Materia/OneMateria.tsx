@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { MateriaContainer, TextContainer, MateriaDiv } from './style'
 import Link from "next/link";
+import links from '../../data/links.json'
 import Image from "next/image";
 import materias from '../../data/materias.json'
 import AnimationInView from '../AnimationInView'
@@ -28,7 +29,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
     <>
       <AnimationInView>
         <MateriaContainer>
-          <Link href={`/post/${post.slug}`}>
+          <Link href={`${links.post}/${post.slug}`}>
             <Materia whileHover={{ scale: 1.1 }} materia={post.materia}>
               <TextContainer>
                 <h2 style={{ marginBottom: 20 }}>{post.title}</h2>

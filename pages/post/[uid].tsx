@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import materiasJson from '../../src/data/materias.json'
 import { FormateData } from '../../src/utils/functions'
 import {getMembers} from '../api/members'
+import links from '../../src/data/links.json'
 
 import { client } from '../../src/utils/prismic_configuration';
 
@@ -53,7 +54,7 @@ export default function BlogPost({ post, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} image={`/icons${materiasJson.object[post.data.materia].icon}`} />
+        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} image={`${links.AssetsbaseURL.icons}${materiasJson.object[post.data.materia].icon}`} />
       </AnimationInView>
 
       <div>

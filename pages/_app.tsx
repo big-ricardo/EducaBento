@@ -16,6 +16,14 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   const [theme, setTheme] = useState(themes.light)
 
+    React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   const ToggleTheme = () =>{
     setTheme(theme.title === '0' ? themes.dark : themes.light)
   }

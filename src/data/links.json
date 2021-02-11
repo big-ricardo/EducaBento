@@ -5,5 +5,9 @@
     "post": "/post",
     "tag": "/blog",
     "support": "/support",
-    "author": "/author"
+    "author": "/author",
+    "AssetsbaseURL":{
+      "icons": "/img/icons",
+      "authors": "/img/authors/"
+    }
 }

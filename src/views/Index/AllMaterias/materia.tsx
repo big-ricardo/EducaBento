@@ -19,7 +19,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ materia, children, icon 
               <h2>{children}</h2>
             </AnimationInView>
               <ImageContainer>
-                <Image src={`/icons${icon}`} layout='responsive' width='100px' height='100px' />
+                <Image src={`${links.AssetsbaseURL.icons}${icon}`} layout='responsive' width='100px' height='100px' />
               </ImageContainer>
         </Materia>
       </Link>
