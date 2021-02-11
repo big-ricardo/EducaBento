@@ -37,7 +37,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
               </TextContainer>
 
               <ImageContainer>
-                <Image src={`/icons${materias.object[post.materia].icon}`} layout='responsive' width='100px' height='100px' />
+                <Image src={`${links.AssetsbaseURL.icons}${materias.object[post.materia].icon}`} layout='responsive' width='100px' height='100px' />
               </ImageContainer>
 
             </Materia>

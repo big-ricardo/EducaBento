@@ -21,7 +21,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
           <Avatar  size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
           style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
            icon={<UserOutlined />}
-           src={member.avatar===""?null:`/authors${member.avatar}`}>
+           src={member.avatar===""?null:`${links.AssetsbaseURL.authors}${member.avatar}`}>
             {member.name}
           </Avatar>
         </div>

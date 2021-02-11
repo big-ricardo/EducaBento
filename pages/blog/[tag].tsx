@@ -15,6 +15,7 @@ import Header from '../../src/components/Header'
 import Presentation from '../../src/components/Presentation'
 import Materia, { post } from "../../src/components/Materia/OneMateria";
 import Footer from "../../src/components/Footer";
+import links from '../../src/data/links.json'
 
 interface PropTypes {
   posts: Array<post>,
@@ -40,7 +41,7 @@ export default function Home({ posts, tag }: PropTypes): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-        <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`/icons${materiasJson.object[tag].icon}`} />
+        <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`${links.AssetsbaseURL.icons}${materiasJson.object[tag].icon}`} />
       </AnimationInView>
 
       <h1 className='title'>Ultimas Publicações</h1>

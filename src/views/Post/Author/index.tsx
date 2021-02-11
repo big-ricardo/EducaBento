@@ -29,7 +29,7 @@ const Author: React.FC<CarrosselItemProps> = ({ author }) => {
           <Avatar  size={{ xs: 80, sm: 90, md: 100, lg: 110, xl: 130, xxl: 150 }}
           style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
            icon={<UserOutlined />}
-           src={author.avatar===""?null:`/authors/${author.avatar}`}>
+           src={author.avatar===""?null:`${links.AssetsbaseURL.authors}${author.avatar}`}>
             {author.name}
           </Avatar>
         </div>

@@ -18,6 +18,7 @@ import Presentation from '../../src/components/Presentation'
 import {AuthorProps} from '../../src/views/Post/Author'
 import Materia,{post} from "../../src/components/Materia";
 import Footer from "../../src/components/Footer";
+import links from '../../src/data/links.json'
 
 interface PathProps {
   params: {
@@ -54,7 +55,7 @@ export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={author.name} date={`${author.slug}`} description={author.description} avatar={author.avatar} />
+        <Presentation title={author.name} date={`${author.slug}`} description={author.description} avatar={`${links.AssetsbaseURL.authors}${author.avatar}`} />
       </AnimationInView>
       <h1 className='title'>Publicações</h1>
        {posts.map(post => (
