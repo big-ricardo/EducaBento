@@ -55,7 +55,7 @@ export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={author.name} date={`${author.slug}`} description={author.description} avatar={`${links.AssetsbaseURL.authors}${author.avatar}`} />
+        <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.authors}${author.avatar}`} />
       </AnimationInView>
       <h1 className='title'>Publicações</h1>
        {posts.map(post => (

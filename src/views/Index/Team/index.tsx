@@ -28,7 +28,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
         </div>
         <div className='texts'>
           <Link href={`${links.author}/${member.slug}`}><h2>{member.name}</h2></Link>
-          <span>{member.ocupation}</span>
+          <span>{member.occupation}</span>
           <h4>{member.description}</h4>
         </div>
       </CarrosselItems>

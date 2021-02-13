@@ -9,7 +9,7 @@ import links from '../../../data/links.json'
 export interface AuthorProps{
     name: string,
     description: string,
-    ocupation: string,
+    occupation: string,
     avatar: string,
     authorID: number,
     slug: string
@@ -35,7 +35,7 @@ const Author: React.FC<CarrosselItemProps> = ({ author }) => {
         </div>
         <div className='texts'>
           <Link href={`${links.author}/${author.slug}`}><h2>{author.name}</h2></Link>
-          <h3>{author.ocupation}</h3>
+          <h3>{author.occupation}</h3>
           <h4>{author.description}</h4>
         </div>
       </CarrosselItems>
