@@ -7,6 +7,7 @@ import links from '../../../data/links.json'
 import { AuthorProps} from '../../Post/Author'
 
 import { TeamContainer, CarrosselContainer, CarrosselItems } from './style'
+import Image from 'next/image';
 
 interface CarrosselItemProps {
   member: AuthorProps
@@ -21,7 +22,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
           <Avatar  size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
           style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
            icon={<UserOutlined />}
-           src={member.avatar===""?null:`${links.AssetsbaseURL.authors}${member.avatar}`}>
+           src={member.avatar===""?null: <Image src={`${links.AssetsbaseURL.authors}${member.avatar}`} width={200} height={200} layout='intrinsic'/>}>
             {member.name}
           </Avatar>
         </div>

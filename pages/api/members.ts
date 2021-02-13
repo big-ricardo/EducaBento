@@ -9,7 +9,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   const db: Db = await connectToDataBase(cacheDb)
   if (req.method === "GET") {
 
-    const members = await getMembers({}, {name: true, authorID: true})
+    const members = await getMembers({}, {name: 1, authorID: 1, ocupation: 1, _id: 0})
 
     return res.status(200).json(members)
 
@@ -20,7 +20,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         name: req.body.name,
         ocupation: req.body.ocupation,
         description: req.body.description,
-        avatar: `/${req.body.avatar}.webp`,
+        avatar: `/${req.body.avatar}`,
         slug: `${req.body.slug}`,
         authorID: await getNextSequenceValue('authorID', db)
       })
@@ -38,7 +38,7 @@ async function getNextSequenceValue(sequenceName, db: Db) {
 export async function getMembers(query = {}, result = {}){
   const db: Db = await connectToDataBase(cacheDb)
 
-  const members = await db.collection('members').find(query).toArray()
+  const members = await db.collection('members').find( { }, {projection: result}).toArray()
   .then(response=> JSON.parse(JSON.stringify(response)))
 
   return members
