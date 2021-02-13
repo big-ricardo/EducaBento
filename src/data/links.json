@@ -9,5 +9,6 @@
     "AssetsbaseURL":{
       "icons": "/img/icons",
       "authors": "/img/authors/"
-    }
+    },
+    "maintenance": "/maintenance"
 }
