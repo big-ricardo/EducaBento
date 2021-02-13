@@ -9,7 +9,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   const db: Db = await connectToDataBase(cacheDb)
   if (req.method === "GET") {
 
-    const members = await getMembers({}, {name: 1, authorID: 1, ocupation: 1, _id: 0})
+    const members = await getMembers({}, {name: 1, authorID: 1, occupation: 1, _id: 0})
 
     return res.status(200).json(members)
 
