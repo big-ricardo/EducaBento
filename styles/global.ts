@@ -24,6 +24,7 @@ export default createGlobalStyle`
     height: auto !important;
   }
 
+
   h1,h2,h3,h4,h5,h6{
     margin-top: inherit;
     margin-bottom: initial;
@@ -31,9 +32,51 @@ export default createGlobalStyle`
     font-weight: initial;
   }
 
-  a {
-    text-decoration: none;
-    font-family: 'Roboto' 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    h1{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(15px,2vw - 6px,33px);
+    @media screen and (max-width: 768px) {
+      font-size: clamp(23px,2vh + 4px,36px);
+    }
+  }
+
+  h2{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(15px,2vw - 8px,30px);
+     @media screen and (max-width: 768px) {
+      font-size: clamp(20px,2vh + 3px,28px);
+    }
+  }
+
+  h3{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(22px,2vw - 5px, 27px);
+     @media screen and (max-width: 768px) {
+      font-size: clamp(15px,2vh + 2px,28px);
+    }
+  }
+
+  h4{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.title};
+    font-size: clamp(15px,2vw - 3px,24px);
+     @media screen and (max-width: 768px) {
+      font-size: clamp(15px,2vh + 1px,28px);
+    }
+  }
+
+  p{
+    font-family: 'Philosopher', sans-serif;
+    color: ${props => props.theme.colors.text};
+    font-size: clamp(17px,2vw - 6px,24px);
+    line-height: 150%;
+     @media screen and (max-width: 768px) {
+      font-size: clamp(17px,2vh,28px);
+    }
   }
 
   h1.title{

@@ -96,30 +96,30 @@ export const TextContainer = styled.div`
   h3{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(22px,2vw -10, 27px);
+    font-size: clamp(22px,2vw - 5px, 27px);
      @media screen and (max-width: 768px) {
       margin-bottom: 10%;
-      font-size: clamp(15px,2vh,28px);
+      font-size: clamp(15px,2vh + 2px,28px);
     }
   }
 
   h4{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(15px,2vw - 10px,24px);
+    font-size: clamp(15px,2vw - 3px,24px);
      @media screen and (max-width: 768px) {
       margin-bottom: 10%;
-      font-size: clamp(15px,2vh,28px);
+      font-size: clamp(15px,2vh + 1px,28px);
     }
   }
 
   p{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.text};
-    font-size: clamp(15px,2vw - 10px,24px);
+   font-size: clamp(17px,2vw - 6px,24px);
      @media screen and (max-width: 768px) {
       margin-bottom: 10%;
-      font-size: clamp(15px,2vh,28px);
+      font-size: clamp(17px,2vh,28px);
     }
   }
 

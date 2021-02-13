@@ -11,6 +11,7 @@ import Header from '../src/components/Header'
 import Presentation from '../src/components/Presentation'
 import Materia, {post} from "../src/components/Materia";
 import Footer from "../src/components/Footer";
+import About from "../src/views/About";
 import Head from 'next/head';
 
 interface PropTypes {
@@ -39,6 +40,9 @@ export default function Home({ posts }: PropTypes): JSX.Element {
       <Presentation title="Sobre" description="Sua plataforma de estudos gratuito" image='/img/about.svg'/>
       </AnimationInView>
 
+         <AnimationInView>
+           <About />
+         </AnimationInView>
 
       <Footer />
     </>

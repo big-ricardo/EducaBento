@@ -30,7 +30,7 @@ export default function HeaderComponent() {
             </LinkNext>
           ))}
         </LinksContainer>
-        <LinkNext href='#'>
+        <LinkNext href={links.maintenance}>
           <LoginContainer whileHover={{ transform: 'translateX(5px)' }}>
             <h2>Entrar</h2>
             <BsArrowRight />

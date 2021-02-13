@@ -4,11 +4,11 @@
     "about": "/about",
     "post": "/post",
     "tag": "/blog",
-    "support": "/support",
+    "support": "/maintenance",
     "author": "/author",
     "AssetsbaseURL":{
       "icons": "/img/icons",
-      "authors": "/img/authors/"
+      "authors": "/img/authors"
     },
     "maintenance": "/maintenance"
 }
