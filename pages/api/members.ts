@@ -38,7 +38,7 @@ async function getNextSequenceValue(sequenceName, db: Db) {
 export async function getMembers(query = {}, result = {}){
   const db: Db = await connectToDataBase(cacheDb)
 
-  const members = await db.collection('members').find( { }, {projection: result}).toArray()
+  const members = await db.collection('members').find( query , {projection: result}).toArray()
   .then(response=> JSON.parse(JSON.stringify(response)))
 
   return members
