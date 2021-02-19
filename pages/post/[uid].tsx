@@ -43,7 +43,7 @@ export default function BlogPost({ post, author }: PropTypes): JSX.Element {
   scrollYProgress.onChange(()=>{
     if(scrollYProgress.get() >= 0.8 && isData === false){
       isData = true
-      alert('oi')
+      //alert('oi')
       axios.get(`/api/page-views?id=${post.id}`)
     }
   })
