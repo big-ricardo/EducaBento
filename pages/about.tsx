@@ -18,7 +18,7 @@ interface PropTypes {
   posts: Array<post>;
 }
 
-export default function Home({ posts }: PropTypes): JSX.Element {
+export default function AboutPage({ posts }: PropTypes): JSX.Element {
 
   return (
     <>

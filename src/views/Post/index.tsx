@@ -1,11 +1,5 @@
-import { motion } from "framer-motion";
 import { MateriaContainer, Materia, TextContainer } from './style'
 import { Document } from 'prismic-javascript/types/documents';
-import Link from "next/link";
-import Image from "next/image";
-import materias from '../../data/materias.json'
-import AnimationInView from '../../components/AnimationInView'
-import { BsArrowRight } from 'react-icons/bs'
 
 import { RichText } from 'prismic-reactjs';
 
@@ -14,7 +8,7 @@ interface PropTypes {
 }
 
 
-export default function MateriaComponent({ post }:PropTypes){
+export default function PostView({ post }:PropTypes){
 
   if (!post) {
     return <></>;
@@ -25,7 +19,7 @@ export default function MateriaComponent({ post }:PropTypes){
         <MateriaContainer>
             <Materia whileHover={{ scale: 1.02 }} materia={post.data.materia}>
               <TextContainer>
-                {post.data.body.map((section, ind) => (
+                {post.data.body.map((section:any, ind: number) => (
                   <div key={ind}>
                     {RichText.render(section.primary.text)}
                   </div>

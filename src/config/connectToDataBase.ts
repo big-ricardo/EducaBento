@@ -2,7 +2,7 @@
 import {MongoClient, Db} from 'mongodb'
 import url from 'url'
 
-export default async function connectToDataBase(cacheDb:any){
+export default async function connectToDataBase(cacheDb:Db){
   const uri = process.env.MONGODBURI;
 
   if(cacheDb){

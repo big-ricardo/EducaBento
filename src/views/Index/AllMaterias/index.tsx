@@ -5,7 +5,7 @@ import Link from "next/link";
 import materias from '../../../data/materias.json'
 import AnimationInView from '../../../components/AnimationInView'
 
-export default function MateriaComponent() {
+export default function AllMateriaView() {
 
   return (
     <>

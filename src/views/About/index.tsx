@@ -3,7 +3,7 @@ import Lottie from 'react-lottie';
 import animationData from '../../assets/animations/maintenance.json';
 import { ContainerMaintenance } from './style';
 
-export default function Maintenance() {
+export default function AboutView() {
   return (
     <>
       <AnimationInView>

@@ -1,9 +1,7 @@
 import { GetStaticProps } from "next";
 
 import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
 import { client } from '../src/config/prismic_configuration';
-import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
 import {getMembers} from './api/members'
 import Head from 'next/head';
@@ -16,15 +14,15 @@ import AllMaterias from "../src/views/Index/AllMaterias";
 import Materia, { post } from "../src/components/Materia";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
-import {AuthorProps} from "../src/views/Post/Author";
+import {MemberProps} from "../src/views/Post/Author";
 import Footer from "../src/components/Footer";
 
 interface PropTypes {
   posts: Array<post>;
-  members: Array<AuthorProps>
+  members: Array<MemberProps>
 }
 
-export default function Home({ posts, members }: PropTypes): JSX.Element {
+export default function HomePage({ posts, members }: PropTypes): JSX.Element {
 
   return (
     <>

@@ -10,7 +10,7 @@ interface MateriaInterface {
   icon: string;
 }
 
-const MateriaComponent: React.FC<MateriaInterface> = ({ materia, children, icon }) => {
+const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, icon }) => {
   return (
     <>
       <Link href={`${links.tag}/${materia}`}>
@@ -27,4 +27,4 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ materia, children, icon 
   );
 };
 
-export default MateriaComponent;
+export default OneMateriaComponent;

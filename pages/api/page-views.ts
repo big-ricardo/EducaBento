@@ -1,13 +1,12 @@
-import connectToDataBase from '../../src/config/connectToDataBase'
+import connectToDataBase from '@/src/config/connectToDataBase'
 import { NowRequest, NowResponse } from '@vercel/node'
-import { Db, Collection } from 'mongodb'
+import { Db } from 'mongodb'
 
 let cacheDb: Db = null
 
 export default async (req: NowRequest, res: NowResponse) => {
 
   const slugID = req.query.id;
-  const isCont = req.query.cont;
 
   if (!slugID) return res.json("Página não encontrada!")
 
@@ -33,7 +32,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 }
 
 
-export async function getPostViews(slugID) {
+export async function getPostViews(slugID: number) {
   const db: Db = await connectToDataBase(cacheDb)
 
   const pageViewBySlugID = await db

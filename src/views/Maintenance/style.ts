@@ -15,11 +15,17 @@ export const ContainerMaintenance = styled.div`
     height: 45%
   }
 
+
   @media screen and (max-width: 768px) {
     font-size: clamp(15px,2vh + 2px,28px);
 
     div.animation{
       width: 80%;
+      text-align: center
+    }
+
+    p{
+      width: 90%;
       text-align: center
     }
   }

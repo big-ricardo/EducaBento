@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node'
-import { Db, Collection } from 'mongodb'
-import connectToDataBase from '../../src/config/connectToDataBase'
+import { Db } from 'mongodb'
+import connectToDataBase from '@/src/config/connectToDataBase'
 
 let cacheDb: Db = null
 
@@ -17,7 +17,7 @@ export default async (req: NowRequest, res: NowResponse) => {
         const db: Db = await connectToDataBase(cacheDb)
       const members = await db.collection('members').insertOne({
         name: req.body.name,
-        ocupation: req.body.ocupation,
+        ocupation: req.body.occupation,
         description: req.body.description,
         avatar: `/${req.body.avatar}`,
         slug: `${req.body.slug}`,
@@ -29,7 +29,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
 }
 
-async function getNextSequenceValue(sequenceName, db: Db) {
+async function getNextSequenceValue(sequenceName: string, db: Db) {
   const sequenceDocument = await db.collection('counters').findOneAndUpdate({ _id: sequenceName }, { $inc: { sequence_value: 1 } }, { returnOriginal: false })
   return sequenceDocument.value.sequence_value;
 }

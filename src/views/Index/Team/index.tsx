@@ -1,16 +1,15 @@
 import AnimationInView from '../../../components/AnimationInView'
-import { motion } from "framer-motion";
 import { Carousel, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Link from 'next/link'
 import links from '../../../data/links.json'
-import { AuthorProps} from '../../Post/Author'
+import { MemberProps} from '../../Post/Author'
 
-import { TeamContainer, CarrosselContainer, CarrosselItems } from './style'
+import { TeamContainer, CarrosselItems } from './style'
 import Image from 'next/image';
 
 interface CarrosselItemProps {
-  member: AuthorProps
+  member: MemberProps
 }
 
 const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
@@ -22,12 +21,12 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
           <Avatar  size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
           style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
            icon={<UserOutlined />}
-           src={member.avatar===""?null: <Image src={`${links.AssetsbaseURL.authors}${member.avatar}`} layout='fill'/>}>
+           src={member.avatar===""?null: <Image src={`${links.AssetsbaseURL.members}${member.avatar}`} layout='fill'/>}>
             {member.name}
           </Avatar>
         </div>
         <div className='texts'>
-          <Link href={`${links.author}/${member.slug}`}><h2>{member.name}</h2></Link>
+          <Link href={`${links.member}/${member.slug}`}><h2>{member.name}</h2></Link>
           <span>{member.occupation}</span>
           <h4>{member.description}</h4>
         </div>
@@ -37,10 +36,10 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
 }
 
 interface TeamComponentsProps{
-  members: Array<AuthorProps>
+  members: Array<MemberProps>
 }
 
-const TeamComponent: React.FC<TeamComponentsProps> = ({members})=> {
+const TeamView: React.FC<TeamComponentsProps> = ({members})=> {
 
   return (
     <>
@@ -58,4 +57,4 @@ const TeamComponent: React.FC<TeamComponentsProps> = ({members})=> {
   );
 };
 
-export default TeamComponent
+export default TeamView

@@ -1,24 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
-import { Document } from 'prismic-javascript/types/documents';
 import { useRouter } from 'next/router'
-import materiasJson from '../../src/data/materias.json'
-import { FormateData } from '../../src/utils/functions'
 import {getMembers} from '../api/members'
-import { Avatar } from 'antd';
 
-import { client } from '../../src/config/prismic_configuration';
+import { client } from '@/src/config/prismic_configuration';
 
-import AnimationInView from '../../src/components/AnimationInView'
-import Header from '../../src/components/Header'
-import Presentation from '../../src/components/Presentation'
-import {AuthorProps} from '../../src/views/Post/Author'
-import Materia,{post} from "../../src/components/Materia";
-import Footer from "../../src/components/Footer";
-import links from '../../src/data/links.json'
+import AnimationInView from '@/src/components/AnimationInView'
+import Header from '@/src/components/Header'
+import Presentation from '@/src/components/Presentation'
+import {MemberProps} from '@/src/views/Post/Author'
+import Materia,{post} from "@/src/components/Materia";
+import Footer from "@/src/components/Footer";
+import links from '@/src/data/links.json'
 
 interface PathProps {
   params: {
@@ -28,10 +22,10 @@ interface PathProps {
 
 interface PropTypes {
   posts: Array<post>,
-  author: AuthorProps
+  author: MemberProps
 }
 
-export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
+export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
   const { isFallback } = useRouter()
 
   if (isFallback) {
@@ -55,7 +49,7 @@ export default function BlogPost({ posts, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.authors}${author.avatar}`} />
+        <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.members}${author.avatar}`} />
       </AnimationInView>
       <h1 className='title'>Publicações</h1>
        {posts.map(post => (
@@ -77,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
-  const author:AuthorProps = await getMembers({ slug: params.author })
+  const author:MemberProps = await getMembers({ slug: params.author })
 
   const response = await client.query([
     Prismic.Predicates.at('document.type', 'blog_posts'),

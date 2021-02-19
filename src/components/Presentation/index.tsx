@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Presentation, SectionText, SectionImg, Divider } from "./style";
 import Image from 'next/image'
-import Link from 'next/link'
-import links from '../../data/links.json'
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 

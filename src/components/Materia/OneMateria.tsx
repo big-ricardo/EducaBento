@@ -19,7 +19,7 @@ interface MateriaInterface {
   post: post
 }
 
-const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
+const OneMateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
 
   if (!post) {
     return <>Sem Posts</>;
@@ -44,7 +44,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
   );
 };
 
-export default MateriaComponent;
+export default OneMateriaComponent;
 
 
 const Materia = styled(MateriaDiv)`

@@ -5,7 +5,7 @@ import Image from "next/image";
 import AnimationInView from '../../../components/AnimationInView'
 import { ImageContainer, TextContainer, Button } from "./style";
 
-export default function MateriaComponent() {
+export default function InvitationView() {
 
   return (
     <>

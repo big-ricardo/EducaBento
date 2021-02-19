@@ -1,25 +1,23 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
 import { Document } from 'prismic-javascript/types/documents';
-import { useRouter } from 'next/router'
-import materiasJson from '../../src/data/materias.json'
-import { FormateData } from '../../src/utils/functions'
+
+import materiasJson from '@/src/data/materias.json'
+import { FormateData } from '@/src/utils/functions'
 import {getMembers} from '../api/members'
-import links from '../../src/data/links.json'
+import links from '@/src/data/links.json'
 
-import useFetch from '../../src/hooks/fetcher'
-import { client } from '../../src/config/prismic_configuration';
+import { client } from '@/src/config/prismic_configuration';
 
-import AnimationInView from '../../src/components/AnimationInView'
-import Header from '../../src/components/Header'
-import Presentation from '../../src/components/Presentation'
-import Author,{AuthorProps} from '../../src/views/Post/Author'
+import AnimationInView from '@/src/components/AnimationInView'
+import Header from '@/src/components/Header'
+import Presentation from '@/src/components/Presentation'
+import Author,{MemberProps} from '@/src/views/Post/Author'
 import {getPostViews} from '../api/page-views'
-import Post from "../../src/views/Post";
-import Footer from "../../src/components/Footer";
+import Post from "@/src/views/Post";
+import Footer from "@/src/components/Footer";
 import { useViewportScroll } from "framer-motion"
 import axios from 'axios';
 
@@ -32,18 +30,17 @@ interface PathProps {
 
 interface PropTypes {
   post: Document,
-  author: AuthorProps
+  author: MemberProps
 }
 
-export default function BlogPost({ post, author }: PropTypes): JSX.Element {
+export default function PostPage({ post, author }: PropTypes): JSX.Element {
 
-   const { scrollYProgress } = useViewportScroll()
-    let isData = false
+  const { scrollYProgress } = useViewportScroll()
+  let isData = false
 
   scrollYProgress.onChange(()=>{
     if(scrollYProgress.get() >= 0.8 && isData === false){
       isData = true
-      //alert('oi')
       axios.get(`/api/page-views?id=${post.id}`)
     }
   })
@@ -70,7 +67,7 @@ export default function BlogPost({ post, author }: PropTypes): JSX.Element {
 
       <div>
         <Post post={post} />
-        <Author author={author}/>
+        <Author member={author}/>
       </div>
       <Footer />
     </>
@@ -105,9 +102,9 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
   const authorID = parseInt(response.data.authorid)
 
-  const author:AuthorProps = await getMembers({ authorID})
+  const author:MemberProps = await getMembers({ authorID})
 
-   response.data.views = await getPostViews(response.id)
+   response.data.views = await getPostViews(Number(response.id))
 
   return {
     props: {

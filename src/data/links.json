@@ -5,10 +5,10 @@
     "post": "/post",
     "tag": "/blog",
     "support": "/maintenance",
-    "author": "/author",
+    "member": "/author",
     "AssetsbaseURL":{
       "icons": "/img/icons",
-      "authors": "/img/authors"
+      "members": "/img/authors"
     },
     "maintenance": "/maintenance"
 }

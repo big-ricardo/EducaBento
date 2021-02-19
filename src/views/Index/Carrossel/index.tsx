@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import links from '../../../data/links.json'
 
-export default function HeaderComponent() {
+export default function CarrosselView() {
 
   return (
     <>
