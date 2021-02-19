@@ -104,7 +104,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
   const author:MemberProps = await getMembers({ authorID})
 
-   response.data.views = await getPostViews(Number(response.id))
+   response.data.views = await getPostViews(response.id)
 
   return {
     props: {

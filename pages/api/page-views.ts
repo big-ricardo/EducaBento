@@ -32,7 +32,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 }
 
 
-export async function getPostViews(slugID: number) {
+export async function getPostViews(slugID: string) {
   const db: Db = await connectToDataBase(cacheDb)
 
   const pageViewBySlugID = await db
