@@ -2,7 +2,7 @@ import { GetStaticProps } from "next";
 
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import { client } from '../../src/utils/prismic_configuration';
+import { client } from '../../src/config/prismic_configuration';
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 
 /*    Components*/

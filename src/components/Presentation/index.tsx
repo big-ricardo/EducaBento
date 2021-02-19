@@ -11,10 +11,11 @@ interface PresentationProps {
   title: string,
   description: string,
   date?: string,
-  avatar?: any
+  avatar?: any,
+  views?: string
 }
 
-export default function PresentationComponent({ image, title, description, date, avatar }: PresentationProps) {
+export default function PresentationComponent({ image, title, description, date, avatar, views }: PresentationProps) {
 
   return (
     <>
@@ -23,6 +24,7 @@ export default function PresentationComponent({ image, title, description, date,
           <div>
             <h1>{title}</h1>
             <p>{date}</p>
+            {views && <p>{views} visualizações</p>}
             <h3>{description}</h3>
           </div>
         </SectionText>

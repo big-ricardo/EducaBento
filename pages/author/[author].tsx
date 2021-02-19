@@ -10,7 +10,7 @@ import { FormateData } from '../../src/utils/functions'
 import {getMembers} from '../api/members'
 import { Avatar } from 'antd';
 
-import { client } from '../../src/utils/prismic_configuration';
+import { client } from '../../src/config/prismic_configuration';
 
 import AnimationInView from '../../src/components/AnimationInView'
 import Header from '../../src/components/Header'

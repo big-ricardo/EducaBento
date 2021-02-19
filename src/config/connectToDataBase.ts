@@ -15,6 +15,11 @@ export default async function connectToDataBase(cacheDb:any){
 
   const db = client.db(dbName)
 
+  if(!client.isConnected()){
+
+      return null
+  }
+
   cacheDb = db
 
   return db

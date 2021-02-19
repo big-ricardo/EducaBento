@@ -1,13 +1,13 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import Prismic from 'prismic-javascript';
 import { RichText } from 'prismic-reactjs';
-import { client } from '../../src/utils/prismic_configuration';
+import { client } from '../../src/config/prismic_configuration';
 import { useRouter } from 'next/router'
 import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 import Head from 'next/head';
 import materiasJson from '../../src/data/materias.json'
 
-import api from '../../src/utils/api'
+import api from '../../src/config/api'
 
 /*    Components*/
 import AnimationInView from '../../src/components/AnimationInView'

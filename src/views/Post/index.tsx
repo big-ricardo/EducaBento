@@ -22,7 +22,6 @@ export default function MateriaComponent({ post }:PropTypes){
 
   return (
     <>
-      <AnimationInView>
         <MateriaContainer>
             <Materia whileHover={{ scale: 1.02 }} materia={post.data.materia}>
               <TextContainer>
@@ -34,7 +33,6 @@ export default function MateriaComponent({ post }:PropTypes){
               </TextContainer>
             </Materia>
         </MateriaContainer>
-      </AnimationInView>
     </>
   );
 };

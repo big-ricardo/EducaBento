@@ -10,14 +10,19 @@ import { FormateData } from '../../src/utils/functions'
 import {getMembers} from '../api/members'
 import links from '../../src/data/links.json'
 
-import { client } from '../../src/utils/prismic_configuration';
+import useFetch from '../../src/hooks/fetcher'
+import { client } from '../../src/config/prismic_configuration';
 
 import AnimationInView from '../../src/components/AnimationInView'
 import Header from '../../src/components/Header'
 import Presentation from '../../src/components/Presentation'
 import Author,{AuthorProps} from '../../src/views/Post/Author'
+import {getPostViews} from '../api/page-views'
 import Post from "../../src/views/Post";
 import Footer from "../../src/components/Footer";
+import { useViewportScroll } from "framer-motion"
+import axios from 'axios';
+
 
 interface PathProps {
   params: {
@@ -31,11 +36,17 @@ interface PropTypes {
 }
 
 export default function BlogPost({ post, author }: PropTypes): JSX.Element {
-  const { isFallback } = useRouter()
 
-  if (isFallback) {
-    return <h1>Carregando...</h1>
-  }
+   const { scrollYProgress } = useViewportScroll()
+    let isData = false
+
+  scrollYProgress.onChange(()=>{
+    if(scrollYProgress.get() >= 0.8 && isData === false){
+      isData = true
+      alert('oi')
+      axios.get(`/api/page-views?id=${post.id}`)
+    }
+  })
 
   return (
     <>
@@ -54,12 +65,11 @@ export default function BlogPost({ post, author }: PropTypes): JSX.Element {
       <Header />
 
       <AnimationInView>
-        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} image={`${links.AssetsbaseURL.icons}${materiasJson.object[post.data.materia].icon}`} />
+        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} views={post.data.views} image={`${links.AssetsbaseURL.icons}${materiasJson.object[post.data.materia].icon}`} />
       </AnimationInView>
 
       <div>
         <Post post={post} />
-
         <Author author={author}/>
       </div>
       <Footer />
@@ -96,6 +106,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
   const authorID = parseInt(response.data.authorid)
 
   const author:AuthorProps = await getMembers({ authorID})
+
+   response.data.views = await getPostViews(response.id)
 
   return {
     props: {
