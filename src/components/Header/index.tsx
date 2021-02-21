@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
-import { Header, Nav, LinksContainer, Link, LogoContainer, LoginContainer } from './style'
+import { Header, Nav, LinksContainer, Link, LogoContainer, LoginContainer, SearchContainer } from './style'
 import NavToggle from './Toggle'
+import AutoComplete from './AutoComplete'
 import LinkNext from "next/link";
 import { BsArrowRight } from 'react-icons/bs'
 import links from '../../data/links.json'
@@ -30,6 +31,9 @@ export default function HeaderComponent() {
             </LinkNext>
           ))}
         </LinksContainer>
+        <SearchContainer>
+          <AutoComplete/>
+        </SearchContainer>
         <LinkNext href={links.maintenance}>
           <LoginContainer whileHover={{ transform: 'translateX(5px)' }}>
             <h2>Entrar</h2>

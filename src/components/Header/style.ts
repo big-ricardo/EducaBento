@@ -26,14 +26,19 @@ export const LogoContainer = styled(motion.nav)``
 export const LinksContainer = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 30%;
+  justify-content: center;
+  gap: 10%
+`
+
+export const SearchContainer = styled.div`
+  display: flex;
 `
 
 export const Link = styled(motion.h5)`
   color: ${props => props.theme.colors.text};
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  margin-right: 5%;
   cursor: pointer;
   font-size: clamp(15px, 1vw, 1vw + 18px )
 `

@@ -1,9 +1,11 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import {MdSearch} from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { apiEndpoint } from '@/src/config/prismic_configuration'
+import IconButton from '@material-ui/core/IconButton';
+import { apiEndpoint } from '@/src/config/prismic_configuration';
+import Tooltip from '@material-ui/core/Tooltip'
 
 import Prismic from '@prismicio/client'
 import { Document } from 'prismic-javascript/types/documents';
@@ -13,7 +15,7 @@ import links from '../../../data/links.json'
 import materias from '../../../data/materias.json'
 import Image from 'next/image';
 
-import {Grid} from "./style"
+import { Grid } from "./style"
 
 interface CountryType {
   name: string;
@@ -29,7 +31,7 @@ export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const [options, setOptions] = React.useState<Document[] | null>(null);
-  const loading = open && !options && search !== "" ;
+  const loading = open && !options && search !== "";
 
 
   React.useEffect(() => {
@@ -46,7 +48,6 @@ export default function Asynchronous() {
 
   React.useEffect(() => {
     if (!open) {
-      setOptions(null);
       setSearch("")
     }
   }, [open]);
@@ -67,9 +68,9 @@ export default function Asynchronous() {
       Prismic.Predicates.fulltext('document', search)
     ], { orderings: '[my.blog-post.date desc]', pageSize: 10 })
     if (response) {
-      if(response.total_results_size === 0){
+      if (response.total_results_size === 0) {
         setOptions([])
-      }else{
+      } else {
         setOptions(response.results)
       }
     }
@@ -78,9 +79,8 @@ export default function Asynchronous() {
   return (
     <Autocomplete
       id="asynchronous-demo"
-      style={{ width: 300 }}
+      style={{ width: 250 }}
       open={open}
-      popupIcon={<></>}
       onOpen={() => {
         setOpen(true);
       }}
@@ -97,13 +97,14 @@ export default function Asynchronous() {
         <TextField
           {...params}
           label="Pesquisar"
+          size="small"
           value={search}
           onChange={e => { setSearch(e.target.value) }}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : <MdSearch color="inherit" size={20} />}
+                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton size='small'><MdSearch color="inherit" size={20} /></IconButton>}
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),
@@ -113,16 +114,18 @@ export default function Asynchronous() {
       renderOption={(option) => {
 
         return (<>
-            <Grid container  alignItems="center" justify-content="center"  materia={option.data.materia}>
-             <Grid item  alignItems="center" style={{marginLeft: "10%"}}>
-              <Image src={`${links.AssetsbaseURL.icons}${materias.object[option.data.materia].icon}`} layout='fixed' width='50px' height='50px' />
+          <Tooltip title={RichText.asText(option.data.description)}>
+            <Grid container alignItems="center" justify-content="center" materia={option.data.materia}>
+              <Grid item alignItems="center" style={{ marginLeft: "5%" }}>
+                <Image src={`${links.AssetsbaseURL.icons}${materias.object[option.data.materia].icon}`} layout='fixed' width='50px' height='50px' />
+              </Grid>
+              <Grid item xs alignItems="center">
+                <h5>
+                  {RichText.asText(option.data.title)}
+                </h5>
+              </Grid>
             </Grid>
-            <Grid item xs  alignItems="center">
-              <h3>
-                {RichText.asText(option.data.title)}
-              </h3>
-            </Grid>
-          </Grid>
+          </Tooltip>
 
         </>)
       }}

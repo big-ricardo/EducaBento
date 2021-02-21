@@ -20,7 +20,7 @@ export default function MaintenancePagr() {
           />
       </Head>
 
-    <Auto/>
+    <Header/>
     </>
   )
 }
