@@ -80,6 +80,7 @@ export default function Asynchronous() {
       id="asynchronous-demo"
       style={{ width: 300 }}
       open={open}
+      popupIcon={<></>}
       onOpen={() => {
         setOpen(true);
       }}
@@ -90,6 +91,8 @@ export default function Asynchronous() {
       getOptionLabel={(option) => RichText.asText(option.data.title)}
       options={options || []}
       loading={loading}
+      loadingText="Carregando..."
+      noOptionsText="Nada...digite a palavra inteira"
       renderInput={(params) => (
         <TextField
           {...params}
@@ -120,6 +123,7 @@ export default function Asynchronous() {
               </h3>
             </Grid>
           </Grid>
+
         </>)
       }}
     />
