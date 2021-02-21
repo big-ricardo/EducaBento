@@ -1,14 +1,19 @@
-import fetch from 'cross-fetch';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import {MdSearch} from 'react-icons/md';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Grid from '@material-ui/core/Grid';
 import { apiEndpoint } from '@/src/config/prismic_configuration'
 
 import Prismic from '@prismicio/client'
 import { Document } from 'prismic-javascript/types/documents';
 import { RichText } from 'prismic-reactjs';
+
+import links from '../../../data/links.json'
+import materias from '../../../data/materias.json'
+import Image from 'next/image';
+
+import {Grid} from "./style"
 
 interface CountryType {
   name: string;
@@ -23,8 +28,8 @@ function sleep(delay = 0) {
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState("");
-  const [options, setOptions] = React.useState<Document[]>([]);
-  const loading = open && options.length === 0;
+  const [options, setOptions] = React.useState<Document[] | null>(null);
+  const loading = open && !options && search !== "" ;
 
 
   React.useEffect(() => {
@@ -41,14 +46,15 @@ export default function Asynchronous() {
 
   React.useEffect(() => {
     if (!open) {
-      setOptions([]);
+      setOptions(null);
+      setSearch("")
     }
   }, [open]);
 
   React.useMemo(() => {
     if (search != "") {
+      setOptions(null)
       HandleSearch()
-
     }
   }, [search])
 
@@ -61,8 +67,11 @@ export default function Asynchronous() {
       Prismic.Predicates.fulltext('document', search)
     ], { orderings: '[my.blog-post.date desc]', pageSize: 10 })
     if (response) {
-      console.log(response.results);
-      setOptions(response.results)
+      if(response.total_results_size === 0){
+        setOptions([])
+      }else{
+        setOptions(response.results)
+      }
     }
   }
 
@@ -79,20 +88,19 @@ export default function Asynchronous() {
       }}
       getOptionSelected={(option, value) => RichText.asText(option.data.title) === RichText.asText(value.data.title)}
       getOptionLabel={(option) => RichText.asText(option.data.title)}
-      options={options}
+      options={options || []}
       loading={loading}
       renderInput={(params) => (
         <TextField
           {...params}
           label="Pesquisar"
-          variant="outlined"
           value={search}
           onChange={e => { setSearch(e.target.value) }}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                {loading ? <CircularProgress color="inherit" size={20} /> : <MdSearch color="inherit" size={20} />}
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),
@@ -102,18 +110,16 @@ export default function Asynchronous() {
       renderOption={(option) => {
 
         return (<>
-
-          <Grid container alignItems="center">
-             <Grid item>
-              <CircularProgress/>
+            <Grid container  alignItems="center" justify-content="center"  materia={option.data.materia}>
+             <Grid item  alignItems="center" style={{marginLeft: "10%"}}>
+              <Image src={`${links.AssetsbaseURL.icons}${materias.object[option.data.materia].icon}`} layout='fixed' width='50px' height='50px' />
             </Grid>
-            <Grid item xs>
+            <Grid item xs  alignItems="center">
               <h3>
                 {RichText.asText(option.data.title)}
               </h3>
             </Grid>
           </Grid>
-
         </>)
       }}
     />
