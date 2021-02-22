@@ -6,20 +6,22 @@ import { Document } from 'prismic-javascript/types/documents';
 
 import materiasJson from '@/src/data/materias.json'
 import { FormateData } from '@/src/utils/functions'
-import {getMembers} from '../api/members'
+import { getMembers } from '../api/members'
 import links from '@/src/data/links.json'
 
 import { client } from '@/src/config/prismic_configuration';
+import Router from 'next/router'
 
 import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/components/Header'
 import Presentation from '@/src/components/Presentation'
-import Author,{MemberProps} from '@/src/views/Post/Author'
-import {getPostViews} from '../api/page-views'
+import Author, { MemberProps } from '@/src/views/Post/Author'
+import { getPostViews } from '../api/page-views'
 import Post from "@/src/views/Post";
 import Footer from "@/src/components/Footer";
 import { useViewportScroll } from "framer-motion"
 import axios from 'axios';
+import { useEffect } from 'react';
 
 
 interface PathProps {
@@ -38,12 +40,22 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
   const { scrollYProgress } = useViewportScroll()
   let isData = false
 
-  scrollYProgress.onChange(()=>{
-    if(scrollYProgress.get() >= 0.8 && isData === false){
+  scrollYProgress.onChange(() => {
+    if (scrollYProgress.get() >= 0.8 && isData === false) {
       isData = true
       axios.get(`/api/page-views?id=${post.id}`)
     }
   })
+
+  useEffect(() => {
+    if (!post) {
+      Router.push('/404')
+    }
+  }, [])
+
+  if(!post){
+    return<></>
+  }
 
   return (
     <>
@@ -67,7 +79,7 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
 
       <div>
         <Post post={post} />
-        <Author member={author}/>
+        <Author member={author} />
       </div>
       <Footer />
     </>
@@ -98,19 +110,28 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
     lang: 'pt-br',
   });
 
-  response.data.formattedDate = FormateData({ post: response })
+  if (response) {
+    response.data.formattedDate = FormateData({ post: response })
 
-  const authorID = parseInt(response.data.authorid)
+    response.data.views = await getPostViews(response.id)
 
-  const author:MemberProps = await getMembers({ authorID})
+    const authorID = parseInt(response.data.authorid)
 
-   response.data.views = await getPostViews(response.id)
+    const author: MemberProps = await getMembers({ authorID })
 
-  return {
-    props: {
-      post: response,
-      author: author[0]
-    },
-    revalidate: 10
-  };
+    return {
+      props: {
+        post: response,
+        author: author[0]
+      },
+      revalidate: 10
+    };
+  } else {
+    return {
+      props: {
+        post: null
+      }
+    };
+  }
+
 };

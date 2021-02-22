@@ -5,6 +5,7 @@ import { MdSearch } from 'react-icons/md';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip'
+import Router from 'next/router'
 
 import Prismic from '@prismicio/client'
 import { Document } from 'prismic-javascript/types/documents';
@@ -19,7 +20,8 @@ import { Grid } from "./style"
 
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState<string | null>("");
+    const [value, setValue] = React.useState<string | null>("");
   const [options, setOptions] = React.useState<Document[] | null>(null);
   const loading = open && !options && search !== "";
 
@@ -38,7 +40,6 @@ export default function Asynchronous() {
 
   React.useEffect(() => {
     if (!open) {
-      setSearch("")
     }
   }, [open]);
 
@@ -48,7 +49,6 @@ export default function Asynchronous() {
       HandleSearch()
     }
   }, [search])
-
 
   async function HandleSearch() {
     const client = Prismic.client(process.env.PRISMIC_URL, { accessToken: process.env.PRISMIC_TOKEN })
@@ -79,9 +79,13 @@ export default function Asynchronous() {
       onClose={() => {
         setOpen(false);
       }}
+      inputValue={search}
+      onInputChange={(event, newInputValue) => {
+        setSearch(newInputValue);
+      }}
       size='small'
-      getOptionSelected={(option, value) => RichText.asText(option.data.title) === RichText.asText(value.data.title)}
-      getOptionLabel={(option) => RichText.asText(option.data.title)}
+      getOptionSelected={(option, value) => option.uid === value.uid}
+      getOptionLabel={(option) => option.uid}
       options={options || []}
       loading={loading}
       loadingText="Carregando..."
@@ -91,13 +95,11 @@ export default function Asynchronous() {
           {...params}
           label="Pesquisar"
           size="small"
-          value={search}
-          onChange={e => { setSearch(e.target.value) }}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton size='small'><MdSearch color="inherit" size={20} /></IconButton>}
+                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton onClick={() => Router.push(`${links.post}/${search}`)} size='small'><MdSearch color="inherit" size={20} /></IconButton>}
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),

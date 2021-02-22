@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../styles/global'
@@ -16,7 +16,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   const [theme, setTheme] = useState(themes.light)
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -24,16 +24,18 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     }
   }, []);
 
-  const ToggleTheme = () =>{
+  const ToggleTheme = () => {
     setTheme(theme.title === '0' ? themes.dark : themes.light)
   }
 
-  return (
+  return (<>
 
-     <ThemeProvider theme={theme}>
-         <Component {...pageProps} />
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
       <GlobalStyle />
     </ThemeProvider>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+  </>
   )
 }
 
