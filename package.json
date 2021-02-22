@@ -10,6 +10,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/data-grid": "^4.0.0-alpha.19",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@prismicio/client": "^4.0.0",
     "antd": "^4.11.2",
     "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.3",
