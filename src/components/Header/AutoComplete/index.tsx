@@ -13,6 +13,7 @@ import { RichText } from 'prismic-reactjs';
 import links from '../../../data/links.json'
 import materias from '../../../data/materias.json'
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Grid } from "./style"
 
@@ -55,8 +56,8 @@ export default function Asynchronous() {
     const response = await client.query([
       Prismic.Predicates.at('document.type', 'blog_posts'),
       Prismic.Predicates.fulltext('document', search)
-    ], { orderings: '[my.blog-post.date desc]', pageSize: 10 }).catch(()=>{
-          setOptions([])
+    ], { orderings: '[my.blog-post.date desc]', pageSize: 10 }).catch(() => {
+      setOptions([])
     })
     if (response) {
       if (response.total_results_size === 0) {
@@ -106,18 +107,20 @@ export default function Asynchronous() {
       renderOption={(option) => {
 
         return (<>
-          <Tooltip title={RichText.asText(option.data.description)}>
-            <Grid container alignItems="center" justify-content="center" materia={option.data.materia}>
-              <Grid item alignItems="center" style={{ marginLeft: "5%" }}>
-                <Image src={`${links.AssetsbaseURL.icons}${materias.object[option.data.materia].icon}`} layout='fixed' width='50px' height='50px' />
+          <Link href={`${links.post}/${option.uid}`}>
+            <Tooltip title={RichText.asText(option.data.description)}>
+              <Grid container alignItems="center" justify-content="center" materia={option.data.materia}>
+                <Grid item alignItems="center" style={{ marginLeft: "5%" }}>
+                  <Image src={`${links.AssetsbaseURL.icons}${materias.object[option.data.materia].icon}`} layout='fixed' width='50px' height='50px' />
+                </Grid>
+                <Grid item xs alignItems="center">
+                  <h5>
+                    {RichText.asText(option.data.title)}
+                  </h5>
+                </Grid>
               </Grid>
-              <Grid item xs alignItems="center">
-                <h5>
-                  {RichText.asText(option.data.title)}
-                </h5>
-              </Grid>
-            </Grid>
-          </Tooltip>
+            </Tooltip>
+          </Link>
 
         </>)
       }}
