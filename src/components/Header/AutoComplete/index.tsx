@@ -4,7 +4,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { MdSearch } from 'react-icons/md';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import IconButton from '@material-ui/core/IconButton';
-import { apiEndpoint } from '@/src/config/prismic_configuration';
 import Tooltip from '@material-ui/core/Tooltip'
 
 import Prismic from '@prismicio/client'
@@ -16,16 +15,6 @@ import materias from '../../../data/materias.json'
 import Image from 'next/image';
 
 import { Grid } from "./style"
-
-interface CountryType {
-  name: string;
-}
-
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
 
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
@@ -66,7 +55,9 @@ export default function Asynchronous() {
     const response = await client.query([
       Prismic.Predicates.at('document.type', 'blog_posts'),
       Prismic.Predicates.fulltext('document', search)
-    ], { orderings: '[my.blog-post.date desc]', pageSize: 10 })
+    ], { orderings: '[my.blog-post.date desc]', pageSize: 10 }).catch(()=>{
+          setOptions([])
+    })
     if (response) {
       if (response.total_results_size === 0) {
         setOptions([])
@@ -87,6 +78,7 @@ export default function Asynchronous() {
       onClose={() => {
         setOpen(false);
       }}
+      size='small'
       getOptionSelected={(option, value) => RichText.asText(option.data.title) === RichText.asText(value.data.title)}
       getOptionLabel={(option) => RichText.asText(option.data.title)}
       options={options || []}

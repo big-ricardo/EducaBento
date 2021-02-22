@@ -8,13 +8,22 @@ export default async (req: NowRequest, res: NowResponse) => {
 
   if (req.method === "GET") {
 
-    const members = await getMembers({}, {name: 1, authorID: 1, occupation: 1, _id: 0})
+    const response = await getMembers()
+
+    const members = response.map(member=>(
+      {
+        title: member.name,
+        avatar: member.avatar,
+        slug: member.slug,
+        type: 'member'
+      }
+    ))
 
     return res.status(200).json(members)
 
   } else {
     if (req.method === "POST") {
-        const db: Db = await connectToDataBase(cacheDb)
+      const db: Db = await connectToDataBase(cacheDb)
       const members = await db.collection('members').insertOne({
         name: req.body.name,
         ocupation: req.body.occupation,
@@ -34,11 +43,11 @@ async function getNextSequenceValue(sequenceName: string, db: Db) {
   return sequenceDocument.value.sequence_value;
 }
 
-export async function getMembers(query = {}, result = {}){
+export async function getMembers(query = {}, result = {}) {
   const db: Db = await connectToDataBase(cacheDb)
 
-  const members = await db.collection('members').find( query , {projection: result}).toArray()
-  .then(response=> JSON.parse(JSON.stringify(response)))
+  const members = await db.collection('members').find(query, { projection: result }).toArray()
+    .then(response => JSON.parse(JSON.stringify(response)))
 
   return members
 }
