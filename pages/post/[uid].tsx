@@ -126,7 +126,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
     response.data.views = await getPostViews(response.id)
 
-    response.data.thumbnail = `https://educacaobento.vercel.app${links.AssetsbaseURL.thumbnail}?title=${response.uid}`
+    response.data.thumbnail = `https://educacaobento.vercel.app${links.AssetsbaseURL.thumbnail}.png?title=${RichText.asText(response.data.title)}`
 
     const authorID = parseInt(response.data.authorid)
 
