@@ -3,7 +3,6 @@ import { getScreenshot } from './_lib/chromiuim'
 import { getHtml } from './_lib/thumbnailLayout'
 
 const isDev = !process.env.AWS_REGION
-const isHtmlDebug = process.env.OG_HTML_DEBUG === '1'
 
 export default async (
   req: NextApiRequest,
@@ -11,6 +10,7 @@ export default async (
 ): Promise<any> => {
   try {
     const query = req.query
+    const isHtmlDebug = !!query.debug
 
     const title = String(query.title)
     const thumbnail_bg = String(query.thumbnail_bg)
@@ -39,6 +39,7 @@ export default async (
     // )
 
     res.end(file)
+
   } catch (e) {
     res.statusCode = 500
     res.setHeader('Content-Type', 'text/html')

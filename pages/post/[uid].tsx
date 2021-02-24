@@ -90,7 +90,6 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
 
       <div>
         <Post post={post} />
-        <img src={post.data.thumbnail} alt={post.data.thumbnail}/>
         <Author member={author} />
       </div>
       <Footer />

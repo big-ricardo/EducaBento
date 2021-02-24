@@ -35,6 +35,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <GlobalStyle />
     </ThemeProvider>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+     <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   </>
   )
 }

@@ -19,6 +19,7 @@ export default function PostView({ post }:PropTypes){
         <MateriaContainer>
             <Materia whileHover={{ scale: 1.02 }} materia={post.data.materia}>
               <TextContainer>
+                <img src={post.data.thumbnail} alt={post.data.thumbnail}/>
                 {post.data.body.map((section:any, ind: number) => (
                   <div key={ind}>
                     {RichText.render(section.primary.text)}
