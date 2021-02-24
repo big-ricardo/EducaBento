@@ -70,6 +70,17 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
           name="description"
           content={RichText.asText(post.data.description)}
         />
+
+        <meta property="og:image" content={RichText.asText(post.data.title)} />
+        <meta property="og:image:type" content="image/png" />
+
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={RichText.asText(post.data.title)} />
+        <meta name="twitter:description" content={RichText.asText(post.data.title)} />
+        <meta name="twitter:image" content={post.data.thumbnail } />
       </Head>
       <Header />
 
@@ -79,6 +90,7 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
 
       <div>
         <Post post={post} />
+        <img src={post.data.thumbnail} alt={post.data.thumbnail}/>
         <Author member={author} />
       </div>
       <Footer />
@@ -114,6 +126,8 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
     response.data.formattedDate = FormateData({ post: response })
 
     response.data.views = await getPostViews(response.id)
+
+    response.data.thumbnail = `https://educacaobento.vercel.app${links.AssetsbaseURL.thumbnail}?title=${response.uid}`
 
     const authorID = parseInt(response.data.authorid)
 

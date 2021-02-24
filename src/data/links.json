@@ -8,7 +8,8 @@
     "member": "/author",
     "AssetsbaseURL":{
       "icons": "/img/icons",
-      "members": "/img/authors"
+      "members": "/img/authors",
+      "thumbnail": "/api/thumbnail"
     },
     "maintenance": "/maintenance"
 }
