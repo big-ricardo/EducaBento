@@ -1,55 +1,68 @@
-import React, { useEffect, ReactChildren } from "react";
-import ReactDOM from "react-dom";
+import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";
 
 interface VariantProps {
- variants?: {
+  variants?: {
     visible: {
-    scale?: number,
-    transform?: string,
-    opacity?: number
+      scale?: number,
+      transform?: string,
+      opacity?: number
+    },
+    hidden: {
+      scale?: number,
+      transform?: string,
+      opacity?: number
+    }
   },
-  hidden: {
-    scale?: number,
-    transform?: string,
-    opacity?: number
-  }
- },
- transition?:{
-   duration: number
- },
- children
+  transition?: {
+    duration: number
+  },
+  children
 
 }
 
-const FadeInWhenVisible: React.FunctionComponent<VariantProps> =({ children,
+const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
   variants = {
     visible: { opacity: 1, scale: 1 },
-    hidden: { opacity: 0, scale: 0}
+    hidden: { opacity: 0, scale: 0 }
   },
   transition = { duration: 1 }
 }: VariantProps) => {
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
+  const [width, setWidth] = useState(1920)
+
+  useEffect(()=>{
+    if(window){
+      setWidth(window.screen.width)
+    }
+  },[])
 
   useEffect(() => {
-    if (inView) {
+    if (inView && window.screen.width > 600) {
       controls.start("visible");
     }
-  }, [controls, inView]);
+  }, [inView]);
 
   return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      transition={transition}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
+    <>
+      {width > 600 ? (
+        <motion.div
+          ref={ref}
+          animate={controls}
+          initial='hidden'
+
+          transition={transition}
+          variants={variants}
+        >
+          {children}
+        </motion.div>
+      ):(
+        <>{children}</>
+      )}
+    </>
   );
 }
 

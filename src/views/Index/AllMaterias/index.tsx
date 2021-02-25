@@ -10,17 +10,13 @@ export default function AllMateriaView() {
   return (
     <>
       <AnimationInView>
-         <h1 className='title'>Matérias</h1>
-        </AnimationInView>
-      <AnimationInView>
+        <h1 className='title'>Matérias</h1>
+      </AnimationInView>
       <MateriaContainer>
         {materias.array.map((materia, i) => (
-
-            <Materia materia={materia.slug} key={i} icon={materia.icon}>{materia.title}</Materia>
-
+          <Materia materia={materia.slug} key={i} icon={materia.icon}>{materia.title}</Materia>
         ))}
       </MateriaContainer>
-      </AnimationInView>
     </>
   );
 };
