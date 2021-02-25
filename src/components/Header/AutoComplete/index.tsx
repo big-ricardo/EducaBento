@@ -99,7 +99,7 @@ export default function Asynchronous() {
             ...params.InputProps,
             endAdornment: (
               <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton onClick={() => search != ""? Router.push(`${links.post}/${search}`): false} size='small'><MdSearch color="inherit" size={20} /></IconButton>}
+                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton onClick={() => Router.push(`${links.search}?q=${search}`)} size='small'><MdSearch color="inherit" size={20} /></IconButton>}
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),

@@ -11,5 +11,6 @@
       "members": "/img/authors",
       "thumbnail": "/api/thumbnail"
     },
-    "maintenance": "/maintenance"
+    "maintenance": "/maintenance",
+    "search": "/search"
 }

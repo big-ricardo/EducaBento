@@ -36,7 +36,7 @@ export default createGlobalStyle`
     h1{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(15px,2vw - 6px,33px);
+    font-size: clamp(15px,2vw - 2px,33px);
     @media screen and (max-width: 768px) {
       font-size: clamp(23px,2vh + 4px,36px);
     }
@@ -45,7 +45,7 @@ export default createGlobalStyle`
   h2{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(15px,2vw - 8px,30px);
+    font-size: clamp(22px,2vw - 6px,30px);
      @media screen and (max-width: 768px) {
       font-size: clamp(20px,2vh + 3px,28px);
     }
@@ -54,7 +54,7 @@ export default createGlobalStyle`
   h3{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(22px,2vw - 5px, 27px);
+    font-size: clamp(15px,2vw - 9px, 27px);
      @media screen and (max-width: 768px) {
       font-size: clamp(15px,2vh + 2px,28px);
     }
@@ -63,7 +63,7 @@ export default createGlobalStyle`
   h4{
     font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.title};
-    font-size: clamp(15px,2vw - 3px,24px);
+    font-size: clamp(15px,2vw - 10px,24px);
      @media screen and (max-width: 768px) {
       font-size: clamp(15px,2vh + 1px,28px);
     }

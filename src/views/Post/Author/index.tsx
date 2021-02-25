@@ -2,7 +2,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 import { CarrosselItems } from './style'
 import Link from 'next/link'
-import links from '../../../data/links.json'
+import links from '@/src/data/links.json'
 
 export interface MemberProps{
     name: string,
