@@ -71,7 +71,7 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
           content={RichText.asText(post.data.description)}
         />
 
-        <meta property="og:image" content={RichText.asText(post.data.title)} />
+        <meta property="og:image" content={post.data.thumbnail} />
         <meta property="og:image:type" content="image/png" />
 
         <meta property="og:image:width" content="1200" />
