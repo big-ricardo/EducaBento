@@ -24,6 +24,7 @@ export const Accordion = styled(AccordionM)`
   width: 80%;
   margin: auto !important;
   box-shadow: none !important;
+  margin-bottom: 30px;
 
   &:before{
     background-color: inherit  !important;
