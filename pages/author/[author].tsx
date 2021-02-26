@@ -2,16 +2,16 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import Head from 'next/head';
 import Prismic from 'prismic-javascript';
 import { useRouter } from 'next/router'
-import {getMembers} from '../api/members'
+import { getMembers } from '../api/members'
 
 import { client } from '@/src/config/prismic_configuration';
 
 import AnimationInView from '@/src/components/AnimationInView'
-import Header from '@/src/components/Header'
+import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
-import {MemberProps} from '@/src/views/Post/Author'
-import Materia,{post} from "@/src/components/Materia";
-import Footer from "@/src/components/Footer";
+import { MemberProps } from '@/src/views/Post/Author'
+import Materia, { post } from "@/src/components/Materia";
+import Footer from "@/src/template/Footer";
 import links from '@/src/data/links.json'
 
 interface PathProps {
@@ -48,11 +48,10 @@ export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
       </Head>
       <Header />
 
-      <AnimationInView>
-        <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.members}${author.avatar}`} />
-      </AnimationInView>
+      <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.members}${author.avatar}`} />
+
       <h1 className='title'>Publicações</h1>
-      <Materia posts={posts}/>
+      <Materia posts={posts} />
       <Footer />
     </>
   );
@@ -69,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
-  const author:MemberProps = await getMembers({ slug: params.author })
+  const author: MemberProps = await getMembers({ slug: params.author })
 
   const response = await client.query([
     Prismic.Predicates.at('document.type', 'blog_posts'),
@@ -77,7 +76,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
     { orderings: '[my.blog-post.date desc]', pageSize: 100 }
   )
 
-   const posts = response.results.map((post) => (
+  const posts = response.results.map((post) => (
     {
       materia: post.data.materia,
       title: post.data.title[0].text,

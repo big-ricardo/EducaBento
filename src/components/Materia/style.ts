@@ -112,7 +112,7 @@ export const TextContainer = styled.div`
 
 `
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(motion.div)`
     width: 50%;
     margin: auto;
     margin-left: -25%;

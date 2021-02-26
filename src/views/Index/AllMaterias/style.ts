@@ -74,7 +74,7 @@ export const Materia = styled(MateriaDiv)`
     }
   }`
 
-  export const ImageContainer = styled.div`
+  export const ImageContainer = styled(motion.div)`
     width: 60%;
     margin: auto;
 

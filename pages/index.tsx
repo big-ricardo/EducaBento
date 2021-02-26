@@ -8,14 +8,14 @@ import Head from 'next/head';
 
 /*    Components*/
 import AnimationInView from '../src/components/AnimationInView'
-import Header from '../src/components/Header'
+import Header from '../src/template/Header'
 import Carrossel from '../src/views/Index/Carrossel'
 import AllMaterias from "../src/views/Index/AllMaterias";
 import Materia, { post } from "../src/components/Materia";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
 import {MemberProps} from "../src/views/Post/Author";
-import Footer from "../src/components/Footer";
+import Footer from "../src/template/Footer";
 
 interface PropTypes {
   posts: Array<post>;

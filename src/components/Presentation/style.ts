@@ -36,16 +36,6 @@ export const SectionText = styled(motion.div)`
      width: 90%;
      margin-bottom: 10px
   }
-
-  div h1{
-    color: ${props => props.theme.colors.title};
-    font-family: 'Philosopher', sans-serif;
-    font-weight: 700;
-    font-size: clamp(40px, 4vw, 200px);
-    margin-bottom: 5px;
-    @media screen and (max-width: 768px) {
-     text-align: center;
-  }
   }
 
   div h3{
@@ -67,7 +57,6 @@ export const SectionText = styled(motion.div)`
      @media screen and (max-width: 768px) {
     text-align: center;
       font-size: clamp(15px,2vh,28px);
-    }
   }
 `
 
@@ -91,4 +80,14 @@ export const Divider = styled.div`
   width: 80%;
 `
 
+export const H1 = styled(motion.h1)`
 
+    color: ${props => props.theme.colors.title};
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 700;
+    font-size: clamp(40px, 4vw, 200px);
+    margin-bottom: 5px;
+    @media screen and (max-width: 768px) {
+     text-align: center;
+    }
+`

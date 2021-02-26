@@ -13,12 +13,12 @@ import { client } from '@/src/config/prismic_configuration';
 import Error from 'next/error'
 
 import AnimationInView from '@/src/components/AnimationInView'
-import Header from '@/src/components/Header'
+import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import Author, { MemberProps } from '@/src/views/Post/Author'
 import { getPostViews } from '../api/page-views'
 import Post from "@/src/views/Post";
-import Footer from "@/src/components/Footer";
+import Footer from "@/src/template/Footer";
 import { useViewportScroll } from "framer-motion"
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -47,12 +47,12 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
     }
   })
 
-   if (!post) {
+  if (!post) {
     return <Error statusCode={404} />
   }
 
-  if(!post){
-    return<></>
+  if (!post) {
+    return <></>
   }
 
   return (
@@ -77,15 +77,12 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={RichText.asText(post.data.title)} />
-        <meta name="twitter:description" content={RichText.asText(post.data.title)} />
-        <meta name="twitter:image" content={post.data.thumbnail } />
+        <meta name="twitter:description" content={RichText.asText(post.data.description)} />
+        <meta name="twitter:image" content={post.data.thumbnail} />
       </Head>
       <Header />
 
-      <AnimationInView>
-        <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} views={post.data.views} image={`${links.AssetsbaseURL.icons}${materiasJson.object[post.data.materia].icon}`} />
-      </AnimationInView>
-
+      <Presentation title={RichText.asText(post.data.title)} description={RichText.asText(post.data.description)} date={post.data.formattedDate} views={post.data.views} image={`${links.AssetsbaseURL.icons}${materiasJson.object[post.data.materia].icon}`} />
       <div>
         <Post post={post} />
         <Author member={author} />

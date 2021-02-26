@@ -38,7 +38,6 @@ export const Materia = styled(MateriaDiv)`
   min-height: clamp(300px, 1vh + 22em, 400px);;
   border-radius:60px 40px 25px 10px;
   margin: auto;
-  cursor: pointer;
 
   @media screen and (max-width: 1024px) {
       width:80%;
@@ -50,7 +49,7 @@ export const Materia = styled(MateriaDiv)`
   }
 `
 
-export const TextContainer = styled.div`
+export const TextContainer = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items:center;

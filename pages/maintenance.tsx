@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
 import Maintenance from '../src/views/Maintenance'
-import Header from '../src/components/Header'
-import Footer from '../src/components/Footer'
+import Header from '../src/template/Header'
+import Footer from '../src/template/Footer'
 
 export default function MaintenancePagr() {
   return(<>

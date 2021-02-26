@@ -9,10 +9,10 @@ import { getMembers } from './api/members'
 
 /*    Components*/
 import AnimationInView from '../src/components/AnimationInView'
-import Header from '../src/components/Header'
+import Header from '../src/template/Header'
 import Presentation from '../src/components/Presentation'
 import Materia, { post } from "../src/components/Materia";
-import Footer from "../src/components/Footer";
+import Footer from "../src/template/Footer";
 import Search from "../src/views/Search";
 import Head from 'next/head';
 import { ParsedUrlQuery } from "querystring";
@@ -41,7 +41,6 @@ export default function SearchPage({ posts, members }): JSX.Element {
       <AnimationInView>
         <Presentation title="Pesquisa" description={q ? `Resultados relacionados sobre: ${q}` : "Sua plataforma de estudos gratuito"} image='/img/search.svg' />
       </AnimationInView>
-
       <AnimationInView>
         <Search posts={posts} members={members} q={q} />
       </AnimationInView>
@@ -84,7 +83,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     members = await getMembers({
       name: { $regex: new RegExp(String(q)), $options: 'i' }
-    }, { _id: 0, authorID: 0 }).catch(()=> [])
+    }, { _id: 0, authorID: 0 }).catch(() => [])
   }
 
   return {

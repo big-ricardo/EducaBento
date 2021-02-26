@@ -4,6 +4,7 @@ import { UserOutlined } from '@ant-design/icons';
 import Link from 'next/link'
 import links from '../../../data/links.json'
 import { MemberProps} from '../../Post/Author'
+import {motion} from 'framer-motion'
 
 import { TeamContainer, CarrosselItems } from './style'
 import Image from 'next/image';

@@ -11,10 +11,10 @@ import api from '@/src/config/api'
 
 /*    Components*/
 import AnimationInView from '@/src/components/AnimationInView'
-import Header from '@/src/components/Header'
+import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import Materia, { post } from "@/src/components/Materia/OneMateria";
-import Footer from "@/src/components/Footer";
+import Footer from "@/src/template/Footer";
 import links from '@/src/data/links.json'
 
 interface PropTypes {
@@ -40,9 +40,8 @@ export default function BlogPage({ posts, tag }: PropTypes): JSX.Element {
 
       </Head>
       <Header></Header>
-      <AnimationInView>
-        <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`${links.AssetsbaseURL.icons}${materiasJson.object[tag].icon}`} />
-      </AnimationInView>
+
+      <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`${links.AssetsbaseURL.icons}${materiasJson.object[tag].icon}`} />
 
       <h1 className='title'>Ultimas Publicações</h1>
       {posts !== [] ? (
@@ -50,8 +49,8 @@ export default function BlogPage({ posts, tag }: PropTypes): JSX.Element {
           <Materia post={post} key={post.slug} />
         ))
       ) : (
-         <h1>Sem Posts</h1>
-      )}
+          <h1>Sem Posts</h1>
+        )}
 
       <Footer />
     </>
@@ -59,12 +58,13 @@ export default function BlogPage({ posts, tag }: PropTypes): JSX.Element {
 }
 
 
-interface ParamsProps{
-  params:{
-    tag: string}
+interface ParamsProps {
+  params: {
+    tag: string
+  }
 }
 
-export const getStaticProps: GetStaticProps = async (context:ParamsProps) => {
+export const getStaticProps: GetStaticProps = async (context: ParamsProps) => {
 
   const { tag } = context.params
 

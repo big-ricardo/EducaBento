@@ -32,8 +32,8 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ post }) => {
           <Link href={`${links.post}/${post.slug}`}>
             <Materia whileHover={{ scale: 1.1 }} materia={post.materia}>
               <TextContainer>
-                <h2 style={{ marginBottom: 20 }}>{post.title}</h2>
-                <H4>{post.description}</H4>
+                <motion.h2 layoutId={`${post.title}title`} style={{ marginBottom: 20 }}>{post.title}</motion.h2>
+                <H4 layoutId={`${post.title}body`}>{post.description}</H4>
                 <h3>Veja Completo  <BsArrowRight /> </h3>
               </TextContainer>
             </Materia>
@@ -70,7 +70,7 @@ const Materia = styled(MateriaDiv)`
   }
 `
 
-const H4 = styled.h6`
+const H4 = styled(motion.h6)`
    font-family: 'Philosopher', sans-serif;
     color: ${props => props.theme.colors.text};
     font-size: clamp(14px,2vw - 5px,25px);

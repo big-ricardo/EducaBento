@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
-import GlobalStyle from '../styles/global'
-import themes from '../styles/themes'
+import GlobalStyle from '../src/styles/global'
+import themes from '../src/styles/themes'
 import NProgress from 'nprogress'
 import Router from 'next/router'
+import { AnimateSharedLayout } from 'framer-motion'
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start()
@@ -30,7 +31,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   return (<>
     <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
+      <AnimateSharedLayout>
+        <Component {...pageProps} />
+      </AnimateSharedLayout>
       <GlobalStyle />
     </ThemeProvider>
   </>

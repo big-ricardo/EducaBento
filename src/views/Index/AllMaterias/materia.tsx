@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AnimationInView from '../../../components/AnimationInView'
 import links from '../../../data/links.json'
+import materiasJson from '@/src/data/materias.json'
 
 interface MateriaInterface {
   materia: string;
@@ -14,10 +15,10 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, ic
   return (
     <>
       <Link href={`${links.tag}/${materia}`}>
-        <Materia whileHover={{ scale: 1.1 }} materia={materia}>
+        <Materia whileHover={{ scale: 1.1 }}materia={materia}>
           <AnimationInView>
-              <h2>{children}</h2>
-            <ImageContainer>
+              <motion.h2 layoutId={`${materiasJson.object[materia].title}title`}>{children}</motion.h2>
+            <ImageContainer  layoutId={`${materiasJson.object[materia].title}image`}>
               <Image src={`${links.AssetsbaseURL.icons}${icon}`} layout='responsive' width='100px' height='100px' />
             </ImageContainer>
           </AnimationInView>
