@@ -39,7 +39,7 @@ export default function SearchPage({ posts, members }): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-        <Presentation title="Pesquisa" description={q ? `Resultados relacionados sobre: ${q}` : "Sua plataforma de estudos gratuito"} image='/img/Search.svg' />
+        <Presentation title="Pesquisa" description={q ? `Resultados relacionados sobre: ${q}` : "Sua plataforma de estudos gratuito"} image='/img/search.svg' />
       </AnimationInView>
 
       <AnimationInView>
@@ -84,7 +84,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     members = await getMembers({
       name: { $regex: new RegExp(String(q)), $options: 'i' }
-    }, { _id: 0, authorID: 0 })
+    }, { _id: 0, authorID: 0 }).catch(()=> [])
   }
 
   return {
