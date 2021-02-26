@@ -50,14 +50,12 @@ export default function SearchComponent({ posts, members, q }) {
 
       <Accordion defaultExpanded>
         <AccordionSummary
-          expandIcon={<MdExpandMore />}
         >
           <h1>Publicações</h1>
         </AccordionSummary>
-        <AccordionDetails >
-          <Materia posts={posts} />
-        </AccordionDetails>
       </Accordion>
+      <br/><br/>
+      <Materia posts={posts} />
     </>
   );
 }
