@@ -21,7 +21,7 @@ import { Grid } from "./style"
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState<string | null>("");
-    const [value, setValue] = React.useState<string | null>("");
+  const [value, setValue] = React.useState<string | null>("");
   const [options, setOptions] = React.useState<Document[] | null>(null);
   const loading = open && !options && search !== "";
 
@@ -73,15 +73,12 @@ export default function Asynchronous() {
       id="asynchronous-demo"
       style={{ width: 250 }}
       open={open}
+      freeSolo
       onOpen={() => {
         setOpen(true);
       }}
       onClose={() => {
         setOpen(false);
-      }}
-      inputValue={search}
-      onInputChange={(event, newInputValue) => {
-        setSearch(newInputValue);
       }}
       size='small'
       getOptionSelected={(option, value) => option.uid === value.uid}
@@ -91,20 +88,29 @@ export default function Asynchronous() {
       loadingText="Carregando..."
       noOptionsText="Nada...digite a palavra inteira"
       renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Pesquisar"
-          size="small"
-          InputProps={{
-            ...params.InputProps,
-            endAdornment: (
-              <React.Fragment>
-                {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton onClick={() => search != ""? Router.push(`${links.post}/${search}`): false} size='small'><MdSearch color="inherit" size={20} /></IconButton>}
-                {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
-          }}
-        />
+        <form onSubmit={e => {
+          e.preventDefault()
+          Router.push(`${links.search}?q=${search}`)
+        }}>
+          <TextField
+            {...params}
+            label="Pesquisar"
+            size="small"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+            InputProps={{
+              ...params.InputProps,
+              endAdornment: (
+                <React.Fragment>
+                  {loading ? <CircularProgress color="inherit" size={20} /> : <IconButton type='submit' size='small'><MdSearch color="inherit" size={20} /></IconButton>}
+                  {params.InputProps.endAdornment}
+                </React.Fragment>
+              ),
+            }}
+          />
+        </form>
       )}
       renderOption={(option) => {
 

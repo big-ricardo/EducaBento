@@ -38,6 +38,7 @@ export const Materia = styled(MateriaDiv)`
   border-radius:60px 40px 25px 10px;
   margin: auto;
   cursor: pointer;
+  margin-bottom: 30px;
 
   @media screen and (max-width: 1024px) {
     width:80%;

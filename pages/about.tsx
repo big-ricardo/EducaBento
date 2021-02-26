@@ -48,11 +48,3 @@ export default function AboutPage({ posts }: PropTypes): JSX.Element {
     </>
   );
 }
-
-
-export const getStaticProps: GetStaticProps = async () => {
-
-  return {
-    props: {}
-  };
-};

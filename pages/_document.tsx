@@ -1,9 +1,9 @@
 import React from 'react'
-import NextDocument from 'next/document'
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet as StyledComponentSheets } from 'styled-components'
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles'
 export default class Document extends NextDocument {
-  static async getInitialProps (ctx) {
+  static async getInitialProps(ctx) {
     const styledComponentSheet = new StyledComponentSheets()
     const materialUiSheets = new MaterialUiServerStyleSheets()
     const originalRenderPage = ctx.renderPage
@@ -29,5 +29,20 @@ export default class Document extends NextDocument {
     } finally {
       styledComponentSheet.seal()
     }
+  }
+
+  render() {
+    return (
+      <Html lang="pt-BR">
+        <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }

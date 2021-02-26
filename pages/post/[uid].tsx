@@ -10,7 +10,7 @@ import { getMembers } from '../api/members'
 import links from '@/src/data/links.json'
 
 import { client } from '@/src/config/prismic_configuration';
-import Router from 'next/router'
+import Error from 'next/error'
 
 import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/components/Header'
@@ -47,11 +47,9 @@ export default function PostPage({ post, author }: PropTypes): JSX.Element {
     }
   })
 
-  useEffect(() => {
-    if (!post) {
-      Router.push('/404')
-    }
-  }, [])
+   if (!post) {
+    return <Error statusCode={404} />
+  }
 
   if(!post){
     return<></>

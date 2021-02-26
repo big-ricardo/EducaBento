@@ -40,9 +40,7 @@ export default function HomeBlogPage({ posts }: PropTypes): JSX.Element {
       </AnimationInView>
 
       <h1 className='title'>Ultimas Publicações</h1>
-      {posts.map(post => (
-        <Materia post={post} key={post.slug} />
-      ))}
+        <Materia posts={posts} />
 
       <Footer />
     </>

@@ -45,9 +45,7 @@ export default function HomePage({ posts, members }: PropTypes): JSX.Element {
       </AnimationInView>
       <AllMaterias />
       <h1 className='title'>Ultimas Publicações</h1>
-      {posts.map(post => (
-        <Materia post={post} key={post.slug} />
-      ))}
+      <Materia posts={posts}/>
       <Invitation />
       <Team members={members} />
       <Footer />
