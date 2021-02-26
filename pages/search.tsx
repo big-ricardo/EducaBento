@@ -62,30 +62,30 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   let posts = []
   let members = []
-  // if (query.q) {
-  //   const response = await client.query([
-  //     Prismic.Predicates.at('document.type', 'blog_posts'),
-  //     Prismic.Predicates.fulltext('document', String(q))
-  //   ], { orderings: '[my.blog-post.date desc]', pageSize: 100 }).catch((e) => {
-  //     console.log(e)
-  //   })
+  if (query.q) {
+    const response = await client.query([
+      Prismic.Predicates.at('document.type', 'blog_posts'),
+      Prismic.Predicates.fulltext('document', String(q))
+    ], { orderings: '[my.blog-post.date desc]', pageSize: 100 }).catch((e) => {
+      console.log(e)
+    })
 
-  //   if (response && response.total_results_size > 0) {
-  //     posts = response.results.map((post) => (
-  //       {
-  //         materia: post.data.materia,
-  //         title: post.data.title[0].text,
-  //         slug: post.uid,
-  //         description: post.data.description[0].text
-  //       }
-  //     )
-  //     );
-  //   }
+    if (response && response.total_results_size > 0) {
+      posts = response.results.map((post) => (
+        {
+          materia: post.data.materia,
+          title: post.data.title[0].text,
+          slug: post.uid,
+          description: post.data.description[0].text
+        }
+      )
+      );
+    }
 
     members = await getMembers({
       name: { $regex: new RegExp(String(q)), $options: 'i' }
     }, { _id: 0, authorID: 0 })
-  //}
+  }
 
   return {
     props: {

@@ -52,9 +52,7 @@ export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
         <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.members}${author.avatar}`} />
       </AnimationInView>
       <h1 className='title'>Publicações</h1>
-       {posts.map(post => (
-        <Materia post={post} key={post.slug} />
-      ))}
+      <Materia posts={posts}/>
       <Footer />
     </>
   );

@@ -19,7 +19,12 @@ import materias from '@/src/data/materias.json'
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Container } from "./style"
+import { MdExpandMore } from "react-icons/md";
+
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+
+import { Container, Accordion } from "./style"
 
 export default function SearchComponent({ posts, members, q }) {
 
@@ -32,12 +37,27 @@ export default function SearchComponent({ posts, members, q }) {
 
   return (
     <>
+      <Accordion defaultExpanded>
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+        >
+          <h1>Membros</h1>
+        </AccordionSummary>
+        <AccordionDetails >
+          <Members members={members} />
+        </AccordionDetails>
+      </Accordion>
 
-      <h1 className='title'>Membros</h1>
-      <Members members={members}/>
-
-      <h1 className='title'>Publicações</h1>
-      <Materia posts={posts} />
+      <Accordion defaultExpanded>
+        <AccordionSummary
+          expandIcon={<MdExpandMore />}
+        >
+          <h1>Publicações</h1>
+        </AccordionSummary>
+        <AccordionDetails >
+          <Materia posts={posts} />
+        </AccordionDetails>
+      </Accordion>
     </>
   );
 }

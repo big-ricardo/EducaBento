@@ -16,15 +16,7 @@ export const MemberContainer = styled.div`
   }
 `
 export const Card = styled(CardMUI)`
-
-  width: 30%;
-
-  @media screen and (max-width: 1024px) {
-    width:50%;
-  }
-  @media screen and (max-width: 767px){
-      width:90%;
-  }
-
+  width: 100%;
+  height: 100%
 `
 

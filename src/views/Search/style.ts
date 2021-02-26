@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import AccordionM from '@material-ui/core/Accordion';
 import GridM from '@material-ui/core/Grid';
 
 export const Container = styled.div`
@@ -18,4 +19,14 @@ export const Container = styled.div`
   @media screen and (max-width: 767px) {
     width:99%;
   }
+`
+export const Accordion = styled(AccordionM)`
+  width: 80%;
+  margin: auto !important;
+  box-shadow: none !important;
+
+  &:before{
+    background-color: inherit  !important;
+  }
+
 `
