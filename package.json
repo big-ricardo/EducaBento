@@ -21,6 +21,7 @@
     "mongodb": "^3.6.3",
     "next": "10.0.5",
     "next-fonts": "^1.5.1",
+    "next-images": "^1.7.0",
     "nprogress": "^0.2.0",
     "popmotion": "^9.1.0",
     "prismic-javascript": "^3.0.2",
@@ -41,8 +42,9 @@
     "@types/react": "^17.0.0",
     "@types/styled-components": "^5.1.7",
     "@vercel/node": "^1.9.0",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint": "^7.18.0",
-    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
     "prettier": "^2.2.1",
     "typescript": "^4.1.3"

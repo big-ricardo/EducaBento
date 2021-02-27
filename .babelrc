@@ -1,7 +1,8 @@
 {
   "plugins": [
     ["inline-import", { "extensions": [".css"] }],
-    ["import", { "libraryName": "antd" }]
+    ["import", { "libraryName": "antd" }],
+     "inline-react-svg"
   ],
   "presets": ["next/babel"],
   "ignore": []

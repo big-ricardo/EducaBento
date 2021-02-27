@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import Prismic from 'prismic-javascript';
 import { client } from '../src/config/prismic_configuration';
 
-import {getMembers} from './api/members'
+import { getMembers } from './api/members'
 import Head from 'next/head';
 
 /*    Components*/
@@ -14,7 +14,7 @@ import AllMaterias from "../src/views/Index/AllMaterias";
 import Materia, { post } from "../src/components/Materias";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
-import {MemberProps} from "../src/views/Post/Author";
+import { MemberProps } from "../src/views/Post/Author";
 import Footer from "../src/template/Footer";
 
 interface PropTypes {
@@ -45,7 +45,7 @@ export default function HomePage({ posts, members }: PropTypes): JSX.Element {
       </AnimationInView>
       <AllMaterias />
       <h1 className='title'>Ultimas Publicações</h1>
-      <Materia posts={posts}/>
+      <Materia posts={posts} />
       <Invitation />
       <Team members={members} />
       <Footer />

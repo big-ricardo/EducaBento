@@ -3,6 +3,7 @@ import { Carrossel, SectionText, SectionImg,H4 } from "./style";
 import Image from 'next/image'
 import Link from 'next/link'
 import links from '../../../data/links.json'
+import SVGCarrossel from '../../../assets/img/carrossel.svg'
 
 export default function CarrosselView() {
 
@@ -20,7 +21,7 @@ export default function CarrosselView() {
           </div>
         </SectionText>
         <SectionImg whileHover={{ scale: 1.1 }}>
-          <Image src='/img/carrossel.svg' width='400px' height='400px' layout='responsive' />
+          <SVGCarrossel />
         </SectionImg>
       </Carrossel>
     </>

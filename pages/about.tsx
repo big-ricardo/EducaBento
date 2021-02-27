@@ -1,15 +1,8 @@
-import { GetStaticProps } from "next";
-
-import Prismic from 'prismic-javascript';
-import { RichText } from 'prismic-reactjs';
-import { client } from '../src/config/prismic_configuration';
-import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
-
 /*    Components*/
 import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Presentation from '../src/components/Presentation'
-import Materia, {post} from "../src/components/Materias";
+import { post } from "../src/components/Materias";
 import Footer from "../src/template/Footer";
 import About from "../src/views/About";
 import Head from 'next/head';
@@ -22,7 +15,7 @@ export default function AboutPage({ posts }: PropTypes): JSX.Element {
 
   return (
     <>
-       <Head>
+      <Head>
         <title>Sobre | Educação Bento</title>
         <meta
           name="og:title"
@@ -37,12 +30,12 @@ export default function AboutPage({ posts }: PropTypes): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-      <Presentation title="Sobre" description="Sua plataforma de estudos gratuito" image='/img/about.svg'/>
+        <Presentation title="Sobre" description="Sua plataforma de estudos gratuito" image='/img/about.svg' />
       </AnimationInView>
 
-         <AnimationInView>
-           <About />
-         </AnimationInView>
+      <AnimationInView>
+        <About />
+      </AnimationInView>
 
       <Footer />
     </>

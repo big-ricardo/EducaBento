@@ -19,7 +19,7 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, ic
           <AnimationInView>
               <motion.h2 layoutId={`${materiasJson.object[materia].title}title`}>{children}</motion.h2>
             <ImageContainer  layoutId={`${materiasJson.object[materia].title}image`}>
-              <Image src={`${links.AssetsbaseURL.icons}${icon}`} layout='responsive' width='100px' height='100px' />
+              <Image src={`${links.AssetsbaseURL.icons}${icon}`} layout='responsive' width='100px' height='100px' alt={`${materiasJson.object[materia].title}image`} />
             </ImageContainer>
           </AnimationInView>
         </Materia>

@@ -6,7 +6,6 @@ import { getMembers } from '../api/members'
 
 import { client } from '@/src/config/prismic_configuration';
 
-import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import { MemberProps } from '@/src/views/Post/Author'

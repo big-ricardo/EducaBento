@@ -5,6 +5,8 @@ import Image from "next/image";
 import AnimationInView from '../../../components/AnimationInView'
 import { ImageContainer, TextContainer, Button } from "./style";
 
+import SVGInvitation from '../../../assets/img/invitation.svg'
+
 export default function InvitationView() {
 
   return (
@@ -12,7 +14,7 @@ export default function InvitationView() {
       <AnimationInView>
         <TeamContainer>
           <ImageContainer whileHover={{ scale: 1.1 }}>
-            <Image src='/img/team.svg' layout='responsive' width='500px' height='500px' />
+            <SVGInvitation/>
           </ImageContainer>
           <TextContainer>
             <h1>Faça parte dessa equipe!</h1>

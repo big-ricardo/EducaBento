@@ -1,9 +1,11 @@
 module.exports = {
   presets: ['next/babel'],
-  plugins: [['styled-components', { ssr: true }], [
-    "import", {
+  plugins: [
+    ['styled-components', { ssr: true }],
+    ["import", {
       "libraryName": "antd",
       "style": true
-    },
-  ]]
+    }],
+    "inline-react-svg"
+  ]
 }
