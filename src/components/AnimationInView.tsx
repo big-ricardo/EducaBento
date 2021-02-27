@@ -32,7 +32,7 @@ const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
-  const [width, setWidth] = useState(1920)
+  const [width, setWidth] = useState(599)
 
   useEffect(()=>{
     if(window){
