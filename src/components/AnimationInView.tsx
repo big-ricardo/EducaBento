@@ -32,13 +32,6 @@ const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
 
   const controls = useAnimation();
   const [ref, inView] = useInView();
-  // const [width, setWidth] = useState(599)
-
-  // useEffect(()=>{
-  //   if(window){
-  //     setWidth(window.screen.width)
-  //   }
-  // },[])
 
   useEffect(() => {
     if (inView) {
@@ -48,20 +41,16 @@ const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
 
   return (
     <>
-      {/* {width > 600 ? ( */}
-        <motion.div
-          ref={ref}
-          animate={controls}
-          initial='hidden'
+      <motion.div
+        ref={ref}
+        animate={controls}
+        initial='hidden'
 
-          transition={transition}
-          variants={variants}
-        >
-          {children}
-        </motion.div>
-      {/* ):(
-        <>{children}</>
-      )} */}
+        transition={transition}
+        variants={variants}
+      >
+        {children}
+      </motion.div>
     </>
   );
 }
