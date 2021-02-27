@@ -9,7 +9,7 @@ import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
-import Materia, { post } from "@/src/components/Materia";
+import Materia, { post } from "@/src/components/Materias";
 import Footer from "@/src/template/Footer";
 import Head from 'next/head';
 

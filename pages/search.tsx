@@ -11,7 +11,7 @@ import { getMembers } from './api/members'
 import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Presentation from '../src/components/Presentation'
-import Materia, { post } from "../src/components/Materia";
+import Materia, { post } from "../src/components/Materias";
 import Footer from "../src/template/Footer";
 import Search from "../src/views/Search";
 import Head from 'next/head';

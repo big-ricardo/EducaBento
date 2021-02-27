@@ -11,7 +11,7 @@ import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Carrossel from '../src/views/Index/Carrossel'
 import AllMaterias from "../src/views/Index/AllMaterias";
-import Materia, { post } from "../src/components/Materia";
+import Materia, { post } from "../src/components/Materias";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
 import {MemberProps} from "../src/views/Post/Author";

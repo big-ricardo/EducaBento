@@ -10,7 +10,7 @@ import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import { MemberProps } from '@/src/views/Post/Author'
-import Materia, { post } from "@/src/components/Materia";
+import Materia, { post } from "@/src/components/Materias";
 import Footer from "@/src/template/Footer";
 import links from '@/src/data/links.json'
 

@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip'
 import Router from 'next/router'
 
-import Materia, { post } from "@/src/components/Materia";
+import Materia, { post } from "@/src/components/Materias";
 import Members from "@/src/components/Members";
 
 import Prismic from '@prismicio/client'
