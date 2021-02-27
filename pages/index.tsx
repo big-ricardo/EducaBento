@@ -40,9 +40,9 @@ export default function HomePage({ posts, members }: PropTypes): JSX.Element {
 
       </Head>
       <Header></Header>
-      <AnimationInView>
-        <Carrossel />
-      </AnimationInView>
+
+      <Carrossel />
+
       <AllMaterias />
       <h1 className='title'>Ultimas Publicações</h1>
       <Materia posts={posts} />
