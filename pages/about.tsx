@@ -6,6 +6,7 @@ import { post } from "../src/components/Materias";
 import Footer from "../src/template/Footer";
 import About from "../src/views/About";
 import Head from 'next/head';
+import SVGAbout from '../src/assets/img/about.svg'
 
 interface PropTypes {
   posts: Array<post>;
@@ -30,7 +31,7 @@ export default function AboutPage({ posts }: PropTypes): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-        <Presentation title="Sobre" description="Sua plataforma de estudos gratuito" image='/img/about.svg' />
+        <Presentation title="Sobre" description="Sua plataforma de estudos gratuito"> <SVGAbout/> </Presentation>
       </AnimationInView>
 
       <AnimationInView>

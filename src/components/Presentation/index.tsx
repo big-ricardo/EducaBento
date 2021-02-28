@@ -10,10 +10,11 @@ interface PresentationProps {
   description: string,
   date?: string,
   avatar?: any,
-  views?: string
+  views?: string,
+  children?: React.ReactNode
 }
 
-export default function PresentationComponent({ image, title, description, date, avatar, views }: PresentationProps) {
+export default function PresentationComponent({ image, title, description, date, avatar, views, children }: PresentationProps) {
 
   return (
     <>
@@ -38,6 +39,7 @@ export default function PresentationComponent({ image, title, description, date,
               {title}
             </Avatar>
           )}
+          {children}
         </SectionImg>
       </Presentation >
       <Divider />

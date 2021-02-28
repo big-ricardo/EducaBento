@@ -7,6 +7,8 @@ import { client } from '../src/config/prismic_configuration';
 
 import { getMembers } from './api/members'
 
+import SVGSearch from '../src/assets/img/search.svg'
+
 /*    Components*/
 import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
@@ -39,7 +41,7 @@ export default function SearchPage({ posts, members }): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-        <Presentation title="Pesquisa" description={q ? `Resultados relacionados sobre: ${q}` : "Sua plataforma de estudos gratuito"} image='/img/search.svg' />
+        <Presentation title="Pesquisa" description={q ? `Resultados relacionados sobre: ${q}` : "Sua plataforma de estudos gratuito"}> <SVGSearch /></Presentation>
       </AnimationInView>
       <AnimationInView>
         <Search posts={posts} members={members} q={q} />

@@ -5,7 +5,7 @@ import { Nav, ButtonToggle, Link } from './style'
 import NavigationToggle from './NavigationToggle'
 
 const sidebar = {
-  open: (height = 1000) => ({
+  open: (height = 1200) => ({
     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
     transition: {
       type: "spring",

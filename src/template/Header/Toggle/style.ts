@@ -9,8 +9,8 @@ export const Nav = styled(motion.div)`
   bottom: 0;
   width: 50%;
   min-width: 230px;
-  z-index: 2500;
-  background: linear-gradient(180deg, ${props=> props.theme.colors.backgroundColor} 0%, rgba(255, 255, 255, 1) 40%);
+  z-index: 1000;
+  background: linear-gradient(180deg, ${props => props.theme.colors.backgroundColor} 0%, rgba(255, 255, 255, 1) 40%);
   display: none;
   border: 1px solid rgba(0,0,0,0.5);
     @media screen and (max-width: 767px){
@@ -45,18 +45,20 @@ export const SvgBox = styled(motion.div)``;
 
 export const Li = styled(motion.div)`
   list-style: none;
-  width: 60%;
-  color: ${props=> props.theme.colors.title};
+  width: 80%;
   text-decoration: none;
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px dotted currentColor;
-  display: flex;
   padding-left: 5%;
 
-  a{
-    margin: auto;
+  div{
     text-decoration: none;
+    color: ${props => props.theme.colors.title};
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
 `

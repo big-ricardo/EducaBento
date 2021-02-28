@@ -13,6 +13,8 @@ import Materia, { post } from "@/src/components/Materias";
 import Footer from "@/src/template/Footer";
 import Head from 'next/head';
 
+import SVGBlog from '../../src/assets/img/blog.svg'
+
 interface PropTypes {
   posts: Array<post>;
 }
@@ -36,11 +38,11 @@ export default function HomeBlogPage({ posts }: PropTypes): JSX.Element {
       </Head>
       <Header></Header>
       <AnimationInView>
-        <Presentation title="Blog" description="Sua plataforma de estudos gratuito" image='/img/blog.svg' />
+        <Presentation title="Blog" description="Sua plataforma de estudos gratuito"> <SVGBlog/> </Presentation>
       </AnimationInView>
 
       <h1 className='title'>Ultimas Publicações</h1>
-        <Materia posts={posts} />
+      <Materia posts={posts} />
 
       <Footer />
     </>
