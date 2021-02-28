@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, Ul, Li } from './style'
+import {AiOutlineHome, AiOutlineFileText} from 'react-icons/ai'
+import {BiBookContent} from 'react-icons/bi'
 
 import * as React from "react";
 
@@ -7,6 +9,7 @@ const variants = {
   open: {
     transition: { staggerChildren: 0.07, delayChildren: 0.2 },
     display: 'flex',
+    overflow: 'hidden'
   },
   closed: {
     transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.8 },
@@ -18,8 +21,8 @@ export default function NavigationToggle({ links }) {
 
   return (
     <Ul variants={variants}>
-      {links.map((i,index) => (
-        <MenuItem i={i} key={index} />
+      {links.map((i, index) => (
+        <MenuItem i={i} key={index} index={index} />
       ))}
     </Ul>
   );
@@ -42,16 +45,17 @@ const variantsMenu = {
   }
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-const MenuItem = ({ i }) => {
-  const style = { border: `2px solid ${colors[i]}` };
+const icons = [<AiOutlineHome fontSize='1.8em'/>, <BiBookContent fontSize='1.8em'/>,  <AiOutlineFileText fontSize='1.6em'/>];
+
+const MenuItem = ({ i, index }) => {
   return (
     <Li
       variants={variantsMenu}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
     >
+      {icons[index]}
       <Link href={i.slug}>{i.title}</Link>
     </Li>
   );

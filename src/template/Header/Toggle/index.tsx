@@ -12,7 +12,6 @@ const sidebar = {
       stiffness: 20,
       restDelta: 2,
     },
-
   }),
   closed: {
     clipPath: "circle(30px at 40px 40px)",
@@ -22,17 +21,16 @@ const sidebar = {
       stiffness: 400,
       damping: 40
     },
-    blackground: 'none'
   }
 };
 
-export default function ToggleComponent({links, toggleOpen}) {
+export default function ToggleComponent({ links, toggleOpen }) {
 
   return (
-      <Nav variants={sidebar}>
-         <NavigationToggle links={links}/>
+    <Nav variants={sidebar}>
+      <NavigationToggle links={links} />
       <MenuToggle toggle={() => toggleOpen()} />
-      </Nav>
+    </Nav>
   );
 };
 

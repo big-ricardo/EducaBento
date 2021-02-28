@@ -3,7 +3,7 @@ import styled from "styled-components";
 import LinkNext from "next/link";
 
 export const Nav = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -12,7 +12,7 @@ export const Nav = styled(motion.div)`
   z-index: 2500;
   background: linear-gradient(180deg, ${props=> props.theme.colors.backgroundColor} 0%, rgba(255, 255, 255, 1) 40%);
   display: none;
-
+  border: 1px solid rgba(0,0,0,0.5);
     @media screen and (max-width: 767px){
     display: flex
   }
@@ -45,21 +45,18 @@ export const SvgBox = styled(motion.div)``;
 
 export const Li = styled(motion.div)`
   list-style: none;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  width: 50%;
+  width: 60%;
   color: ${props=> props.theme.colors.title};
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px dotted currentColor;
+  display: flex;
+  padding-left: 5%;
 
   a{
-    margin: auto
+    margin: auto;
+    text-decoration: none;
   }
 
 `
