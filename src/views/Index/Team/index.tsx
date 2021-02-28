@@ -3,14 +3,14 @@ import { Carousel, Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import Link from 'next/link'
 import links from '../../../data/links.json'
-import { MemberProps} from '../../Post/Author'
-import {motion} from 'framer-motion'
 
 import { TeamContainer, CarrosselItems } from './style'
 import Image from 'next/image';
 
+import { MemberInterface } from '@/src/interfaces/Member';
+
 interface CarrosselItemProps {
-  member: MemberProps
+  member: MemberInterface
 }
 
 const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
@@ -37,7 +37,7 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
 }
 
 interface TeamComponentsProps{
-  members: Array<MemberProps>
+  members: Array<MemberInterface>
 }
 
 const TeamView: React.FC<TeamComponentsProps> = ({members})=> {

@@ -13,11 +13,10 @@ import SVGSearch from '../src/assets/img/search.svg'
 import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Presentation from '../src/components/Presentation'
-import Materia, { post } from "../src/components/Materias";
+import Materia from "../src/components/Materias";
 import Footer from "../src/template/Footer";
 import Search from "../src/views/Search";
 import Head from 'next/head';
-import { ParsedUrlQuery } from "querystring";
 
 export default function SearchPage({ posts, members }): JSX.Element {
 

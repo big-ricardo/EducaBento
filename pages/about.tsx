@@ -2,14 +2,14 @@
 import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Presentation from '../src/components/Presentation'
-import { post } from "../src/components/Materias";
 import Footer from "../src/template/Footer";
 import About from "../src/views/About";
 import Head from 'next/head';
 import SVGAbout from '../src/assets/img/about.svg'
+import { PostInterface } from '@/src/interfaces/Post';
 
 interface PropTypes {
-  posts: Array<post>;
+  posts: Array<PostInterface>;
 }
 
 export default function AboutPage({ posts }: PropTypes): JSX.Element {

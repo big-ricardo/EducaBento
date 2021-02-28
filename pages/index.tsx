@@ -11,15 +11,16 @@ import AnimationInView from '../src/components/AnimationInView'
 import Header from '../src/template/Header'
 import Carrossel from '../src/views/Index/Carrossel'
 import AllMaterias from "../src/views/Index/AllMaterias";
-import Materia, { post } from "../src/components/Materias";
+import Materia from "../src/components/Materias";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
-import { MemberProps } from "../src/views/Post/Author";
 import Footer from "../src/template/Footer";
+import { PostInterface } from "@/src/interfaces/Post";
+import { MemberInterface } from "@/src/interfaces/Member";
 
 interface PropTypes {
-  posts: Array<post>;
-  members: Array<MemberProps>
+  posts: Array<PostInterface>;
+  members: Array<MemberInterface>
 }
 
 export default function HomePage({ posts, members }: PropTypes): JSX.Element {

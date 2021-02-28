@@ -3,18 +3,11 @@ import { Avatar } from 'antd';
 import { CarrosselItems } from './style'
 import Link from 'next/link'
 import links from '@/src/data/links.json'
+import { MemberInterface } from '@/src/interfaces/Member';
 
-export interface MemberProps{
-    name: string,
-    description: string,
-    occupation: string,
-    avatar: string,
-    memberID: number,
-    slug: string
-  }
 
 interface CarrosselItemProps {
-  member: MemberProps
+  member: MemberInterface
 }
 
 const MemberComponentView: React.FC<CarrosselItemProps> = ({ member }) => {

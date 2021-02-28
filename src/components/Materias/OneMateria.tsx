@@ -7,16 +7,10 @@ import Image from "next/image";
 import materias from '../../data/materias.json'
 import AnimationInView from '../AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
-
-export interface post {
-  materia: string;
-  title: string;
-  slug: string;
-  description: string;
-};
+import { PostInterface } from "@/src/interfaces/Post";
 
 interface MateriaInterface {
-  post: post
+  post: PostInterface
 }
 
 const OneMateriaComponent: React.FC<MateriaInterface> = ({ post }) => {

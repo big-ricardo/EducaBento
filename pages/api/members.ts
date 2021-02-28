@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node'
 import { Db } from 'mongodb'
 import connectToDataBase from '@/src/config/connectToDataBase'
+import { MemberInterface } from '@/src/interfaces/Member'
 
 let cacheDb: Db = null
 
@@ -43,7 +44,7 @@ async function getNextSequenceValue(sequenceName: string, db: Db) {
   return sequenceDocument.value.sequence_value;
 }
 
-export async function getMembers(query = {}, result = {}) {
+export async function getMembers(query = {}, result = {}): Promise<MemberInterface[]> {
   const db: Db = await connectToDataBase(cacheDb)
 
   const members = await db.collection('members').find(query, { projection: result }).toArray()

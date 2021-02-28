@@ -15,13 +15,14 @@ import Error from 'next/error'
 import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
-import Author, { MemberProps } from '@/src/views/Post/Author'
+import Author from '@/src/views/Post/Author'
 import { getPostViews } from '../api/page-views'
 import Post from "@/src/views/Post";
 import Footer from "@/src/template/Footer";
 import { useViewportScroll } from "framer-motion"
 import axios from 'axios';
 import { useEffect } from 'react';
+import { MemberInterface } from '@/src/interfaces/Member';
 
 
 interface PathProps {
@@ -32,7 +33,7 @@ interface PathProps {
 
 interface PropTypes {
   post: Document,
-  author: MemberProps
+  author: MemberInterface
 }
 
 export default function PostPage({ post, author }: PropTypes): JSX.Element {
@@ -125,7 +126,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
     const authorID = parseInt(response.data.authorid)
 
-    const author: MemberProps = await getMembers({ authorID })
+    const author = await getMembers({ authorID })
 
     return {
       props: {

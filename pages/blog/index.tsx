@@ -9,14 +9,15 @@ import ApiSearchResponse from 'prismic-javascript/types/ApiSearchResponse';
 import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
-import Materia, { post } from "@/src/components/Materias";
+import Materia from "@/src/components/Materias";
 import Footer from "@/src/template/Footer";
 import Head from 'next/head';
 
 import SVGBlog from '../../src/assets/img/blog.svg'
+import { PostInterface } from "@/src/interfaces/Post";
 
 interface PropTypes {
-  posts: Array<post>;
+  posts: Array<PostInterface>;
 }
 
 export default function HomeBlogPage({ posts }: PropTypes): JSX.Element {

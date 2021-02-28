@@ -8,20 +8,21 @@ import { client } from '@/src/config/prismic_configuration';
 
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
-import { MemberProps } from '@/src/views/Post/Author'
-import Materia, { post } from "@/src/components/Materias";
+import Materia from "@/src/components/Materias";
 import Footer from "@/src/template/Footer";
 import links from '@/src/data/links.json'
+import { PostInterface } from '@/src/interfaces/Post';
+import { MemberInterface } from '@/src/interfaces/Member';
 
 interface PathProps {
   params: {
-    author: string;
+    member: string;
   };
 }
 
 interface PropTypes {
-  posts: Array<post>,
-  author: MemberProps
+  posts: Array<PostInterface>,
+  author: MemberInterface
 }
 
 export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
@@ -58,20 +59,27 @@ export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
+  const members = await getMembers({},{slug: 1, _id: 0})
+
+  const tags = members.map(member => (
+    {
+      params: { member:  member.slug }
+    }
+  ))
 
   return {
-    paths: [],
+    paths: tags,
     fallback: 'blocking',
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
-  const author: MemberProps = await getMembers({ slug: params.author })
+  const member = await getMembers({ slug: params.member })
 
   const response = await client.query([
     Prismic.Predicates.at('document.type', 'blog_posts'),
-    Prismic.Predicates.at('my.blog_posts.authorid', String(author[0].authorID))],
+    Prismic.Predicates.at('my.blog_posts.authorid', String(member[0].authorID))],
     { orderings: '[my.blog-post.date desc]', pageSize: 100 }
   )
 
@@ -88,7 +96,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
   return {
     props: {
       posts,
-      author: author[0]
+      author: member[0]
     },
     revalidate: 10
   };

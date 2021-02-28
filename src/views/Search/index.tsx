@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip'
 import Router from 'next/router'
 
-import Materia, { post } from "@/src/components/Materias";
+import Materia from "@/src/components/Materias";
 import Members from "@/src/components/Members";
 
 import Prismic from '@prismicio/client'
@@ -27,13 +27,6 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import { Container, Accordion } from "./style"
 
 export default function SearchComponent({ posts, members, q }) {
-
-
-  useEffect(() => {
-    console.log(posts);
-    console.log(members);
-
-  }, [])
 
   return (
     <>

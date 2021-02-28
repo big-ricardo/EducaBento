@@ -6,16 +6,10 @@ import materias from '../../data/materias.json'
 import links from '../../data/links.json'
 import AnimationInView from '../AnimationInView'
 import { BsArrowRight } from 'react-icons/bs'
-
-export interface post {
-  materia: string;
-  title: string;
-  slug: string;
-  description: string;
-};
+import { PostInterface } from "@/src/interfaces/Post";
 
 interface MateriaInterface {
-  posts: post[]
+  posts: PostInterface[]
 }
 
 const MateriaComponent: React.FC<MateriaInterface> = ({ posts }) => {
