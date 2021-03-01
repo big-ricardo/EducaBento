@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { getMembers } from '../api/members'
 
 import { client } from '@/src/config/prismic_configuration';
+import Error from 'next/error'
 
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
@@ -26,10 +27,9 @@ interface PropTypes {
 }
 
 export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
-  const { isFallback } = useRouter()
 
-  if (isFallback) {
-    return <h1>Carregando...</h1>
+  if (!author) {
+    return  <Error statusCode={404} />
   }
 
   return (
@@ -59,11 +59,11 @@ export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
-  const members = await getMembers({},{slug: 1, _id: 0})
+  const members = await getMembers({}, { slug: 1, _id: 0 })
 
   const tags = members.map(member => (
     {
-      params: { member:  member.slug }
+      params: { member: member.slug }
     }
   ))
 
@@ -76,27 +76,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: PathProps) => {
 
   const member = await getMembers({ slug: params.member })
+  let posts = []
 
-  const response = await client.query([
-    Prismic.Predicates.at('document.type', 'blog_posts'),
-    Prismic.Predicates.at('my.blog_posts.authorid', String(member[0].authorID))],
-    { orderings: '[my.blog-post.date desc]', pageSize: 100 }
-  )
+  if (member.length > 0) {
+    const response = await client.query([
+      Prismic.Predicates.at('document.type', 'blog_posts'),
+      Prismic.Predicates.at('my.blog_posts.authorid', String(member[0].authorID))],
+      { orderings: '[my.blog-post.date desc]', pageSize: 100 }
+    )
 
-  const posts = response.results.map((post) => (
-    {
-      materia: post.data.materia,
-      title: post.data.title[0].text,
-      slug: post.uid,
-      description: post.data.description[0].text
-    }
-  )
-  );
+     posts = response.results.map((post) => (
+      {
+        materia: post.data.materia,
+        title: post.data.title[0].text,
+        slug: post.uid,
+        description: post.data.description[0].text
+      }
+    )
+    );
+  }
 
   return {
     props: {
       posts,
-      author: member[0]
+      author: member[0] || null
     },
     revalidate: 10
   };

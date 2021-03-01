@@ -85,8 +85,18 @@ export default createGlobalStyle`
      font-size: clamp(20px, 3vh + 10px, 34px);
     margin-top: 60px;
     margin-bottom: 40px;
-    color: ${props => props.theme.colors.text}
+    color: ${props => props.theme.colors.text};
+    animation: delay 1s
   }
+
+ @keyframes delay {
+ 0% {
+  opacity: 0;
+ }
+ 100% {
+  opacity: 1;
+ }
+}
 
 .ant-carousel {
   -webkit-box-sizing: border-box;

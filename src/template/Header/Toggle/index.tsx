@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useRef } from "react";
-import { motion, useCycle } from "framer-motion";
+import { motion, useCycle, AnimatePresence } from "framer-motion";
 import { Nav, ButtonToggle, Link } from './style'
 import NavigationToggle from './NavigationToggle'
 
@@ -27,10 +27,10 @@ const sidebar = {
 export default function ToggleComponent({ links, toggleOpen }) {
 
   return (
-    <Nav variants={sidebar}>
-      <NavigationToggle links={links} />
-      <MenuToggle toggle={() => toggleOpen()} />
-    </Nav>
+      <Nav variants={sidebar}>
+        <NavigationToggle links={links} />
+        <MenuToggle toggle={() => toggleOpen()} />
+      </Nav>
   );
 };
 

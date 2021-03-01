@@ -32,12 +32,18 @@ export default function PresentationComponent({ image, title, description, date,
             <Image src={image} width='400px' height='400px' layout='responsive' />
           )}
           {avatar && (
-            <Avatar size={{ xs: 80, sm: 90, md: 100, lg: 110, xl: 130, xxl: 150 }}
-              style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle' }}
-              icon={<UserOutlined />}
-              src={avatar === "" ? null : `${avatar}`}>
-              {title}
-            </Avatar>
+            <div style={{ display: 'flex' }}>
+              <Avatar size={{ xs: 80, sm: 90, md: 100, lg: 110, xl: 130, xxl: 150 }}
+                style={{
+                  backgroundColor: '#9C69E2',
+                  verticalAlign: 'middle',
+                  margin: 'auto'
+                }}
+                icon={<UserOutlined />}
+                src={avatar === "" ? null : `${avatar}`}>
+                {title}
+              </Avatar>
+            </div>
           )}
           {children}
         </SectionImg>

@@ -44,7 +44,10 @@ const TeamView: React.FC<TeamComponentsProps> = ({members})=> {
 
   return (
     <>
-      <AnimationInView>
+      <AnimationInView variants = {{
+    visible: { opacity: 1 },
+    hidden: { opacity: 0},
+  }} transition={{duration: 2}}>
         <TeamContainer>
           <h1>Integrantes</h1>
           <Carousel autoplay >

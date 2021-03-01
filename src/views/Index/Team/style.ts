@@ -66,7 +66,7 @@ export const CarrosselItems = styled.div`
     margin-left: 5%;
     h2{
       font-family: 'Philosopher', sans-serif ;
-      color: ${props=> props.theme.colors.title};
+      color: ${props => props.theme.colors.title};
       margin-bottom: 0;
       font-size: clamp(16px, 3vh + 5px, 34px);
       font-weight: bold;
@@ -74,14 +74,20 @@ export const CarrosselItems = styled.div`
     }
     span{
       font-family: 'Roboto', sans-serif;
-      color: ${props=> props.theme.colors.text};
+      color: ${props => props.theme.colors.text};
       margin-bottom: 20px;
       font-size: clamp(12px, 2vh + 1px , 26px);
     }
     h4{
       font-family: 'Philosopher', sans-serif;
-      color: ${props=> props.theme.colors.title};
-       font-size: clamp(14px, 2vh + 4px , 26px);
+      color: ${props => props.theme.colors.title};
+      font-size: clamp(14px, 2vh + 4px , 26px);
+
+      @media screen and (max-width: 768px) {
+        max-height: 150px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
     }
   }
 `

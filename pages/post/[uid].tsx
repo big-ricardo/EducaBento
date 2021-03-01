@@ -12,7 +12,6 @@ import links from '@/src/data/links.json'
 import { client } from '@/src/config/prismic_configuration';
 import Error from 'next/error'
 
-import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import Author from '@/src/views/Post/Author'
@@ -21,7 +20,6 @@ import Post from "@/src/views/Post";
 import Footer from "@/src/template/Footer";
 import { useViewportScroll } from "framer-motion"
 import axios from 'axios';
-import { useEffect } from 'react';
 import { MemberInterface } from '@/src/interfaces/Member';
 
 

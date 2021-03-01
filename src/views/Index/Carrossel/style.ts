@@ -8,10 +8,11 @@ export const Carrossel = styled(motion.div)`
   justify-content: center;
   align-items: center;
   transition: 1s;
-  margin-top: 3%;
+  height: 80vh;
 
    @media screen and (max-width: 768px) {
     flex-direction: column-reverse;
+    margin-top: 3%;
   }
 `;
 
@@ -89,7 +90,6 @@ export const H4= styled(motion.h4)`
 
 export const SectionImg = styled(motion.div)`
   width: 35%;
-  height: 35%;
    @media screen and (max-width: 768px) {
     width: 50%;
      height: 35%;

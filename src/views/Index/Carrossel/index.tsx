@@ -9,7 +9,7 @@ export default function CarrosselView() {
 
   return (
     <>
-      <Carrossel>
+      <Carrossel initial={{opacity: 0, y: -50}} animate={{opacity: 1, y:0}}>
         <SectionText>
           <div>
             <h1>Educação Bento</h1>
