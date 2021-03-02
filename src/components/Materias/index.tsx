@@ -26,7 +26,7 @@ const MateriaComponent: React.FC<MateriaInterface> = ({ posts }) => {
             <Link href={`${links.post}/${post.slug}`} key={post.slug}>
               <Materia whileHover={{ scale: 1.1 }} materia={post.materia}>
                 <TextContainer>
-                  <motion.h2  layoutId={`${post.title}title`}>{post.title}</motion.h2>
+                  <motion.h2 layoutId={`${post.title}title`}>{post.title}</motion.h2>
                   <h4>{post.description}</h4>
                   <h3>Veja Aqui  <BsArrowRight /> </h3>
                 </TextContainer>

@@ -11,7 +11,16 @@ export default function InvitationView() {
 
   return (
     <>
-      <AnimationInView>
+      <AnimationInView variants={{
+        hidden:{
+          opacity: 0,
+          x: -50
+        },
+        visible:{
+          opacity: 1,
+          x: 0
+        }
+      }}>
         <TeamContainer>
           <ImageContainer whileHover={{ scale: 1.1 }}>
             <SVGInvitation/>

@@ -7,17 +7,19 @@ export const ContainerMaintenance = styled.div`
   justify-content: center;
   word-wrap: break-word;
 
-  h1{
+
+  div h1{
     font-weight: bolder;
   }
 
-  p{
+  div p{
     width: 60%;
+    margin: auto;
     text-align: center;
   }
 
   @media screen and (max-width: 768px) {
-    p{
+    div p{
       width: 80%;
 
     }

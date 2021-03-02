@@ -7,6 +7,7 @@ import { getMembers } from '../api/members'
 import { client } from '@/src/config/prismic_configuration';
 import Error from 'next/error'
 
+import AnimationInView from '@/src/components/AnimationInView'
 import Header from '@/src/template/Header'
 import Presentation from '@/src/components/Presentation'
 import Materia from "@/src/components/Materias";
@@ -50,7 +51,7 @@ export default function AuthorPage({ posts, author }: PropTypes): JSX.Element {
 
       <Presentation title={author.name} date={`${author.occupation}`} description={author.description} avatar={`${links.AssetsbaseURL.members}${author.avatar}`} />
 
-      <h1 className='title'>Publicações</h1>
+      <AnimationInView><h1 className='title'>Publicações</h1></AnimationInView>
       <Materia posts={posts} />
       <Footer />
     </>

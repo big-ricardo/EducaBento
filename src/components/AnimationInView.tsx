@@ -4,22 +4,14 @@ import { motion, useAnimation } from "framer-motion";
 
 interface VariantProps {
   variants?: {
-    visible: {
-      scale?: number,
-      transform?: string,
-      opacity?: number
-    },
-    hidden: {
-      scale?: number,
-      transform?: string,
-      opacity?: number
-    }
+    visible: object ,
+    hidden:  object
   },
   transition?: {
     duration: number
   },
-  children
-
+  children,
+  style?: React.CSSProperties
 }
 
 const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
@@ -27,7 +19,8 @@ const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
     visible: { opacity: 1, scale: 1 },
     hidden: { opacity: 0, scale: 0 }
   },
-  transition = { duration: 1 }
+  transition = { duration: 1 },
+  ...props
 }: VariantProps) => {
 
   const controls = useAnimation();
@@ -45,9 +38,9 @@ const FadeInWhenVisible: React.FunctionComponent<VariantProps> = ({ children,
         ref={ref}
         animate={controls}
         initial='hidden'
-
         transition={transition}
         variants={variants}
+        {...props}
       >
         {children}
       </motion.div>

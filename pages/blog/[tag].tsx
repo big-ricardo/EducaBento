@@ -39,7 +39,7 @@ export default function BlogPage({ posts, tag }: PropTypes): JSX.Element {
 
       <Presentation title={materiasJson.object[tag].title} description="Sua plataforma de estudos gratuito" image={`${links.AssetsbaseURL.icons}${materiasJson.object[tag].icon}`} />
 
-      <h1 className='title'>Ultimas Publicações</h1>
+      <AnimationInView> <h1 className='title'>Ultimas Publicações</h1></AnimationInView>
       {posts !== [] ? (
         posts.map(post => (
           <Materia post={post} key={post.slug} />

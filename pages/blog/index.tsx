@@ -42,7 +42,7 @@ export default function HomeBlogPage({ posts }: PropTypes): JSX.Element {
         <Presentation title="Blog" description="Sua plataforma de estudos gratuito"> <SVGBlog/> </Presentation>
       </AnimationInView>
 
-      <h1 className='title'>Ultimas Publicações</h1>
+        <AnimationInView><h1 className='title'>Ultimas Publicações</h1></AnimationInView>
       <Materia posts={posts} />
 
       <Footer />

@@ -15,10 +15,19 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, ic
   return (
     <>
       <Link href={`${links.tag}/${materia}`}>
-        <Materia whileHover={{ scale: 1.1 }}materia={materia}>
-          <AnimationInView>
-              <motion.h2 layoutId={`${materiasJson.object[materia].title}title`}>{children}</motion.h2>
-            <ImageContainer  layoutId={`${materiasJson.object[materia].title}image`}>
+        <Materia whileHover={{ scale: 1.1 }} materia={materia}>
+          <AnimationInView variants={{
+            hidden: {
+              opacity: 0,
+              y: 50
+            },
+            visible: {
+              opacity: 1,
+              y: 0
+            }
+          }}>
+            <motion.h2 layoutId={`${materiasJson.object[materia].title}title`}>{children}</motion.h2>
+            <ImageContainer layoutId={`${materiasJson.object[materia].title}image`}>
               <Image src={`${links.AssetsbaseURL.icons}${icon}`} layout='responsive' width='100px' height='100px' alt={`${materiasJson.object[materia].title}image`} />
             </ImageContainer>
           </AnimationInView>
