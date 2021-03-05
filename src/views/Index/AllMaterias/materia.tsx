@@ -19,11 +19,11 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, ic
           <AnimationInView variants={{
             hidden: {
               opacity: 0,
-              y: 50
+             x: 20
             },
             visible: {
               opacity: 1,
-              y: 0
+             x: 0
             }
           }}>
             <motion.h2 layoutId={`${materiasJson.object[materia].title}title`}>{children}</motion.h2>

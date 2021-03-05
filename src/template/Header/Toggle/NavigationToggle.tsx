@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link, Ul, Li } from './style'
 import { AiOutlineHome, AiOutlineFileText } from 'react-icons/ai'
 import { BiBookContent } from 'react-icons/bi'
+import { MdSearch } from 'react-icons/md';
 
 import * as React from "react";
 
@@ -46,7 +47,8 @@ const variantsMenu = {
 };
 
 
-const icons = [<AiOutlineHome fontSize='1.8em' />, <BiBookContent fontSize='1.8em' />, <AiOutlineFileText fontSize='1.6em' />];
+const icons = [<AiOutlineHome fontSize='1.8em' />, <BiBookContent fontSize='1.8em' />
+              ,<AiOutlineFileText fontSize='1.6em' />, <MdSearch fontSize='1.6em' />];
 
 const MenuItem = ({ i, index }) => {
   return (

@@ -17,6 +17,7 @@ export const Container = styled.div`
   @media screen and (max-width: 767px) {
     display: flex;
     width:99%;
+    margin-bottom: 30px
   }
 `
 export const Accordion = styled(AccordionM)`

@@ -21,7 +21,6 @@ import { Grid } from "./style"
 export default function Asynchronous() {
   const [open, setOpen] = React.useState(false);
   const [search, setSearch] = React.useState<string | null>("");
-  const [value, setValue] = React.useState<string | null>("");
   const [options, setOptions] = React.useState<Document[] | null>(null);
   const loading = open && !options && search !== "";
 
@@ -52,7 +51,7 @@ export default function Asynchronous() {
 
   async function HandleSearch() {
     const client = Prismic.client(process.env.PRISMIC_URL, { accessToken: process.env.PRISMIC_TOKEN })
-    console.log(search);
+
     const response = await client.query([
       Prismic.Predicates.at('document.type', 'blog_posts'),
       Prismic.Predicates.fulltext('document', search)

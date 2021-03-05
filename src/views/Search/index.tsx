@@ -37,25 +37,29 @@ export default function SearchComponent({ posts, members, q }) {
         <AutoComplete />
       </Container>
 
-      <Accordion defaultExpanded>
-        <AccordionSummary
-          expandIcon={<MdExpandMore />}
-        >
-          <h1>Membros</h1>
-        </AccordionSummary>
-        <AccordionDetails >
-          <Members members={members} />
-        </AccordionDetails>
-      </Accordion>
+      {q && (
+        <>
+          <Accordion defaultExpanded>
+            <AccordionSummary
+              expandIcon={<MdExpandMore />}
+            >
+              <h1>Membros</h1>
+            </AccordionSummary>
+            <AccordionDetails >
+              <Members members={members} />
+            </AccordionDetails>
+          </Accordion>
 
-      <Accordion defaultExpanded>
-        <AccordionSummary
-        >
-          <h1>Publicações</h1>
-        </AccordionSummary>
-      </Accordion>
-      <br/><br/>
-      <Materia posts={posts} />
+          <Accordion defaultExpanded>
+            <AccordionSummary
+            >
+              <h1>Publicações</h1>
+            </AccordionSummary>
+          </Accordion>
+          <br /><br />
+          <Materia posts={posts} />
+        </>
+      )}
     </>
   );
 }

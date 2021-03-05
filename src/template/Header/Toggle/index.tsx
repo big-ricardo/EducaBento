@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { motion, useCycle, AnimatePresence } from "framer-motion";
 import { Nav, ButtonToggle, Link } from './style'
 import NavigationToggle from './NavigationToggle'
+import linksJson from '@/src/data/links.json'
 
 const sidebar = {
   open: (height = 1200) => ({
@@ -28,7 +29,7 @@ export default function ToggleComponent({ links, toggleOpen }) {
 
   return (
       <Nav variants={sidebar}>
-        <NavigationToggle links={links} />
+        <NavigationToggle links={[...links, ...[{ title: "Pesquisar", slug: linksJson.search}]]} />
         <MenuToggle toggle={() => toggleOpen()} />
       </Nav>
   );
