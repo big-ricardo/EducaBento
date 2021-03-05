@@ -10,9 +10,10 @@ export const Carrossel = styled(motion.div)`
   transition: 1s;
   height: 80vh;
 
-   @media screen and (max-width: 768px) {
+ @media screen and (max-width: 1024px){
     flex-direction: column-reverse;
     margin-top: 3%;
+     height: 85vh;
   }
 `;
 
@@ -25,32 +26,36 @@ export const SectionText = styled(motion.div)`
   align-items: flex-start;
 
     @media screen and (max-width: 1024px){
-      height: 25vh;
+       align-items: center;
+     height: max-content;
+     width: 90%;
     }
 
-  @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
      align-items: center;
      height: max-content;
      width: 90%;
-  }
+    }
 
   div h1{
     color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
     font-weight: 700;
     font-size: clamp(40px, 4vw, 200px);
-    @media screen and (max-width: 768px) {
-     text-align: center;
-  }
+    @media screen and (max-width: 1024px){
+      text-align: center;
+      font-size: clamp(22px, 4vh, 200px);
+    }
   }
 
   div h3{
     color: ${props => props.theme.colors.title};
     font-family: 'Philosopher', sans-serif;
     font-size: clamp(25px, 2vw , 200px);
-     @media screen and (max-width: 768px) {
-     text-align: center;
-  }
+    @media screen and (max-width: 1024px){
+      text-align: center;
+      font-size: clamp(20px, 3vh + 1px, 200px);
+    }
   }
 
   div p{
@@ -59,8 +64,9 @@ export const SectionText = styled(motion.div)`
     font-size: clamp(20px, 1vw + 5px, 25px);
     width: 75%;
     margin-bottom: 5%;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px){
       text-align: center;
+      font-size: clamp(20px, 3vh - 5px, 200px);
       margin: auto;
       margin-top: 15px;
       margin-bottom: 10px
@@ -72,7 +78,7 @@ export const H4= styled(motion.h4)`
     border-radius: 50px;
     padding: 3% 6%;
     cursor: pointer;
-     background-color: ${props => props.theme.colors.primary};
+    background-color: ${props => props.theme.colors.primary};
     color: ${props => props.theme.colors.backgroundColor};
     font-family: 'Roboto', sans-serif;
     font-size: clamp(20px, 1vw, 27px);
@@ -82,7 +88,7 @@ export const H4= styled(motion.h4)`
       background-color: ${props => props.theme.colors.secound};
     }
 
-    @media screen and (max-width: 768px) {
+ @media screen and (max-width: 1024px){
       text-align: center;
       margin: auto
     }
@@ -90,8 +96,7 @@ export const H4= styled(motion.h4)`
 
 export const SectionImg = styled(motion.div)`
   width: 35%;
-   @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px){
     width: 50%;
-     height: 35%;
   }
 `

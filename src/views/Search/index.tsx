@@ -19,6 +19,8 @@ import materias from '@/src/data/materias.json'
 import Image from 'next/image';
 import Link from 'next/link';
 
+import AutoComplete from '@/src/components/AutoComplete'
+
 import { MdExpandMore } from "react-icons/md";
 
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -30,6 +32,11 @@ export default function SearchComponent({ posts, members, q }) {
 
   return (
     <>
+
+      <Container>
+        <AutoComplete />
+      </Container>
+
       <Accordion defaultExpanded>
         <AccordionSummary
           expandIcon={<MdExpandMore />}

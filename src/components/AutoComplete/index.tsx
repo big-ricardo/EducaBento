@@ -11,8 +11,8 @@ import Prismic from '@prismicio/client'
 import { Document } from 'prismic-javascript/types/documents';
 import { RichText } from 'prismic-reactjs';
 
-import links from '../../../data/links.json'
-import materias from '../../../data/materias.json'
+import links from '../../data/links.json'
+import materias from '../../data/materias.json'
 import Image from 'next/image';
 import Link from 'next/link';
 

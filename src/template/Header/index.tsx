@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { useCycle, AnimatePresence } from "framer-motion";
 import { Header, Nav, LinksContainer, Link, LogoContainer, LoginContainer, SearchContainer } from './style'
 import NavToggle from './Toggle'
-import AutoComplete from './AutoComplete'
+import AutoComplete from '@/src/components/AutoComplete'
 import LinkNext from "next/link";
 import { BsArrowRight } from 'react-icons/bs'
-import links from '../../data/links.json'
+import links from '@/src/data/links.json'
 
 const Links = [{ title: "Inicio", slug: links.home }, { title: "Sobre", slug: links.about }, { title: "Blog", slug: links.blog }]
 
