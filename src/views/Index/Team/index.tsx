@@ -19,10 +19,10 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
     <>
       <CarrosselItems>
         <div className='image'>
-          <Avatar  size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
-          style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle'}}
-           icon={<UserOutlined />}
-           src={member.avatar===""?null: <Image src={`${links.AssetsbaseURL.members}${member.avatar}`} layout='fill'/>}>
+          <Avatar size={{ xs: 60, sm: 90, md: 40, lg: 64, xl: 80, xxl: 150 }}
+            style={{ backgroundColor: '#9C69E2', verticalAlign: 'middle' }}
+            icon={<UserOutlined />}
+            src={member.avatar === "" ? null : <Image src={`${links.AssetsbaseURL.members}${member.avatar}`} layout='fill' />}>
             {member.name}
           </Avatar>
         </div>
@@ -36,24 +36,24 @@ const CarrosselItem: React.FC<CarrosselItemProps> = ({ member }) => {
   )
 }
 
-interface TeamComponentsProps{
+interface TeamComponentsProps {
   members: Array<MemberInterface>
 }
 
-const TeamView: React.FC<TeamComponentsProps> = ({members})=> {
+const TeamView: React.FC<TeamComponentsProps> = ({ members }) => {
 
   return (
     <>
-      <AnimationInView variants = {{
-    visible: { opacity: 1 },
-    hidden: { opacity: 0},
-  }} transition={{duration: 2}}>
+      <AnimationInView variants={{
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+      }} transition={{ duration: 2 }}>
         <TeamContainer>
           <h1>Integrantes</h1>
           <Carousel autoplay >
-           {members.map(member =>(
-              <CarrosselItem member={member} key={member.name}/>
-           ))}
+            {members.map(member => (
+              <CarrosselItem member={member} key={member.name} />
+            ))}
           </Carousel>
         </TeamContainer>
       </AnimationInView>
