@@ -8,13 +8,13 @@ export const Carrossel = styled(motion.div)`
   justify-content: center;
   align-items: center;
   transition: 1s;
-  height: 80vh;
+  height: 85vh;
 
  @media screen and (max-width: 1024px){
     flex-direction: column-reverse;
-    margin-top: 3%;
      height: 85vh;
   }
+
 `;
 
 export const SectionText = styled(motion.div)`

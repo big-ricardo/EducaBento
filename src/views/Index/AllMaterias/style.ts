@@ -20,6 +20,26 @@ export const MateriaContainer = styled.div`
   }
 `
 
+export const Container = styled.div`
+ background-image: url(//www.toptal.com/designers/subtlepatterns/patterns/symphony.png);
+  background-position: bottom;
+  animation: 4s linear 0s infinite bp;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+@keyframes bp {
+  from {
+    background-position:  198px 0;
+  }
+
+  to {
+    background-position:  0 198px;
+  }
+}
+
+
+`
+
 interface MateriaInterface {
   materia: string;
   icon: string;
