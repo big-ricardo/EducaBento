@@ -17,48 +17,6 @@ export const Presentation = styled(motion.div)`
   }
 `;
 
-export const SectionText = styled(motion.div)`
-  height: 25vh;
-  display: flex;
-  min-width: 60%;
-  flex-direction: column;
-  margin-top: 5%;
-  justify-content: space-around;
-  align-items: flex-start;
-
-    @media screen and (max-width: 1024px){
-      height: 15vh;
-    }
-
-  @media screen and (max-width: 768px) {
-     align-items: center;
-     height: max-content;
-     width: 90%;
-     margin-bottom: 10px
-  }
-  }
-
-  div h3{
-    color: ${props => props.theme.colors.title};
-    font-family: 'Philosopher', sans-serif;
-    font-size: clamp(15px,2vw - 10px,24px);
-     @media screen and (max-width: 768px) {
-    text-align: center;
-      font-size: clamp(15px,2vh,28px);
-    }
-  }
-
-  div p{
-   color: ${props => props.theme.colors.title};
-    font-family: 'Philosopher', sans-serif;
-    font-size: clamp(15px,2vw - 10px,24px);
-    opacity: 0.9;
-     margin-bottom: 10px;
-     @media screen and (max-width: 768px) {
-    text-align: center;
-      font-size: clamp(15px,2vh,28px);
-  }
-`
 
 export const SectionImg = styled(motion.div)`
   width: 20%;
@@ -91,3 +49,47 @@ export const H1 = styled(motion.h1)`
      text-align: center;
     }
 `
+
+export const SectionText = styled(motion.div)`
+  height: 25vh;
+  display: flex;
+  min-width: 60%;
+  flex-direction: column;
+  margin-top: 5%;
+  justify-content: space-around;
+  align-items: flex-start;
+
+    @media screen and (max-width: 1024px){
+      height: 15vh;
+    }
+
+  @media screen and (max-width: 768px) {
+     align-items: center;
+     height: max-content;
+     width: 90%;
+     margin-bottom: 10px
+  }
+  }
+
+  div h3{
+    color: ${props => props.theme.colors.title};
+    font-family: 'Philosopher', sans-serif;
+    font-size: clamp(15px,2vw - 10px,24px);
+     @media screen and (max-width: 768px) {
+    text-align: center;
+      font-size: clamp(15px,2vh,28px);
+    }
+  }
+
+  div p{
+    color: ${props => props.theme.colors.title};
+    font-family: 'Philosopher', sans-serif;
+    font-size: clamp(15px,2vw - 10px,24px);
+    opacity: 0.9;
+    margin-bottom: 10px;
+    @media screen and (max-width: 768px) {
+      text-align: center;
+      font-size: clamp(15px,2vh,28px);
+    }
+`
+

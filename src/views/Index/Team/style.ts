@@ -9,7 +9,7 @@ export const TeamContainer = styled.div`
   width: 70%;
   margin: auto;
   margin-top: 100px;
-  background: linear-gradient(270deg, #B8C7FF 0%, rgba(255, 255, 255, 0) 100%), #9C69E2;;
+  background: linear-gradient(270deg, #B8C7FF 0%, rgba(255, 255, 255, 0) 100%), #9C69E2;
   border-radius: 50px;
 
   h1{

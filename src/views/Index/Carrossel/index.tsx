@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Carrossel, SectionText, SectionImg,H4 } from "./style";
+import { Carrossel, SectionText, SectionImg,H4,BackgroundGradient } from "./style";
 import Image from 'next/image'
 import Link from 'next/link'
 import links from '../../../data/links.json'
@@ -10,6 +10,9 @@ export default function CarrosselView() {
   return (
     <>
       <Carrossel initial={{opacity: 0, y: -50}} animate={{opacity: 1, y:0}}>
+        <BackgroundGradient>
+          <div></div>
+        </BackgroundGradient>
         <SectionText>
           <div>
             <h1>Educação Bento</h1>
