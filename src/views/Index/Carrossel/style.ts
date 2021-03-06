@@ -12,7 +12,8 @@ export const Carrossel = styled(motion.div)`
 
  @media screen and (max-width: 1024px){
     flex-direction: column-reverse;
-     height: 85vh;
+     height: 90vh;
+     margin-top: -5%;
   }
 
 `;
@@ -111,33 +112,37 @@ export const BackgroundGradient = styled.div`
   height: 80%;
 
 div{
-  background: ${props=> 'linear-gradient(270deg,'+ props.theme.colors.primary+ " 0%," + props.theme.colors.secound+', rgba(255, 255, 255, 0) 100%,'+  props.theme.colors.backgroundColor +'), #9C69E2;'};
-	background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  transform: skewY(-5deg);
-  position: relative;
-  width: 47%;
-  border-radius: 0 20px 60px 0 ;
-  height: 100%;
-  z-index: -10;
-  opacity: .6;
+    background: ${props => 'linear-gradient(270deg,' + props.theme.colors.primary + " 0%," + props.theme.colors.secound + ', rgba(255, 255, 255, 0) 100%,' + props.theme.colors.backgroundColor + '), #9C69E2;'};
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    transform: skewY(-5deg);
+    position: relative;
+    width: 47%;
+    transition: 2s;
+    border-radius: 0 20px 60px 0 ;
+    height: 100%;
+    z-index: -10;
+    opacity: .2;
 
-  @media screen and (max-width: 768px){
-    width: 100%;
-    opacity: .3;
-  }
+    @media screen and (max-width: 768px){
+        width: 100%;
+        height: 100px;
+        border-radius: 0 20px 5px 0 ;
+        opacity: .3;
+        margin-top: -30%;
+    }
 
-  @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 }
 
 `

@@ -23,9 +23,13 @@ export const MateriaContainer = styled.div`
 export const Container = styled.div`
  background-image: url(//www.toptal.com/designers/subtlepatterns/patterns/symphony.png);
   background-position: bottom;
-  animation: 4s linear 0s infinite bp;
+  animation: 10s linear 0s infinite bp;
   padding-top: 10px;
   padding-bottom: 10px;
+
+  @media screen and (max-width: 768px){
+    animation: none;
+  }
 
 @keyframes bp {
   from {
