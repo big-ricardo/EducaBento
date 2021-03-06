@@ -19,7 +19,7 @@ const OneMateriaComponent: React.FC<MateriaInterface> = ({ materia, children, ic
           <AnimationInView variants={{
             hidden: {
               opacity: 0,
-             x: 20
+             x: 10
             },
             visible: {
               opacity: 1,

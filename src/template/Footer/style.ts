@@ -21,6 +21,11 @@ export const FooterContainer = styled(motion.div)`
   }
 `
 
+export const Container = styled.div`
+   background: linear-gradient(0deg, #b7dfe7 19%, #fff);
+`
+
+
 export const FooterDiv = styled(motion.div)`
   display: flex;
   flex-direction: column;
@@ -74,13 +79,13 @@ export const FooterDiv = styled(motion.div)`
 export const H2 = styled.h2`
   width: 100%;
   margin: 0 auto;
-  margin-bottom: 75px;
+  padding-bottom: 75px;
   text-align: center;
   color: ${props=>props.theme.colors.text};
   font-size: clamp(14px, 2vh + 1px, 24px);
   font-family: 'Philosopher', sans-serif;
   @media screen and (max-width: 768px) {
-    margin-bottom: 50px;
+    padding-bottom: 50px;
     font-size: clamp(10px, 2vh, 40px);
     margin-top: 10px;
   }

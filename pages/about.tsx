@@ -38,6 +38,7 @@ export default function AboutPage({ posts }: PropTypes): JSX.Element {
         <About />
       </AnimationInView>
 
+
       <Footer />
     </>
   );

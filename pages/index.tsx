@@ -15,6 +15,8 @@ import Materia from "../src/components/Materias";
 import Invitation from "../src/views/Index/Invitation";
 import Team from "../src/views/Index/Team";
 import Footer from "../src/template/Footer";
+import RenderCity from '@/src/components/RenderCity'
+
 import { PostInterface } from "@/src/interfaces/Post";
 import { MemberInterface } from "@/src/interfaces/Member";
 
@@ -50,6 +52,8 @@ export default function HomePage({ posts, members }: PropTypes): JSX.Element {
       <Invitation />
       <Team members={members} />
       <Footer />
+
+      <RenderCity />
     </>
   );
 }
